@@ -1,0 +1,7 @@
+<h1>login</h1>
+
+<form method = "POST" action="{%url 'login' %}">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type="submit" > login </button>
+</form>

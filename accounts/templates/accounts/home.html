@@ -1,0 +1,8 @@
+<h1>222</h1>
+
+<p>
+{% if user.is_authenticated %}
+hello {{user.username}}
+{% endif %}</p>
+
+<a href="{% url 'logout' %}" > <button type='button'>  로그아웃 </button> </a>

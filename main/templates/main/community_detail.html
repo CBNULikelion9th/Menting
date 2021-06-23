@@ -1,0 +1,16 @@
+{% extends 'main/community_base.html' %}
+
+{% block content %}
+<div class="community_detail">
+<h1>{{ post.title }}</h1>
+<p>
+    {{ post.content }}
+</p>
+
+<small> {{ post.updated_at }}</small>
+
+<br>
+<br> 
+<button><a href="{% url 'community_page' %}">목록</a></button> 
+</div>
+{% endblock content %}

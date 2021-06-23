@@ -1,0 +1,24 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menting</title>
+    <link href="{% static 'css/community.css' %}" rel="stylesheet"/>
+</head>
+
+<body>
+  <div class="community_main">
+    <p>멘팅</p>
+    <div class="community_menu">
+    <h4>공지사항</h4>
+    <a href="{% url 'community_page' %}"><h4>커뮤니티</h4></a>
+  </div>
+  </div> 
+    {% block content %}
+    {% endblock content %} 
+</body>
+</html>

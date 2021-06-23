@@ -1,0 +1,54 @@
+a:link{
+    text-decoration: none;
+}
+
+.community_main{
+    height: 100px;
+    background-color:white;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    display: flex;
+}
+.community_main p{
+    margin-left: 100px;
+    font-size: 30px;
+    font-weight: bold;
+    color: blueviolet;
+}
+
+.community_menu{
+    margin-top: 10px;
+    margin-left: 900px;
+    display: flex;
+}
+
+.community_menu h4{
+    margin-left: 50px;
+    font-size: 20px;
+    color: blueviolet;
+} 
+
+.community_new {
+    margin-top: 100px;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.community_detail {
+    margin-top: 100px;
+    margin-left: 100px;
+}
+
+.community_page {
+    margin-top: 100px;
+}
+
+.community_page_detail {
+    margin-top: 150px;
+    text-align: center;
+    
+}

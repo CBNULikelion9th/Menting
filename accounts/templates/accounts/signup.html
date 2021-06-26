@@ -1,8 +1,36 @@
 <h1>sign up</h1>
 
-<form method = "POST" action="{%url 'signup' %}">
+<form method = "POST" action="{%url 'signup' %}" enctype = "multipart/form-data">
     {% csrf_token %}
-    {{form.as_p}}
+    이름 : {{form.name}}
+    <br>
+    아이디 : {{form.username}}
+    <br>
+    비밀번호 : {{form.password1}}
+    <br>
+    비밀번호 확인 : {{form.password2}}
+    <br>
+    닉네임 : {{form.nickname}}
+    <br>
+    <br>
+    
+    <details >
+        <summary>멘토 가입 전용</summary>
+        <br>
+        대학교 : {{form.university}}
+        <br>
+        전공 : {{form.major}}
+        <br>
+        학번 : {{form.studentnumber}}
+        <br>
+        고등학교 : {{form.highschool}}
+        <br>
+        입시전형 : {{form.entrancetype}}
+        <br>
+        증명서 첨부 : {{ form.image }}
+    </details>
+    
+     
     <button type= 'submit' > signup </button>
 </form>
 

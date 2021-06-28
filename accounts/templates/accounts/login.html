@@ -1,7 +1,24 @@
-<h1>login</h1>
+{% extends 'accounts/base.html' %}
 
-<form method = "POST" action="{%url 'login' %}">
-    {% csrf_token %}
-    {{form.as_p}}
-    <button type="submit" > login </button>
-</form>
+{% block content %}
+<h1 style="text-align:center">로그인</h1>
+
+<div style="text-align:center; color: red">
+	{% if messages %}
+		{% for message in messages %}
+			{{ message }}
+		{% endfor %}
+	{% endif %}
+</div>
+
+
+<div style="text-align:center">
+	<form method = "POST" action="{%url 'login' %}">
+    	{% csrf_token %}
+    	{{form.as_p}}
+    		<button type="submit" > login </button>
+	</form>
+	<a href="{% url 'signup' %}" > <button type='button'>  회원가입 </button> </a>
+</div>
+
+{% endblock content %}

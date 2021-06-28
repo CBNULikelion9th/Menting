@@ -5,5 +5,6 @@ class SignUpForm(UserCreationForm):
     class Meta:
         model = CustomUser
         fields = ['username', 'password1', 'password2', 'studenttype', 'nickname',
-        'university', 'studentnumber','name', 'major','highschool','entrancetype','image']
+        'university', 'studentnumber','mentor_check','name', 'major','highschool','entrancetype','image']
+
 

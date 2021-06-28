@@ -1,36 +1,43 @@
-<h1>sign up</h1>
+<div style="text-align:center">
+    <h1>회원가입</h1>
 
-<form method = "POST" action="{%url 'signup' %}" enctype = "multipart/form-data">
-    {% csrf_token %}
-    이름 : {{form.name}}
-    <br>
-    아이디 : {{form.username}}
-    <br>
-    비밀번호 : {{form.password1}}
-    <br>
-    비밀번호 확인 : {{form.password2}}
-    <br>
-    닉네임 : {{form.nickname}}
-    <br>
-    <br>
-    
-    <details >
-        <summary>멘토 가입 전용</summary>
+    <form method = "POST" action="{%url 'signup' %}" enctype = "multipart/form-data">
+        {% csrf_token %}
+        이름 : {{form.name}}
         <br>
-        대학교 : {{form.university}}
         <br>
-        전공 : {{form.major}}
+        아이디 : {{form.username}}
         <br>
-        학번 : {{form.studentnumber}}
         <br>
-        고등학교 : {{form.highschool}}
+        비밀번호 : {{form.password1}}
         <br>
-        입시전형 : {{form.entrancetype}}
         <br>
-        증명서 첨부 : {{ form.image }}
-    </details>
-    
-     
-    <button type= 'submit' > signup </button>
-</form>
+        비밀번호 확인 : {{form.password2}}
+        <br>
+        <br>
+        닉네임 : {{form.nickname}}
+        <br><br>
+        <br>
+        멘토입니까? {{form.studenttype}}<br>
+        <details >
+            <summary>멘토 가입 전용</summary>
+            <br><br>
+            대학교 : {{form.university}}
+            <br><br>
+            전공 : {{form.major}}
+            <br><br>
+            학번 : {{form.studentnumber}}
+            <br><br>
+            고등학교 선택 {{form.highschool}}
+            <br><br>
+            입시전형 : {{form.entrancetype}}
+            <br><br>
+            증명서 첨부 : {{ form.image }}
+            <br>
+        </details>
+        <!-- <button type= 'submit'> 회원가입 </button> -->
+        <button type= 'submit', onclick="return confirm('이 정보로 회원가입 하시겠습니까?');"> 회원가입 </button>
+    </form>
 
+    
+</div>

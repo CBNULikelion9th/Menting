@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate, login, logout
 from .forms import SignUpForm
-
+from django.contrib import messages
 
 
 
@@ -15,8 +15,13 @@ def login_view(request):
             user = authenticate(request=request, username = username, password = password) #유저가 존재하는지를 확인
             if user is not None:
                 login(request, user)
+                return redirect('home')
 
-        return redirect('home')
+        else:
+            messages.add_message(request, messages.INFO, '아이디와 비밀번호를 확인하세요!')
+            return redirect('login')
+        
+                
 
 
     else:
@@ -35,8 +40,9 @@ def signup_view(request):
         form = SignUpForm(request.POST,request.FILES)
         if form.is_valid():
             user = form.save()
-            return redirect('success')
-        
+            messages.add_message(request,messages.SUCCESS,'성공적으로 회원가입 완료')
+            return redirect('home')
+
         return redirect('home')
 
     else:
@@ -51,4 +57,9 @@ def home(request):
 
 def success(request):
     return render(request, 'accounts/success.html')
+
+def mypage(request):
+    return render(request, 'accounts/mypage.html')
+
+    
 

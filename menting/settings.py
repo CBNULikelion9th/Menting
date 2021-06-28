@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 import os
 
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -27,6 +28,8 @@ SECRET_KEY = 'django-insecure-9vlh1j1v@gabqj3ff_ba3mtw8!spru$^bcw70(y&zpv$9www*u
 DEBUG = True
 
 ALLOWED_HOSTS = []
+
+
 
 AUTH_USER_MODEL = 'accounts.CustomUser'
 

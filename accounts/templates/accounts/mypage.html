@@ -1,0 +1,19 @@
+{% extends 'accounts/base.html' %}
+
+{% block content %}
+<h1> {{user.nickname}} 님 안녕하세요</h1>
+
+<p>
+        회원 타입 : {% if user.studenttype == True and user.mentor_check == True %}
+                    멘토 
+                {% endif %}
+                {% if user.studenttype == True and user.mentor_check == False %}
+                    멘토(검토예정)
+                {% endif %}
+       
+                {% if user.studenttype == False and user.mentor_check == False %}
+                멘티
+                {% endif %}
+</p>
+
+{% endblock content %}

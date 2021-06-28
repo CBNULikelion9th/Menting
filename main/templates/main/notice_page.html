@@ -1,1 +1,29 @@
-<h1>notice_page</h1>
+{% extends 'main/community_base.html' %}
+{% load static %}
+{% block content %}
+<div class="notice_page">
+    <div class="notice_page_detail">
+            
+                <table border="3">
+                    <thead>
+                        <th width="20%">작성자</th>
+                        <th width="60%">제목</th>
+                        <th width="20%">작성시간</th>
+                    </thead>
+                    <tbody>
+                      {% for post2 in post2_list %}
+                      <tr>
+                          <td>{{ post2.username }}</td>
+                          <td><a href = "{% url 'notice_detail' post2.id %}">{{ post2.title }}</a></td>
+                          <td>{{ post2.created_at }}</td>
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                </table>
+                <br>   
+    </div>     
+    <div class="community_page_button">
+        <button><a href = "{% url 'notice_new' %}">새 글 쓰기</a></button> 
+    </div>
+</div>
+{% endblock content %}

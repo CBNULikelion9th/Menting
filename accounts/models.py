@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 
 class CustomUser(AbstractUser):
+
     nickname = models.CharField(max_length=100, unique = True)
     university = models.CharField(max_length=50,default="멘토만 작성")
     name = models.CharField(max_length=50)
@@ -15,3 +16,4 @@ class CustomUser(AbstractUser):
 		('일반고', '일반고'),('특목고', '특목고'),('특성화고', '특성화고'),('자공고, 자사고', '자공고, 자사고'),('기타', '기타')
     )
     highschool = models.CharField(max_length=10, choices=HIGHSCHOOL_CHOICES, blank=True)
+

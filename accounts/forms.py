@@ -7,3 +7,4 @@ class SignUpForm(UserCreationForm):
         fields = ['username', 'password1', 'password2', 'studenttype', 'nickname',
         'university', 'studentnumber','mentor_check','name', 'major','highschool','entrancetype','image']
 
+

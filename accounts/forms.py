@@ -8,3 +8,4 @@ class SignUpForm(UserCreationForm):
         'university', 'studentnumber','mentor_check','name', 'major','highschool','entrancetype','image',]
 
 
+

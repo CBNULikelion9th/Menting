@@ -1,9 +1,18 @@
 <div style="text-align:center">
     <h1>회원가입</h1>
-
+    <div style="text-align:center; color: red">
+        {% if messages %}
+            {% for message in messages %}
+                {{ message }}
+            {% endfor %}
+        {% endif %}
+    </div>
     <form method = "POST" action="{%url 'signup' %}" enctype = "multipart/form-data">
         {% csrf_token %}
         이름 : {{form.name}}
+        <br>
+        <br>
+        이메일 : {{form.email}}
         <br>
         <br>
         아이디 : {{form.username}}
@@ -35,7 +44,7 @@
             증명서 첨부 : {{ form.image }}
             <br>
         </details>
-        <!-- <button type= 'submit'> 회원가입 </button> -->
+        
         <button type= 'submit', onclick="return confirm('이 정보로 회원가입 하시겠습니까?');"> 회원가입 </button>
     </form>
 

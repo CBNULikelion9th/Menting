@@ -41,8 +41,14 @@ def signup_view(request):
         if form.is_valid():
             user = form.save()
             return redirect('success')
-  
-        return redirect('home')
+
+
+
+        else:
+            messages.add_message(request, messages.INFO, '회원 가입에 실패 했습니다.')
+            return redirect('signup')
+
+
 
     else:
         form = SignUpForm()

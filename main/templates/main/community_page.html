@@ -4,7 +4,7 @@
 <div class="community_page">
     <div class="community_page_detail">
             
-                <table border="1">
+                <table border="3">
                     <thead>
                         <th width="20%">작성자</th>
                         <th width="60%">제목</th>
@@ -20,8 +20,10 @@
                       {% endfor %}
                     </tbody>
                 </table>
-                <br>
-                <button><a href = "{% url 'community_new' %}">새 글 쓰기</a></button>            
+                <br>   
+    </div>     
+    <div class="commuinty_page_button">
+        <button><a href = "{% url 'community_new' %}">새 글 쓰기</a></button> 
     </div>
 </div>
 {% endblock content %}

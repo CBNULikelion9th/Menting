@@ -1,0 +1,9 @@
+<br>
+<h1>댓글 쓰기</h1>
+
+<form action="{% url 'community_comment' post.id %}" method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type ="submit" class="btn btn-light">생성</button>
+    <button type="button" class="btn btn-light"><a href="{% url 'self_detail' post.id %}" class="none" >취소</a></button> 
+</form>

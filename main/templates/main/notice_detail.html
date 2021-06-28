@@ -1,0 +1,16 @@
+{% extends 'main/community_base.html' %}
+{% load static %}
+{% block content %}
+<div class="notice_detail">
+    <br>
+    <h1>제목 : {{ post2.title }}</h1>
+    <p>{{ post2.content }}</p>
+    <small> 작성시간 : {{ post2.updated_at }}</small>
+</div>
+<br>
+<br>
+<div class="notice_end">
+    <button><a href="{% url 'notice_page' %}">목록</a></button>    
+</div>
+
+{% endblock content %}

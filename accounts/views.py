@@ -40,8 +40,7 @@ def signup_view(request):
         form = SignUpForm(request.POST,request.FILES)
         if form.is_valid():
             user = form.save()
-            messages.add_message(request,messages.SUCCESS,'성공적으로 회원가입 완료')
-            return redirect('home')
+            return redirect('success')
 
         return redirect('home')
 

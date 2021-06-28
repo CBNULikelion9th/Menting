@@ -7,4 +7,5 @@ urlpatterns = [
     path('community/<int:post_id>/',views.community_detail, name="community_detail"),
     path('notice/',views.notice_page, name='notice_page'),
     path('search/',views.search_page, name='search_page'),
+    path('',views.home, name='home'),
 ]

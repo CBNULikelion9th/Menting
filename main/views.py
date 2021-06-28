@@ -3,6 +3,9 @@ from django.shortcuts import get_object_or_404, render, redirect
 from .forms import PostForm
 from .models import Post
 
+def home(request):
+    return render(request, 'main/home.html')
+
 def community_page(request):
     post_list = Post.objects.all()
     context = {

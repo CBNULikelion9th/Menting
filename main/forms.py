@@ -19,3 +19,4 @@ class PostForm3(forms.ModelForm):
     class Meta:
         model = Post2
         fields = ['title','content']
+        

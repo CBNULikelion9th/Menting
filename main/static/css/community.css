@@ -3,7 +3,8 @@ a:link{
 }
 
 .community_main{
-    height: 100px;
+    padding-top: 20px;
+    height: 80px;
     background-color:white;
     position: fixed;
     top: 0;
@@ -45,13 +46,13 @@ a:link{
     margin-right: 100px;
 }
 
-.community_detail h1{
+.community_detail h1 , .notice_detail h1{
     color: blueviolet;
     font-size: 30px;
 }
 
-.community_detail p{
-    font-size:30px;
+.community_detail h4{
+    color: blueviolet;
 }
 
 .community_end {
@@ -63,17 +64,19 @@ a:link{
 }
 
 .community_page_detail {
-    margin-left: 300px;
+    margin-left: 15%;
+    margin-right: 15%;
     margin-top: 150px;
     text-align: center;
 }
 
 .commuinty_page_button {
-    margin-left: 300px;
+    margin-left: 79%;
 }
 
 .search_page {
     margin-top: 100px;
+    text-align: center;
 }
 
 .search_top {
@@ -90,7 +93,7 @@ a:link{
 }
 
 .search_mid h2{
-    margin-left: 800px;
+    margin-left: 695px;
 }
 
 .search_button {
@@ -103,13 +106,14 @@ a:link{
 }
 
 .notice_page_detail {
-    margin-left: 300px;
+    margin-left: 15%;
+    margin-right: 15%;
     margin-top: 150px;
     text-align: center;
 }
 
 .notice_page_button {
-    margin-left: 300px;
+    margin-left: 64%;
 }
 
 .notice_detail {

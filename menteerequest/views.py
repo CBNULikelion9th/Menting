@@ -4,6 +4,8 @@ from .models import Mentee_request
 
 
 def request_view(request):
+    # for e in request.__dict__:
+    #     print(e)
     if request.method == 'GET':
         form = Mentee_requestForm()
         
@@ -11,7 +13,9 @@ def request_view(request):
     elif request.method == 'POST':
         form = Mentee_requestForm(request.POST)
         if form.is_valid():
-            post = form.save()
+            post = form.save(commit = False)
+            post.mentee = request.user
+            post.save()
             return redirect ('requestslist')
 
     return render (request, 'menteerequest/requestform.html',{'form':form})

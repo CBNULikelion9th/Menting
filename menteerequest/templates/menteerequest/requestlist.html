@@ -3,12 +3,17 @@
 </h1>
 <p>
     {% for post in request_list %}
+        멘티 : {{post.mentee}}
+        <br>
+        멘토 : {{post.mentor}}
+        <br>
         {{post.mentee_highschool}}
         <br>
-        {{post.grade}}
+        {{post.grade}} 학년
         <br>
-        {{post.counsel}}
-        {{post.created_at}}
+        상담 내용:{{post.counsel}}
+        <br>
+        <small>{{post.created_at}}</small>
         <br>
     <hr>
     {% endfor %}

@@ -18,4 +18,5 @@ class CustomUser(AbstractUser):
     )
     highschool = models.CharField(max_length=10, choices=HIGHSCHOOL_CHOICES, blank=True)
     gradepoint = models.IntegerField(default = 0, validators=[MinValueValidator(0), MaxValueValidator(5)])
+    
 

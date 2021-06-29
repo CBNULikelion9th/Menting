@@ -4,24 +4,28 @@
 <div class="community_page">
     <div class="community_page_detail">
             
-                <table border="1">
-                    <thead>
-                        <th width="20%">작성자</th>
-                        <th width="60%">제목</th>
+                <table class ="table table-hover" width= 82%; border="3">
+                    <thead class="table-secondary">
+                        <th width="10%">번호</th>
+                        <th width="15%">작성자</th>
+                        <th width="25%">제목</th>
                         <th width="20%">작성시간</th>
                     </thead>
                     <tbody>
                       {% for post in post_list %}
                       <tr>
+                          <td>{{ post.id }}</td>
                           <td>{{ post.username }}</td>
-                          <td><a href="{% url 'community_detail' post.id %}">{{ post.title }}</a></td>
+                          <td><a href="{% url 'community_detail' post.id %}" class="link-dark">{{ post.title }}</a></td>
                           <td>{{ post.created_at }}</td>
                       </tr>
                       {% endfor %}
                     </tbody>
                 </table>
-                <br>
-                <button><a href = "{% url 'community_new' %}">새 글 쓰기</a></button>            
+                <br><br>  
+    </div>     
+    <div class="commuinty_page_button">
+        <button class="btn btn-outline-secondary"><a href = "{% url 'community_new' %}" class="link-dark">새 글 쓰기</a></button> 
     </div>
 </div>
 {% endblock content %}

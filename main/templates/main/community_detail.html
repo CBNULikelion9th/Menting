@@ -1,16 +1,43 @@
 {% extends 'main/community_base.html' %}
-
+{% load static %}
 {% block content %}
 <div class="community_detail">
-<h1>{{ post.title }}</h1>
-<p>
-    {{ post.content }}
-</p>
+    <br>
+    <h1>제목 : {{ post.title }}</h1>
+    <br>
+    <p>{{ post.content }}</p>
+    <small> 작성시간 : {{ post.updated_at }}</small>
+</div>
 
-<small> {{ post.updated_at }}</small>
+<div class="community_detail">
+<form action="{% url 'community_comment' post.id %}" method="POST">
+    {% csrf_token %}
+    {{ post_form2.content }}
+    
+    <br>
+    <br>
+    <input type="submit" value="작성" class="btn btn-outline-secondary">
+    <button class="btn btn-outline-secondary"><a href="{% url 'community_detail' post.id %}" class="link-dark">취소</a></button> 
+</form>
 
 <br>
-<br> 
-<button><a href="{% url 'community_page' %}">목록</a></button> 
+<h4>댓글 목록</h4>  
+<br>
+{% for comment in post.comment_set.all %} 
+<div class = "container">
+    <div class = "card">
+        <div class = "card-body">
+            <p2> 작성자 : {{ comment.name }}</p2>
+            <br>
+            <p2> 내용 : {{ comment.content }}</p2>
+        </div>
+    </div>
+</div> 
+{% endfor %}
+</div>
+<div class="community_end">
+    <br>
+    <button class="btn btn-outline-secondary"><a href="{% url 'community_page' %}" class="link-dark">목록</a></button> 
+    <button class="btn btn-outline-secondary"><a href="{% url 'community_delete' post.id %}" class="link-dark">삭제</a></button> 
 </div>
 {% endblock content %}

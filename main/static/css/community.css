@@ -3,7 +3,8 @@ a:link{
 }
 
 .community_main{
-    height: 100px;
+    padding-top: 20px;
+    height: 80px;
     background-color:white;
     position: fixed;
     top: 0;
@@ -11,6 +12,7 @@ a:link{
     left: 0;
     display: flex;
 }
+
 .community_main p{
     margin-left: 100px;
     font-size: 30px;
@@ -41,6 +43,20 @@ a:link{
 .community_detail {
     margin-top: 100px;
     margin-left: 100px;
+    margin-right: 100px;
+}
+
+.community_detail h1 , .notice_detail h1{
+    color: blueviolet;
+    font-size: 30px;
+}
+
+.community_detail h4{
+    color: blueviolet;
+}
+
+.community_end {
+    margin-left: 100px;
 }
 
 .community_page {
@@ -48,7 +64,64 @@ a:link{
 }
 
 .community_page_detail {
+    margin-left: 15%;
+    margin-right: 15%;
     margin-top: 150px;
     text-align: center;
-    
+}
+
+.commuinty_page_button {
+    margin-left: 79%;
+}
+
+.search_page {
+    margin-top: 100px;
+    text-align: center;
+}
+
+.search_top {
+    margin-left: 80%;
+}
+
+.search_top h1{
+    font-size:20px;
+}
+
+.search_mid {
+    display: flex;
+    margin-left: 10%;
+}
+
+.search_mid h2{
+    margin-left: 695px;
+}
+
+.search_button {
+    margin-left: 10%;
+}
+
+.notice_page {
+    margin-top: 100px;
+    text-align: center;
+}
+
+.notice_page_detail {
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-top: 150px;
+    text-align: center;
+}
+
+.notice_page_button {
+    margin-left: 64%;
+}
+
+.notice_detail {
+    margin-top: 100px;
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+.notice_end {
+    margin-left: 100px;
 }

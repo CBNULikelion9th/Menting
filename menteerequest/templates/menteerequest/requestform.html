@@ -1,0 +1,10 @@
+<h1>
+        멘팅 상담서
+</h1>
+
+<form action = "{% url 'requestform' %}" method ='POST'>
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type='submit' value ='상담 요청하기'/>
+</form>
+   

@@ -10,6 +10,7 @@ urlpatterns = [
     path('notice/',views.notice_page, name='notice_page'),
     path('notice/new/',views.notice_new, name='notice_new'),
     path('notice/<int:post_id>/',views.notice_detail, name="notice_detail"),
+    path('notice/<int:post_id>/delete/',views.notice_delete, name="notice_delete"),
     path('search/',views.search_page, name='search_page'),
     path('',views.home, name='home'),
 ]

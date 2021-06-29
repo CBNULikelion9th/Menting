@@ -82,5 +82,10 @@ def notice_detail(request, post_id):
 
     return render(request, 'main/notice_detail.html',context)
 
+def notice_delete(request, post_id):
+    post2 = get_object_or_404(Post2, id=post_id)
+    post2.delete()   
+    return redirect('notice_page')
+
 def search_page(request):
     return render(request, 'main/search_page.html')

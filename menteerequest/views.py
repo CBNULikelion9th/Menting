@@ -22,5 +22,11 @@ def request_view(request):
 
 
 def requests_list(request):
-    request_list = Mentee_request.objects.all() #이부분은 get또는 filter 로 바꾸어 리스트를 걸러 내야한다
-    return render (request, 'menteerequest/requestlist.html',{'request_list':request_list})
+    #멘티에게 보여지는 리스트
+    if request.user.studenttype == False:
+        request_list = Mentee_request.objects.filter( mentee = request.user) 
+        return render (request, 'menteerequest/requestlist.html',{'request_list':request_list})
+
+    else:
+        request_list = Mentee_request.objects.filter( mentor = request.user) 
+        return render (request, 'menteerequest/requestlist.html',{'request_list':request_list})

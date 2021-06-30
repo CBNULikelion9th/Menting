@@ -12,5 +12,6 @@ urlpatterns = [
     path('notice/<int:post_id>/',views.notice_detail, name="notice_detail"),
     path('notice/<int:post_id>/delete/',views.notice_delete, name="notice_delete"),
     path('search/',views.search_page, name='search_page'),
+    path('example/<int:post_id>/',views.example_page, name='example_page'),
     path('',views.home, name='home'),
 ]

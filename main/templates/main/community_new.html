@@ -5,13 +5,17 @@
 <h1>새 글 작성하기</h1>
 <br>
 <form action="{% url 'community_new' %}" method="POST">
+    {% if user.is_authenticated %}
     {% csrf_token %}
+    작성자 : {{ user.username }}
+    <br><br>
     제목 : {{ form.title }}
     <br><br>
     내용 : {{ form.content }}
     <br><br> 
     <input type="submit" value="작성" class="btn btn-outline-secondary">
     <button class="btn btn-outline-secondary"><a href="{% url 'community_page' %}" class="link-dark">취소</a></button> 
+    {% endif %}
 </form>
 </div>
 {% endblock content %}

@@ -25,6 +25,7 @@ def community_new(request):
 
     elif request.method == 'POST':
         form = PostForm(request.POST)
+        
         if form.is_valid():
             post = form.save()
             return redirect('community_detail', post_id=post.id)

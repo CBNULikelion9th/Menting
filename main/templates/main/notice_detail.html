@@ -12,7 +12,9 @@
 <br>
 <div class="notice_end">
     <button class="btn btn-outline-secondary"><a href="{% url 'notice_page' %}" class="link-dark">목록</a></button>
-    <button class="btn btn-outline-secondary"><a href="{% url 'notice_delete' post2.id %}" class="link-dark">삭제</a></button>  
+    {% if user.is_superuser == True %}
+    <button class="btn btn-outline-secondary"><a href="{% url 'notice_delete' post2.id %}" class="link-dark">삭제</a></button> 
+    {% endif %} 
 </div>
 
 {% endblock content %}

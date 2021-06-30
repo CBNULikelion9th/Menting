@@ -2,6 +2,8 @@ from django import forms
 from django.shortcuts import get_object_or_404, render, redirect
 from .forms import PostForm, PostForm2, PostForm3
 from .models import Post, Comment, Post2
+from accounts.forms import SignUpForm
+from accounts.models import CustomUser
 
 def home(request):
     return render(request, 'main/home.html')
@@ -88,4 +90,18 @@ def notice_delete(request, post_id):
     return redirect('notice_page')
 
 def search_page(request):
-    return render(request, 'main/search_page.html')
+    customer_list = CustomUser.objects.all()
+    context = {
+        'customer_list': customer_list,
+    }
+
+    return render(request, 'main/search_page.html', context)
+
+def example_page(request, post_id):
+    custom = CustomUser.objects.get(id=post_id)
+    customer_list = CustomUser.objects.all()
+    context = {
+        'custom': custom,
+        'customer_list': customer_list,
+    }
+    return render(request, 'main/example_page.html', context)

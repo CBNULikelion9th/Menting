@@ -15,7 +15,7 @@
                       {% for post in post_list %}
                       <tr>
                           <td>{{ post.id }}</td>
-                          <td>{{ post.username }}</td>
+                          <td>{{ post.user }}</td>
                           <td><a href="{% url 'community_detail' post.id %}" class="link-dark">{{ post.title }}</a></td>
                           <td>{{ post.created_at }}</td>
                       </tr>

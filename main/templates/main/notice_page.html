@@ -25,7 +25,9 @@
                 <br><br>   
     </div>     
     <div class="notice_page_button">
+        {% if user.is_superuser == True %}
         <button class="btn btn-outline-secondary"><a href = "{% url 'notice_new' %}" class="link-dark">새 글 쓰기</a></button> 
+        {% endif %}
     </div>
 </div>
 {% endblock content %}

@@ -6,7 +6,7 @@ class PostForm(forms.ModelForm):
 
     class Meta:
         model = Post
-        fields = ['title','content']
+        fields = ['user','title','content']
 
 class PostForm2(forms.ModelForm):   
 
@@ -19,4 +19,5 @@ class PostForm3(forms.ModelForm):
     class Meta:
         model = Post2
         fields = ['title','content']
-        
+
+

@@ -4,6 +4,8 @@ from .models import Mentee_request
 
 
 def request_view(request):
+    # for e in request.__dict__:
+    #     print(e)
     if request.method == 'GET':
         form = Mentee_requestForm()
         
@@ -11,12 +13,30 @@ def request_view(request):
     elif request.method == 'POST':
         form = Mentee_requestForm(request.POST)
         if form.is_valid():
-            post = form.save()
-            return redirect ('requestslist')
+            post = form.save(commit = False)
+            post.mentee = request.user
+            post.save()
+            return redirect ('requestsuccess')
 
     return render (request, 'menteerequest/requestform.html',{'form':form})
 
 
 def requests_list(request):
-    request_list = Mentee_request.objects.all() #이부분은 get또는 filter 로 바꾸어 리스트를 걸러 내야한다
-    return render (request, 'menteerequest/requestlist.html',{'request_list':request_list})
+    #멘티에게 보여지는 리스트
+    if request.user.studenttype == False:
+        request_list = Mentee_request.objects.filter( mentee = request.user) 
+        return render (request, 'menteerequest/mentee_request_list.html',{'request_list':request_list})
+
+    else:
+        request_list = Mentee_request.objects.filter( mentor = request.user) 
+        return render (request, 'menteerequest/mentor_request_list.html',{'request_list':request_list})
+
+
+def success_request_view(request):
+
+    return render (request, 'menteerequest/success_request.html')
+
+def request_detail(request,post_id):
+    
+    post = Mentee_request.objects.get(id = post_id)
+    return render (request, 'menteerequest/request_detail.html',{'post':post})

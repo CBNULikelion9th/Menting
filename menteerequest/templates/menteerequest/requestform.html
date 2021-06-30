@@ -4,7 +4,21 @@
 
 <form action = "{% url 'requestform' %}" method ='POST'>
     {% csrf_token %}
-    {{form.as_p}}
+        
+        고등학교 : {{form.mentee_highschool}}
+        <br>
+        <br>
+        학년 선택 {{form.grade}}
+        <br>
+        <br>
+        원하는 입시 전형 {{form.mentee_entrancetype}}
+        <br>
+        <br>
+        원하는 학과 : {{form.mentee_major}} 
+        <br>
+        <br>
+        상담 내용:{{form.counsel}}
+        <br><br>
     <input type='submit' value ='상담 요청하기'/>
 </form>
    

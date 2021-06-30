@@ -15,7 +15,9 @@
         <br><br><br><br>
     </div>
     <div class ="search_page_detail">
+
     <table width="85%" border="1">
+
         <thead class="table-secondary">
             <th width="9%">닉네임</th>
             <th width="9%">학과</th>
@@ -32,10 +34,12 @@
     <tr>
         <td>{{ customer.username}}</td>
         <td>{{ customer.major }}</td>
+
         <td>{{ customer.studentnumber }}</a></td>
         <td>{{ customer.entrancetype }}</td>
         <td>{{ customer.highschool }}</td>
         <td>평점</td>
+
         <td><a href="{% url 'example_page' customer.id %}" class="link-dark">선배연결</a></td>
     </tr>
     {% endif %}

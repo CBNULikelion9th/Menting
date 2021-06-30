@@ -8,6 +8,9 @@ from accounts.models import CustomUser
 def home(request):
     return render(request, 'main/home.html')
 
+def home(request):
+    return render(request, 'main/home.html')
+
 def community_page(request):
     post_list = Post.objects.all()
     context = {

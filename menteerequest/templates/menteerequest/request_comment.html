@@ -1,0 +1,7 @@
+<h1>응답하기</h1>
+    <form method="POST" >
+        {% csrf_token %}
+        {{ form.text }}
+        <button type="submit" >작성</button>
+        <button ><a href="{% url 'requestslist' %}">취소</a> </button>
+    </form>

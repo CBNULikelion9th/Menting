@@ -18,10 +18,6 @@
         <br>
         
 
-    {% if user.username == post.mentor %}
-
-    {% endif %}
-    
     {% for response in post.responses.all %}
     
         <div class="comment">
@@ -29,6 +25,7 @@
             <p>{{ response.author }}의 응답</p>
             <p>{{ response.text|linebreaks }}</p>
             <small >{{ response.created_date }} </small>
+
             
             <hr>
         </div>

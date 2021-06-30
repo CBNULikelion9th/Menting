@@ -1,0 +1,17 @@
+{% extends 'main/community_base.html' %}
+{% load static %}
+{% block content %}
+<div class="notice_detail">
+    <br>
+    <h1>대학 : {{ custom.university }}</h1>
+    <br>
+</div>
+<br>
+<h1>같은학생</h1>
+{% for customer in customer_list %}
+    {% if customer.studenttype == True and customer.mentor_check == True and customer.university == custom.university %}
+        <h1>학생 : {{ customer.username}}</h1> 
+    {% endif %}
+    {% endfor %}
+
+{% endblock content %}

@@ -16,7 +16,7 @@ def request_view(request):
             post = form.save(commit = False)
             post.mentee = request.user
             post.save()
-            return redirect ('requestslist')
+            return redirect ('requestsuccess')
 
     return render (request, 'menteerequest/requestform.html',{'form':form})
 
@@ -25,8 +25,18 @@ def requests_list(request):
     #멘티에게 보여지는 리스트
     if request.user.studenttype == False:
         request_list = Mentee_request.objects.filter( mentee = request.user) 
-        return render (request, 'menteerequest/requestlist.html',{'request_list':request_list})
+        return render (request, 'menteerequest/mentee_request_list.html',{'request_list':request_list})
 
     else:
         request_list = Mentee_request.objects.filter( mentor = request.user) 
-        return render (request, 'menteerequest/requestlist.html',{'request_list':request_list})
+        return render (request, 'menteerequest/mentor_request_list.html',{'request_list':request_list})
+
+
+def success_request_view(request):
+
+    return render (request, 'menteerequest/success_request.html')
+
+def request_detail(request,post_id):
+    
+    post = Mentee_request.objects.get(id = post_id)
+    return render (request, 'menteerequest/request_detail.html',{'post':post})

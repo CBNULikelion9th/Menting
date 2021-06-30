@@ -1,14 +1,14 @@
-{% if user == post.mentee or user == post.mentor %}
+{% if user == post.mentee or user.username == post.mentor  %}
     <div>  
-        {{post.mentee}}님의 요청
+        {{post.mentee}}님 요청의 멘팅
         <br>
         멘토 : {{post.mentor}}
         <br>
-        {{post.mentee_highschool}}
+        고등학교 : {{post.mentee_highschool}}
         <br>
         {{post.grade}} 학년
         <br>
-        {{post.mentee_entrancetype}} 전형
+        원하는 입시전형 : {{post.mentee_entrancetype}}
         <br>
         원하는 학과 : {{post.mentee_major}} 
         <br>
@@ -16,15 +16,35 @@
         <br>
         <small>{{post.created_at}}</small>
         <br>
-        {% if user.mentor_check == True %}
-            <form action='#'>
-                <input type='submit' value='수락'/>
-                <input type='submit' value='거절'/>
-            </form>
-        {% endif %}
+        
+
+    {% if user.username == post.mentor %}
+
+    {% endif %}
+    
+    {% for comment in post.comments.all %}
+    
+        <div class="comment">
+            
+            <p>{{ comment.author }}의 응답</p>
+            <p>{{ comment.text|linebreaks }}</p>
+            <small >{{ comment.created_date }} </small>
+            
+            <hr>
+        </div>
+    {% empty %}
+        {% if user.username == post.mentor %}
+            <a href="{% url 'comment' post.id %}"><button>수락</button></a>
+            <a href="{% url 'comment_reject' post.id %}"><button>거절</button></a>
+        {% endif %} 
+        <hr>
+        <p>아직 응답이 없습니다 :( </p>
+        <hr>
+    {% endfor %}
+
         <a href='{% url "requestslist"%}'><button>돌아가기</button></a>
     </div>
-{% else %}
+{%  else  %}
 
     <div>
         <h1>
@@ -33,4 +53,4 @@
         </h1>
     </div>
 
-{% endif %}
+{%  endif  %}

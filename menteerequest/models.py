@@ -21,3 +21,16 @@ class Mentee_request(models.Model):
     )
     grade = models.CharField(max_length=4, choices=GRADE_CHOICES)
     
+class Comment(models.Model):
+    post = models.ForeignKey('Mentee_request', on_delete=models.CASCADE, related_name='comments')
+    author = models.CharField(max_length=100)
+    text = models.TextField(null = True, blank = True)
+    created_date = models.DateTimeField(auto_now_add=True)
+    approved_comment = models.BooleanField(default=True)
+
+    def approve(self):
+        self.approved_comment = True
+        self.save()
+
+    def __str__(self):
+        return self.text

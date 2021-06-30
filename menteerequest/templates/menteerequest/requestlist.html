@@ -1,9 +1,35 @@
 <h1>
     요청서 리스트
 </h1>
+
+<h1> {{user.name}} 님 안녕하세요</h1>
+
+<p>
+        회원 타입 : {% if user.studenttype == True and user.mentor_check == True %}
+                    멘토 
+                {% endif %}
+                {% if user.studenttype == True and user.mentor_check == False %}
+                    멘토(검토예정)
+                {% endif %}
+       
+                {% if user.studenttype == False and user.mentor_check == False %}
+                멘티
+                {% endif %}
+</p>
+
+<div>
+    {% if user.studenttype == True %}
+        <h2>멘티들의 요청 리스트~</h2>
+    {% endif %}
+    {% if user.studenttype == False %}
+        <h2>내가 요청한 리스트~</h2>
+    {% endif %}
+</div>
+
 <p>
     {% for post in request_list %}
-        멘티 : {{post.mentee}}
+
+        신청자 : {{post.mentee}}
         <br>
         멘토 : {{post.mentor}}
         <br>
@@ -11,10 +37,20 @@
         <br>
         {{post.grade}} 학년
         <br>
+        {{post.mentee_entrancetype}} 전형
+        <br>
+        원하는 학과 : {{post.mentee_major}} 
+        <br>
         상담 내용:{{post.counsel}}
         <br>
         <small>{{post.created_at}}</small>
         <br>
+        {% if user.mentor_check == True %}
+            <form action='#'>
+                <input type='submit' value='수락'/>
+                <input type='submit' value='거절'/>
+            </form>
+        {% endif %}
     <hr>
     {% endfor %}
 

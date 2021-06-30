@@ -18,24 +18,21 @@
         <br>
         
 
-    {% if user.username == post.mentor %}
-
-    {% endif %}
-    
-    {% for comment in post.comments.all %}
+    {% for response in post.responses.all %}
     
         <div class="comment">
             
-            <p>{{ comment.author }}의 응답</p>
-            <p>{{ comment.text|linebreaks }}</p>
-            <small >{{ comment.created_date }} </small>
+            <p>{{ response.author }}의 응답</p>
+            <p>{{ response.text|linebreaks }}</p>
+            <small >{{ response.created_date }} </small>
+
             
             <hr>
         </div>
     {% empty %}
         {% if user.username == post.mentor %}
-            <a href="{% url 'comment' post.id %}"><button>수락</button></a>
-            <a href="{% url 'comment_reject' post.id %}"><button>거절</button></a>
+            <a href="{% url 'response' post.id %}"><button>수락</button></a>
+            <a href="{% url 'response_reject' post.id %}"><button>거절</button></a>
         {% endif %} 
         <hr>
         <p>아직 응답이 없습니다 :( </p>

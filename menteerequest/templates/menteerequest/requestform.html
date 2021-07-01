@@ -3,8 +3,8 @@
 </h1>
 
 <form action = "{% url 'requestform' %}" method ='POST'>
+    
     {% csrf_token %}
-        
         고등학교 : {{form.mentee_highschool}}
         <br>
         <br>

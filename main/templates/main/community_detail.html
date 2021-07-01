@@ -5,6 +5,7 @@
     <br>
     <h1>제목 : {{ post.title }}</h1>
     <br>
+    <p>작성자 : {{ post.user }}</p>
     <p>{{ post.content }}</p>
     <small> 작성시간 : {{ post.updated_at }}</small>
 </div>
@@ -13,7 +14,6 @@
 <form action="{% url 'community_comment' post.id %}" method="POST">
     {% csrf_token %}
     {{ post_form2.content }}
-    
     <br>
     <br>
     <input type="submit" value="작성" class="btn btn-outline-secondary">
@@ -30,7 +30,7 @@
             <p2> 작성자 : {{ comment.name }}</p2>
             <br>
             <p2> 내용 : {{ comment.content }}</p2>
-        </div>
+        </div>  
     </div>
 </div> 
 {% endfor %}
@@ -38,6 +38,10 @@
 <div class="community_end">
     <br>
     <button class="btn btn-outline-secondary"><a href="{% url 'community_page' %}" class="link-dark">목록</a></button> 
+    {% if user.is_authenticated and user == post.user %}
+    <button class="btn btn-outline-secondary"><a href="{% url 'community_edit' post.id %}" class="link-dark">편집</a></button> 
     <button class="btn btn-outline-secondary"><a href="{% url 'community_delete' post.id %}" class="link-dark">삭제</a></button> 
+    {% endif %}
+
 </div>
 {% endblock content %}

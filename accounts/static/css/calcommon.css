@@ -8,6 +8,7 @@
   border: none;
   background: hsl(28, 83%, 81%);
   margin-right: 30px;
+  margin-top: 20px;
 }
 
 /* header */
@@ -52,34 +53,42 @@ header > h1 > span {color: #a7a7a7; font-size: 24px; font-weight: 400; vertical-
   display: inline-block;
   margin-left:35px
 }
-.left-main {display: inline-block;}
+.main-wrap {
+  margin-top: -20px;
+}
+.left-main {display: flex;}
 .left-main .main-wrap {
   text-align: center;
   font-weight: 700;
 }
 .left-main .main-wrap .main-day {
-  font-size: 40px;
+  font-size: 20px;
+  /* margin-right: 300px; */
   color: #fa9b47;
 }
 .left-main .main-wrap .main-date {
-  margin: 10% 0;
-  font-size: 80px;
+  /* margin: 10% 0; */
+  font-size: 20px;
   color: #fa9b47;
 }
-.left-main .todo-wrap {padding: 20% 0 10% 10%;}
+/* .left-main .todo-wrap {padding: 20% 0 10% 10%;} */
 .left-main .todo-wrap .todo-title {
   font-size: 20px;
   font-weight: 600;
-  margin-bottom: 10%;
+  /* margin-bottom: 10%; */
   color: #5c5c5c;
 }
+.input-box{
+  margin-inline-start: initial;
+}
 .left-main .todo-wrap .input-form .input-box {
-  width: 90%;
+  /* width: 30%; */
+  
   height: 50px;
   font-size: 20px;
   border: 0;
   border-bottom: 2px dashed #fa9b47;
-  margin-bottom: 30px;
+  /* margin-bottom: 30px; */
   outline-style: none;
 }
 /* content right */
@@ -225,6 +234,8 @@ header > h1 > span {color: #a7a7a7; font-size: 24px; font-weight: 400; vertical-
   
 }
 .mastercon{
-  width:760px;
-  float:right;
+  width:600px;
+  margin-top: 500px;
+  margin-right:800px;
+  flex:initial;
 }

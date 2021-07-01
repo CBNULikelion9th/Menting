@@ -126,6 +126,7 @@ article, .section-story, .section-recommend {
     border: 1px solid #DBDBDB;
 }
 article {
+    margin-top: 2500px;
     margin-bottom: 60px;
 }
 .section-story, .section-recommend {

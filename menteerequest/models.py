@@ -22,6 +22,7 @@ class Mentee_request(models.Model):
     grade = models.CharField(max_length=4, choices=GRADE_CHOICES)
     mentor_email = models.CharField(max_length=50)
     
+
 class Response(models.Model):
     post = models.ForeignKey('Mentee_request', on_delete=models.CASCADE, related_name='responses')
     author = models.CharField(max_length=100)

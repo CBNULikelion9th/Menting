@@ -1,13 +1,17 @@
+.menting{
+    margin-right: -150px;
+}
 .top{
     justify-content: right;
     margin-top: 0px;
     margin-bottom: 20px;
-    margin-left: 1310px;
+    margin-left: 1300px;
     padding-left: 13px;
 }
 .toplog{
     margin-top: -60px;
     margin-bottom: 10px;
+    margin-right: 80px;
     justify-content: flex-end;
     display: flex;
 }
@@ -43,7 +47,8 @@ span{
 #map{
     margin-left: 20px;
 }
-input , button{
+input {
     
-    margin-left: 20px;
+    margin-left: 170px;
+
 }

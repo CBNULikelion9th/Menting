@@ -25,13 +25,31 @@ def community_new(request):
 
     elif request.method == 'POST':
         form = PostForm(request.POST)
-        
+        if form.is_valid():
+            post = form.save()
+            post.user = request.user
+            post.save()
+            return redirect('community_page')
+
+    return render(request, 'main/community_new.html',{
+        'form': form,
+    })
+
+def community_edit(request, post_id):
+    post = Post.objects.get(id=post_id)
+
+    if request.method == 'GET':
+        form = PostForm(instance=post)
+
+    elif request.method == 'POST':
+        form = PostForm(request.POST, instance=post)
         if form.is_valid():
             post = form.save()
             return redirect('community_detail', post_id=post.id)
 
-    return render(request, 'main/community_new.html',{
+    return render(request, 'main/community_edit.html',{
         'form': form,
+        'post': post,
     })
 
 def community_detail(request, post_id):
@@ -54,6 +72,7 @@ def community_comment(request, post_id):
     if commentt.is_valid():
         commentt = commentt.save(commit=False)
         commentt.post = get_object_or_404(Post, pk=post_id)
+        commentt.name = request.user
         commentt.save()
     return redirect('community_detail', post_id)
 

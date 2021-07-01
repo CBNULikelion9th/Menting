@@ -89,6 +89,25 @@ def comment_delete(request, post_id, comment_id):
     comment.delete()   
     return redirect('community_detail', post_id = post.id)
 
+def comment_edit(request, post_id, comment_id):
+    post = Post.objects.get(id=post_id)
+    comment = get_object_or_404(Comment, id=comment_id)
+
+    if request.method == 'GET':
+        form = PostForm2(instance=comment)
+
+    elif request.method == 'POST':
+        form = PostForm2(request.POST, instance=comment)
+        if form.is_valid():
+            comment = form.save()
+            return redirect('community_detail', post_id=post.id)
+
+    return render(request, 'main/comment_edit.html',{
+        'form': form,
+        'comment': comment,
+        'post':post,
+    })
+
 def notice_page(request):
     post2_list = Post2.objects.all()
     context = {

@@ -1,0 +1,38 @@
+
+article{
+	width: 330px;
+	height:475px;
+	text-align: center;
+	display: inline-block;
+	vertical-align: top;
+	border: 1px solid #c8c8c8;
+	margin-bottom: 20px;
+	padding: 7px;
+	border-radius: 3px;
+	box-shadow: 0 2px 3px #ccc;
+	background-color: white;
+	*display:inline;
+    zoom:1;
+	display: inline-block;
+	float: left;
+	margin:80px 20px 20px 20px;
+}
+.article2{
+	margin:80px 0 0 0 ;
+	height:180px;
+}
+.article3{
+	margin:20px 0 0 0;
+	height:260px;
+}
+
+
+article p{
+	margin-bottom: 7px;
+}
+.mentoimg{
+	width:300px;
+	height:300px;
+	margin:20px;
+}
+

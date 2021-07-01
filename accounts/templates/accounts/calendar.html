@@ -1,28 +1,15 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="{% static 'css/menubar.css' %}" rel="stylesheet">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Login</title>
     <link href="{% static 'css/calcommon.css' %}" rel="stylesheet">
     <link href="{% static 'css/calreset.css' %}" rel="stylesheet">
 </head>
 
 <body>
-    <div class="headerlogo">
-        <img src="static/img/멋사로고.png" alt="">
-    </div>
-
-    <ul class="menu">
-        <li class="menu-item"><a href="accounts/login/" class="menu-link">로그인</a></li>
-        <li class="menu-item"><a href="accounts/signup/" class="menu-link">회원가입</a></li>
-        <li class="menu-item"><a href="notice/" class="menu-link">공지사항</a></li>
-        <li class="menu-item"><a href="community/" class="menu-link">커뮤니티</a></li>
-    </ul>
-
     <div class="mastercon">
         <header>
             <h1>
@@ -43,7 +30,7 @@
                         <div class="main-date"></div>
                     </div>
                     <div class="todo-wrap">
-                        <div class="todo-title">오늘의 일정</div>
+                        <div class="todo-title">할 일!</div>
                         <form class="input-form">
                             <input type="text" placeholder="write here!!" class="input-box" />
                             <button type="submit" class="input-btn clickBtn">메모</button>
@@ -72,8 +59,8 @@
             </section>
         </div>
     </div>
-    <script type="text/javascript" src="/static/js/calmain.js"></script>
-    <script type="text/javascript" src="/static/js/caldata.js"></script>
-</body>
 
+    <script type="text/javascript" src="/static/js/caldata.js"></script>
+    <script type="text/javascript" src="/static/js/calmain.js"></script>
+</body>
 </html>

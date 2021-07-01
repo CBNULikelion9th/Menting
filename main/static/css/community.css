@@ -80,8 +80,7 @@ a:link{
 }
 
 .search_page_detail {
-    margin-left: 15%;
-    margin-right: 15%;
+    margin-left: 10%;
     text-align: center;
 }
 
@@ -90,6 +89,7 @@ a:link{
 }
 
 .search_top h1{
+    margin-right:10%;
     font-size:20px;
 }
 
@@ -99,7 +99,7 @@ a:link{
 }
 
 .search_mid h2{
-    margin-left: 695px;
+    margin-left: 650px;
 }
 
 .search_button {
@@ -130,4 +130,8 @@ a:link{
 
 .notice_end {
     margin-left: 100px;
+}
+
+#delete_button {
+   right:10%;
 }

@@ -1,5 +1,4 @@
 from django.db import models
-from django.core.validators import MinValueValidator, MaxValueValidator
 from django.contrib.auth.models import AbstractUser
 
 class CustomUser(AbstractUser):
@@ -16,6 +15,7 @@ class CustomUser(AbstractUser):
 		('일반고', '일반고'),('특목고', '특목고'),('특성화고', '특성화고'),('자공고, 자사고', '자공고, 자사고'),('기타', '기타')
     )
     highschool = models.CharField(max_length=10, choices=HIGHSCHOOL_CHOICES, blank=True)
-    gradepoint = models.IntegerField(default = 0, validators=[MinValueValidator(0), MaxValueValidator(5)])
-    
+    grade = models.IntegerField(default = 0)
+    count = models.IntegerField(default = 0)
+    avg = models.IntegerField(default = 0)
 

@@ -35,12 +35,15 @@
         <td>{{ customer.studentnumber }}</a></td>
         <td>{{ customer.entrancetype }}</td>
         <td>{{ customer.highschool }}</td>
-        <td>{{ customer.gradepoint }}</td>
+        <td>{% if customer.count == 0 %}
+                <p>미평가</p>
+            {% else %}
+                {{customer.avg}}
+            {% endif %}
+            
+        </td>
         <td><a href="{% url 'choice_mentor' customer.id %}" class="link-dark">선배연결</a></td>
-<<<<<<< HEAD
-=======
 
->>>>>>> 15fa91420ac9ec5ac42c5c41343a87431794af2f
     </tr>
     {% endif %}
     {% endfor %}

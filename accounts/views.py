@@ -46,6 +46,7 @@ def logout_view(request):
 def signup_view(request):
     if request.method == 'POST':
         form = SignUpForm(request.POST,request.FILES)
+        
         if form.is_valid():
             user = form.save()
             return redirect('success')
@@ -63,9 +64,6 @@ def signup_view(request):
         return render(request, 'accounts/signup.html', {'form':form})
 
 
-
-def home(request):
-    return render(request, 'accounts/home.html')
 
 
 def success(request):

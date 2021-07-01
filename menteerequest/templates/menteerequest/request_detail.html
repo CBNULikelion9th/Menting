@@ -25,8 +25,13 @@
             <p>{{ response.author }}의 응답</p>
             <p>{{ response.text|linebreaks }}</p>
             <small >{{ response.created_date }} </small>            
-            <hr>
+            
         </div>
+
+        {% if user == post.mentee %}
+            <a href="{% url 'grade_point' %}"><button>완료(평점 남기기)</button></a>
+        {% endif %}  
+        <hr>
     {% empty %}
         {% if user.username == post.mentor %}
             <a href="{% url 'response' post.id %}"><button>수락</button></a>

@@ -1,7 +1,11 @@
+from django.http.response import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
-from .forms import Mentee_requestForm, ResponseForm
-from .models import Mentee_request
+from .forms import Mentee_requestForm, ResponseForm ,PointForm
+from .models import Mentee_request, Mname
+from accounts.models import CustomUser
 from main.models import Mentor
+
+
 
 
 def request_view(request):
@@ -42,6 +46,7 @@ def success_request_view(request):
 def request_detail(request,post_id):
     
     post = Mentee_request.objects.get(id = post_id)
+    Mname.username = post.mentor
     return render (request, 'menteerequest/request_detail.html',{'post':post})
 
 
@@ -75,3 +80,40 @@ def request_response_reject(request, post_id):
         form = ResponseForm()
     return render(request, 'menteerequest/request_response_reject.html', {'form': form})
 
+
+# def grade_point(request):
+    
+#     if request.method == 'POST':
+#         form = PointForm(request.POST)
+#         if form.is_valid():
+#             post = form.save(commit = False)
+#             post.username = Mname.username
+#             post.save()
+#             return redirect ('requestslist')
+        
+#         return HttpResponse('fail')
+
+#     else:
+#         form = PointForm()
+
+#     return render (request, 'menteerequest/grade.html',{'form':form})\
+
+
+def grade_point(request):
+    k = CustomUser.objects.get(username = Mname.username)
+    if request.method == 'POST':
+        form = PointForm(request.POST)
+        if form.is_valid():
+            post = form.save(commit = False)
+            k.grade = int(post.grade) + k.grade
+            k.count = k.count + 1
+            k.avg = k.grade / k.count
+            k.save()
+            return redirect ('requestslist')
+        
+        return HttpResponse('fail')
+
+    else:
+        form = PointForm()
+
+    return render (request, 'menteerequest/grade.html',{'form':form})

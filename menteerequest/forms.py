@@ -1,5 +1,5 @@
 from django import forms
-from .models import Mentee_request, Response
+from .models import Mentee_request, Response, Point
 
 
 
@@ -14,3 +14,9 @@ class ResponseForm(forms.ModelForm):
     class Meta:
         model = Response
         fields = ('text',)
+
+class PointForm(forms.ModelForm):
+
+    class Meta:
+        model = Point
+        fields = ('grade',)

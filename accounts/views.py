@@ -1,3 +1,5 @@
+#from Menting.accounts.models import CustomUser 오류 나서 주석처리 했습니다 (승하)
+from .models import CustomUser  
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate, login, logout
@@ -5,6 +7,12 @@ from .forms import SignUpForm
 from django.contrib import messages
 
 
+def main(request):   
+    u_uni = CustomUser.university
+    print(u_uni)
+    lis = [u_uni]
+    
+    return render(request, 'accounts/main.html', {'lis':lis} )
 
 def login_view(request):
     if request.method == 'POST':

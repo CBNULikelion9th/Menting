@@ -1,0 +1,39 @@
+body{
+    margin:0;
+    padding:0;  
+	height: 1vh;
+}
+.menu {
+	display: flex;
+	margin:0;
+	padding:0;
+	height:40px;
+}
+.menu-item {
+	width: 25%;
+	background:	hsl(28, 83%, 81%);
+	transition: 0.5s;
+}
+.menu-item:hover {
+	width: 40%;
+	background: rgb(228, 144, 105);
+}
+.menu-link {
+	text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+	display: block;
+	padding-top:9px;
+	font-size: 1.2rem;
+	font-weight: bold;
+	color: black;
+	text-decoration: none;
+	text-align: center;
+}
+.menu-link:hover {
+	color: black
+}
+.headerlogo{
+	text-align: center;
+}
+ul {
+    list-style-type: none
+}

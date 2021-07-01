@@ -1,24 +1,31 @@
-{% extends 'accounts/base.html' %}
+<!DOCTYPE html>
+{% load static %}
+<html>
 
-{% block content %}
-<h1 style="text-align:center">로그인</h1>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Login</title>
+  <link href="{% static 'css/common.css' %}" rel="stylesheet">
+  <link href="{% static 'css/login.css' %}" rel="stylesheet">
+</head>
 
-<div style="text-align:center; color: red">
-	{% if messages %}
-		{% for message in messages %}
-			{{ message }}
-		{% endfor %}
-	{% endif %}
-</div>
+<body>
+  <div class="container">
+    <img class="logo" src="{% static 'img/멋사로고.png' %}" alt="logo">
+    <form action="{% url 'login' %}" method="POST">
+      <span class="error" style="margin: 0%; color: red;">{{ error }}</span>
+      {% csrf_token %}
+      {{form.as_p}}
+      <input type="submit" id="btn_login" value="로그인">
+    </form>
+    <a href="{% url 'signup' %}" class="button_signup"><span>회원가입하기</span></a>
+    </br>
+    <a href="{% url 'home' %}" class="button_forgot"><span>홈으로</span></a>
+  </div>
 
+  <!-- 
+    <script src="../../js/login.js"></script> -->
+</body>
 
-<div style="text-align:center">
-	<form method = "POST" action="{%url 'login' %}">
-    	{% csrf_token %}
-    	{{form.as_p}}
-    		<button type="submit" > login </button>
-	</form>
-	<a href="{% url 'signup' %}" > <button type='button'>  회원가입 </button> </a>
-</div>
-
-{% endblock content %}
+</html>

@@ -6,6 +6,9 @@ from accounts.forms import SignUpForm
 from accounts.models import CustomUser
 
 
+def home(request):
+    return render(request, 'main/home.html')
+
 def community_page(request):
     post_list = Post.objects.all()
     context = {
@@ -20,13 +23,31 @@ def community_new(request):
 
     elif request.method == 'POST':
         form = PostForm(request.POST)
-        
+        if form.is_valid():
+            post = form.save()
+            post.user = request.user
+            post.save()
+            return redirect('community_page')
+
+    return render(request, 'main/community_new.html',{
+        'form': form,
+    })
+
+def community_edit(request, post_id):
+    post = Post.objects.get(id=post_id)
+
+    if request.method == 'GET':
+        form = PostForm(instance=post)
+
+    elif request.method == 'POST':
+        form = PostForm(request.POST, instance=post)
         if form.is_valid():
             post = form.save()
             return redirect('community_detail', post_id=post.id)
 
-    return render(request, 'main/community_new.html',{
+    return render(request, 'main/community_edit.html',{
         'form': form,
+        'post': post,
     })
 
 def community_detail(request, post_id):
@@ -45,12 +66,39 @@ def community_delete(request, post_id):
     return redirect('community_page')
 
 def community_comment(request, post_id):
+    post = get_object_or_404(Post, id=post_id)
     commentt = PostForm2(request.POST)
     if commentt.is_valid():
         commentt = commentt.save(commit=False)
         commentt.post = get_object_or_404(Post, pk=post_id)
+        commentt.name = request.user
         commentt.save()
-    return redirect('community_detail', post_id)
+    return redirect('community_detail', post_id=post.id)
+
+def comment_delete(request, post_id, comment_id):
+    post = get_object_or_404(Post, id=post_id)
+    comment = get_object_or_404(Comment, id=comment_id)
+    comment.delete()   
+    return redirect('community_detail', post_id = post.id)
+
+def comment_edit(request, post_id, comment_id):
+    post = Post.objects.get(id=post_id)
+    comment = get_object_or_404(Comment, id=comment_id)
+
+    if request.method == 'GET':
+        form = PostForm2(instance=comment)
+
+    elif request.method == 'POST':
+        form = PostForm2(request.POST, instance=comment)
+        if form.is_valid():
+            comment = form.save()
+            return redirect('community_detail', post_id=post.id)
+
+    return render(request, 'main/comment_edit.html',{
+        'form': form,
+        'comment': comment,
+        'post':post,
+    })
 
 def notice_page(request):
     post2_list = Post2.objects.all()

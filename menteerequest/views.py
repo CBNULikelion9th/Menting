@@ -70,3 +70,4 @@ def request_response_reject(request, post_id):
     else:
         form = ResponseForm()
     return render(request, 'menteerequest/request_response_reject.html', {'form': form})
+

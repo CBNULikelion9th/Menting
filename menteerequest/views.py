@@ -41,6 +41,7 @@ def request_detail(request,post_id):
     post = Mentee_request.objects.get(id = post_id)
     return render (request, 'menteerequest/request_detail.html',{'post':post})
 
+
 def request_response(request, post_id):
     post = get_object_or_404(Mentee_request, id=post_id) #Post를 인자로 받고 get()함수로 넘김? 객체가 존재하지 않으면 오류 발생
     if request.method == "POST":

@@ -6,7 +6,7 @@ class PostForm(forms.ModelForm):
 
     class Meta:
         model = Post
-        fields = ['user','title','content']
+        fields = ['title','content']
 
 class PostForm2(forms.ModelForm):   
 

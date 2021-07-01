@@ -4,7 +4,6 @@ from django.contrib.auth.models import AbstractUser
 
 class CustomUser(AbstractUser):
 
-    nickname = models.CharField(max_length=100, unique = True)
     university = models.CharField(max_length=50,default="멘토만 작성")
     name = models.CharField(max_length=50)
     studentnumber = models.IntegerField(default = 0)

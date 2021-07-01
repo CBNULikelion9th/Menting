@@ -74,13 +74,20 @@ def community_delete(request, post_id):
     return redirect('community_page')
 
 def community_comment(request, post_id):
+    post = get_object_or_404(Post, id=post_id)
     commentt = PostForm2(request.POST)
     if commentt.is_valid():
         commentt = commentt.save(commit=False)
         commentt.post = get_object_or_404(Post, pk=post_id)
         commentt.name = request.user
         commentt.save()
-    return redirect('community_detail', post_id)
+    return redirect('community_detail', post_id=post.id)
+
+def comment_delete(request, post_id, comment_id):
+    post = get_object_or_404(Post, id=post_id)
+    comment = get_object_or_404(Comment, id=comment_id)
+    comment.delete()   
+    return redirect('community_detail', post_id = post.id)
 
 def notice_page(request):
     post2_list = Post2.objects.all()

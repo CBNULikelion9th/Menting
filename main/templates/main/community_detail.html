@@ -31,7 +31,7 @@
             <br>
             <p2> 내용 : {{ comment.content }}</p2>
             {% if user.is_authenticated and user.username == comment.name %}
-            <button class = "btn btn-outline-secondary" id = "delete_button">삭제</button> 
+            <button class = "btn btn-outline-secondary" id = "delete_button"><a href="{% url 'comment_delete' post.id comment.id %}" class="link-dark">삭제</a></button> 
             {% endif %}
         </div>  
     </div>

@@ -1,7 +1,7 @@
 from django import forms
 from django.shortcuts import get_object_or_404, render, redirect
 from .forms import PostForm, PostForm2, PostForm3
-from .models import Post, Comment, Post2
+from .models import Post, Comment, Post2, Mentor
 from accounts.forms import SignUpForm
 from accounts.models import CustomUser
 
@@ -134,3 +134,9 @@ def example_page(request, post_id):
         'customer_list': customer_list,
     }
     return render(request, 'main/example_page.html', context)
+
+def choice_mentor(request,customer_id):
+    mentor = CustomUser.objects.get(id =customer_id)
+    Mentor.username = mentor.username
+    Mentor.email = mentor.email
+    return redirect("requestform")

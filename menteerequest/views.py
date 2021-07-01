@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import Mentee_requestForm, ResponseForm
 from .models import Mentee_request
+from main.models import Mentor
 
 
 def request_view(request):
@@ -14,6 +15,8 @@ def request_view(request):
         form = Mentee_requestForm(request.POST)
         if form.is_valid():
             post = form.save(commit = False)
+            post.mentor = Mentor.username
+            post.mentor_email = Mentor.email
             post.mentee = request.user
             post.save()
             return redirect ('requestsuccess')

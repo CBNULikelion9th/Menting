@@ -23,7 +23,7 @@
             <th width="9%">학번</th>
             <th width="9%">입시전형</th>
             <th width="9%">출신고등학교</th>
-            <th width="9%">평점</th>
+            <th width="9%">평점 <small>(5점 만점)</small></th>
             <th width="9%">선택</th>
         </thead>
         <tbody>
@@ -36,8 +36,8 @@
         <td>{{ customer.studentnumber }}</a></td>
         <td>{{ customer.entrancetype }}</td>
         <td>{{ customer.highschool }}</td>
-        <td>평점</td>
-        <td><a href="{% url 'example_page' customer.id %}" class="link-dark">선배연결</a></td>
+        <td>{{ customer.gradepoint }}</td>
+        <td><a href="{% url 'choice_mentor' customer.id %}" class="link-dark">선배연결</a></td>
     </tr>
     {% endif %}
     {% endfor %}

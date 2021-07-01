@@ -21,3 +21,7 @@ class Post2(models.Model):
     content = models.TextField()
     created_at =models.DateTimeField(auto_now_add=True, null = True)
     updated_at = models.DateTimeField(auto_now=True, null = True)
+
+class Mentor(models.Model):
+    username = models.CharField(max_length=20)
+    email = models.CharField(max_length=20)

@@ -7,6 +7,7 @@ body{
 	display: flex;
 	margin:0;
 	padding:0;
+	height:40px;
 }
 .menu-item {
 	width: 25%;
@@ -20,7 +21,7 @@ body{
 .menu-link {
 	text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
 	display: block;
-	padding: 1em;
+	padding-top:9px;
 	font-size: 1.2rem;
 	font-weight: bold;
 	color: black;

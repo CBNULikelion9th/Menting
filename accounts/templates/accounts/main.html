@@ -128,7 +128,7 @@
 
 <body>
     <div class="headerlogo">
-        <a href="http://127.0.0.1:8000/"><img src="{% static 'img/멋사로고.png' %}" alt=""></a>
+        <a href="http://127.0.0.1:8000/main/"><img src="{% static 'img/멋사로고.png' %}" alt=""></a>
         {% if user.is_authenticated %}
         <div class="rightnav">
             <a class="nav-right" href="{% url 'logout' %}">로그아웃</a>
@@ -143,8 +143,8 @@
     <ul class="menu">
 
         <li class="menu-item2"><a href="{% url 'search_pages' %}" class="menu-link">선배찾기</a></li>
-        <li class="menu-item2"><a href="http://127.0.0.1:8000/main/community/" class="menu-link">공지사항</a></li>
-        <li class="menu-item2"><a href="http://127.0.0.1:8000/main/notice/" class="menu-link">커뮤니티</a></li>
+        <li class="menu-item2"><a href="http://127.0.0.1:8000/notice/" class="menu-link">공지사항</a></li>
+        <li class="menu-item2"><a href="http://127.0.0.1:8000/community/" class="menu-link">커뮤니티</a></li>
 
     </ul>
     {%else%}

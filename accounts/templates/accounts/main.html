@@ -61,7 +61,7 @@
 
     <div class="option">
         <div>
-            <form onsubmit="searchPlaces(); return false; ">
+            <form action="{%url 'main' %}" onsubmit="searchPlaces(); return false; " method="POST">
                 <input type="text" placeholder='대학교를 입력하세요. ex) 충북대' id="keyword" size="30"> 
                 <button type="submit">검색하기</button> 
             </form>

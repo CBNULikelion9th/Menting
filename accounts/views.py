@@ -9,11 +9,19 @@ from django.contrib import messages
 
 def main(request):   
     u_uni = CustomUser.university
+    
     print(u_uni)
     lis = [u_uni]
-    
-    return render(request, 'accounts/main.html', {'lis':lis} )
-
+    customer_list = CustomUser.objects.filter(university = request.POST.get('keyword'''))
+    a=[]
+    a.append(customer_list)
+    print(a)
+    if a == None:
+        print('오류')
+        return render(request, 'accounts/main.html', {'lis':lis} )
+    else:    
+        return render(request, 'accounts/main.html', {'a':a})
+ 
 def login_view(request):
     if request.method == 'POST':
         form = AuthenticationForm(request = request, data = request.POST)

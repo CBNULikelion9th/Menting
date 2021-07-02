@@ -142,6 +142,7 @@ def notice_delete(request, post_id):
 #     return render(request, 'search_page',{'t':t})
 
 
+
 def search_page(request,univers):
     # univer2 = University.objects.get(univer = chr(univers))
     customer_list = CustomUser.objects.filter( university = univers[40:45] )
@@ -160,6 +161,7 @@ def search_pages(request):
     }
 
     return render(request, 'main/search_pages.html', context)
+
 
 def choice_mentor(request,customer_id):
     mentor = CustomUser.objects.get(id =customer_id)

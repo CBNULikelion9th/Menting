@@ -197,8 +197,16 @@
                 <p id="univ"></p>
             </a>
 
-            <!--<h1>멘토 나오는 곳</h1>
-            <div id="pagination"></div> -->
+            <h1>멘토 현황</h1>
+            <div id="pagination"></div> 
+            <br>
+            {% for cus in customuser_list %}
+                {% if cus.mentor_check == True %}
+                닉네임 : {{ cus.username }}
+                대학교 : {{ cus.university }}
+                <br>
+                {% endif %}
+            {% endfor %}
         </div>
     </div>
 
@@ -305,9 +313,8 @@
     searchPlaces();
 
     function experiment() {
-        var keyword = document.getElementById('keyword').value;
-        document.getElementById('univ').innerHTML = (keyword +'<input type= "button" value = 선배찾기>');
-        
+        var keyword = document.getElementById('keyword').value;        
+        document.getElementById('univ').innerText = keyword +" 멘팅 시작";
     }
 
     // 키워드 검색을 요청하는 함수입니다

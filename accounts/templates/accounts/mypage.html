@@ -1,7 +1,7 @@
 {% extends 'accounts/base.html' %}
 
 {% block content %}
-<h1> {{user}} 님 안녕하세요</h1>
+<h1> {{ user.username }} 님 안녕하세요</h1>
 
 <p>
         회원 타입 : {% if user.studenttype == True and user.mentor_check == True %}

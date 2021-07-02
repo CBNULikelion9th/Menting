@@ -1,3 +1,4 @@
+from django.forms.fields import CharField
 from django.shortcuts import get_object_or_404, render, redirect
 from .forms import PostForm, PostForm2, PostForm3
 from .models import Post, Comment, Post2, Mentor
@@ -141,9 +142,11 @@ def notice_delete(request, post_id):
 #     return render(request, 'search_page',{'t':t})
 
 
-def search_page(request,a_id):
-    univer = University.objects.get(id = a_id)
-    customer_list = CustomUser.objects.filter( university = univer.univer )
+
+def search_page(request,univers):
+    # univer2 = University.objects.get(univer = chr(univers))
+    customer_list = CustomUser.objects.filter( university = univers[40:45] )
+    print(univers[40:45])
     context = {
         'customer_list': customer_list,
     }
@@ -159,14 +162,6 @@ def search_pages(request):
 
     return render(request, 'main/search_pages.html', context)
 
-def example_page(request, post_id):
-    custom = CustomUser.objects.get(id=post_id)
-    customer_list = CustomUser.objects.all()
-    context = {
-        'custom': custom,
-        'customer_list': customer_list,
-    }
-    return render(request, 'main/example_page.html', context)
 
 def choice_mentor(request,customer_id):
     mentor = CustomUser.objects.get(id =customer_id)

@@ -8,11 +8,12 @@ from django.contrib import messages
 
 
 def main(request):   
-    u_uni = CustomUser.university
-    print(u_uni)
-    lis = [u_uni]
+    customuser_list = CustomUser.objects.all()
+    context = {
+        'customuser_list' : customuser_list,
+    }
     
-    return render(request, 'accounts/main.html', {'lis':lis} )
+    return render(request, 'accounts/main.html', context )
 
 def login_view(request):
     if request.method == 'POST':

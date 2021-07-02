@@ -136,14 +136,14 @@
             <a class="nav-right" href="{% url 'logout' %}">로그아웃</a>
         </div>
         <div class="leftnav">
-            <a class="nav-left" href="{% url 'mypage' %}">{{user.name}}님의my page</a>
+            <a class="nav-left" href="{% url 'mypage' %}">{{user.username}}님의 my page</a>
         </div>
         {% endif %}
     </div>
 
     {% if user.is_authenticated %}
     <ul class="menu">
-        <li class="menu-item2"><a href="{% url 'search_page' %}" class="menu-link">선배찾기</a></li>
+        <li class="menu-item2"><a href="{% url 'search_pages' %}" class="menu-link">선배찾기</a></li>
         <li class="menu-item2"><a href="http://127.0.0.1:8000/main/community/" class="menu-link">공지사항</a></li>
         <li class="menu-item2"><a href="http://127.0.0.1:8000/main/notice/" class="menu-link">커뮤니티</a></li>
     </ul>
@@ -170,11 +170,19 @@
     <a href="main/notice/"><button class="btn btn-outline-primary" type="button">공지사항</button></a>
     <a href="main/community/"><button class="btn btn-outline-primary" type="button">커뮤니티</button></a>
     </div> -->
+    <form method = "POST">
+        {% csrf_token %}
+        멘팅을 할 대학교를 입력해주세요:{{a.univer}}
+        <button type = 'submit'> 검색</button>
+    </form>
+   
+
     <div class="option">
+        
         <div>
-            <form onsubmit="searchPlaces(); experiment(); return false;">
+            <form  onsubmit="searchPlaces(); experiment(); return false;">
                 <input type="text" placeholder='대학교를 입력하세요. ex) 충북대학교' id="keyword" size="30">
-                <button type="submit">검색하기</button>
+                <button type="submit">검색</button>
             </form>
         </div>
     </div>
@@ -191,10 +199,9 @@
             <h1>멘토를 찾아보세요!</h1>
             <hr>
             <ul id="placesList"></ul>
-            <p id="univ"></p>
-
-            <h1>멘토 나오는 곳</h1>
-            <div id="pagination"></div>
+            <a href="{% url 'search_pages'  %}" class="menu-link"> <button> <p id="univ"></p>선배 만나러 가기 </button> </a>
+            <!--<h1>멘토 나오는 곳</h1>
+            <div id="pagination"></div> -->
         </div>
     </div>
 
@@ -274,7 +281,7 @@
 </body>
 <script type="text/javascript"
     src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a54fecdc7a8b95b1d99956fac243954c&libraries=services"></script>
-<script>
+<script> 
     // 마커를 담을 배열입니다
     var markers = [];
 
@@ -298,7 +305,6 @@
 
     function experiment() {
         var keyword = document.getElementById('keyword').value;
-
         document.getElementById('univ').innerText = keyword;
     }
 

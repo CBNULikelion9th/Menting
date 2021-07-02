@@ -25,3 +25,6 @@ class Post2(models.Model):
 class Mentor(models.Model):
     username = models.CharField(max_length=20)
     email = models.CharField(max_length=20)
+
+
+    

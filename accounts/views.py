@@ -15,8 +15,9 @@ def main(request):
     else:
         a = UnivesityForm(request.POST)
         if a.is_valid():
-            a.save()
-            return redirect ('search_page')
+            t = a
+            
+            return render (request,'main/universityname.html',{'t':t})
         return HttpResponse('fail')
 
     return render (request, 'accounts/main.html',{'a':a})

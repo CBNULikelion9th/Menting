@@ -193,8 +193,16 @@
             <ul id="placesList"></ul>
             <a href="{% url 'search_page' %}" class="menu-link"><p id="univ"></p></a>
 
-            <!--<h1>멘토 나오는 곳</h1>
-            <div id="pagination"></div> -->
+            <h1>멘토 현황</h1>
+            <div id="pagination"></div> 
+            <br>
+            {% for cus in customuser_list %}
+                {% if cus.mentor_check == True %}
+                닉네임 : {{ cus.username }}
+                대학교 : {{ cus.university }}
+                <br>
+                {% endif %}
+            {% endfor %}
         </div>
     </div>
 

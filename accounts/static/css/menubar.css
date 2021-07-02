@@ -56,3 +56,12 @@ ul {
 	font-size:1rem;
 	font-weight: bold;
 }
+.menu-item2 {
+	width: 33.3333%;
+	background:	hsl(28, 83%, 81%);
+	transition: 0.5s;
+}
+.menu-item2:hover {
+	width: 50%;
+	background: rgb(228, 144, 105);
+}

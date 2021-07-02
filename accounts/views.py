@@ -15,6 +15,7 @@ def main(request):
     else:
         a = UnivesityForm(request.POST)
         if a.is_valid():
+
             t = a
             
             return render (request,'main/universityname.html',{'t':t})

@@ -116,8 +116,6 @@
         #placesList .item .marker_1 {
             background-position: 0 -10px;
         }
-
-        
     </style>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -195,7 +193,9 @@
             <div id="mentor"></div>
             <div id="pagination"></div>
 
-            <a href="{% url 'search_page' %}" class="menu-link"><p id="univ"></p></a>
+            <a href="{% url 'search_page' %}" class="menu-link">
+                <p id="univ"></p>
+            </a>
 
             <!--<h1>멘토 나오는 곳</h1>
             <div id="pagination"></div> -->
@@ -225,9 +225,9 @@
                 <span>캘린더</span>
             </h1>
             <div class="calendar_title">
-                <button class="prev"></button>
+                <button class="prev">&larr;</button>
                 <span class="current-year-month"></span>
-                <button class="next"></button>
+                <button class="next">&rarr;</button>
             </div>
         </header>
         <div class="contotal">
@@ -238,12 +238,15 @@
                         <div class="main-date"></div>
                     </div>
                     <div class="todo-wrap">
-                        <div class="todo-title">오늘의 일정</div>
-                        <form class="input-form">
-                            <input type="text" placeholder="write here!!" class="input-box" />
-                            <button type="submit" class="input-btn clickBtn">메모</button>
-                        </form>
-                        <ul class="todoList"></ul>
+                        <div class="todo-title">모의고사 일정</div>
+                        <div class="testlist">
+                            <ul class='testlist2'>
+                                <li class='testlist3'>&#245; &nbsp;&nbsp; 7월 17일 모의고사</li>
+                                <li class='testlist3'>&#245; &nbsp;&nbsp; 8월 12일 모의고사</li>
+                                <li class='testlist4'>&#245; &nbsp;&nbsp; 9월 23일 모의고사</li>
+                                <li class='testlist3'>&#245; &nbsp;&nbsp; 10월 15일 모의고사</li>
+                            </ul>
+                        </div>
                         <div class="showList">
                             <span class="listText"></span>
                             <span class="createDate"></span>
@@ -303,8 +306,8 @@
 
     function experiment() {
         var keyword = document.getElementById('keyword').value;
-        document.getElementById('univ').innerHTML = (keyword +'<input type= "button" value = 선배찾기>');
-        
+        document.getElementById('univ').innerHTML = (keyword + '<input type= "button" value = 선배찾기>');
+
     }
 
     // 키워드 검색을 요청하는 함수입니다

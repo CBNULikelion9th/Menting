@@ -32,3 +32,14 @@ class Response(models.Model):
 
     def __str__(self):
         return self.text
+
+class Point(models.Model): 
+    GRADE_CHOICES = (
+		('1', 1),('2', 2),('3', 3),('4', 4),('5', 5)
+    )
+    grade = models.CharField(max_length=5, choices=GRADE_CHOICES)
+    username = models.CharField(max_length=20)
+    point = models.IntegerField(default=0)
+  
+class Mname(models.Model):
+  username = models.CharField(max_length=20,blank = True)

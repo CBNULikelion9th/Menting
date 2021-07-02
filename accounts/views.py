@@ -8,20 +8,13 @@ from django.contrib import messages
 
 
 def main(request):   
-    u_uni = CustomUser.university
+    customuser_list = CustomUser.objects.all()
+    context = {
+        'customuser_list' : customuser_list,
+    }
     
-    print(u_uni)
-    lis = [u_uni]
-  # customer_list = CustomUser.objects.filter(university = request.POST.get('keyword'''))
-   # a=[]#
-   # a.append(customer_list)#
-   # print(a)#
-    #if a == None:#
-        #print('오류')
-        #return render(request, 'accounts/main.html', {'lis':lis} )
-  #  else  #
-    return render(request, 'accounts/main.html')
- 
+    return render(request, 'accounts/main.html', context )
+
 def login_view(request):
     if request.method == 'POST':
         form = AuthenticationForm(request = request, data = request.POST)
@@ -54,6 +47,7 @@ def logout_view(request):
 def signup_view(request):
     if request.method == 'POST':
         form = SignUpForm(request.POST,request.FILES)
+        
         if form.is_valid():
             user = form.save()
             return redirect('success')
@@ -71,9 +65,6 @@ def signup_view(request):
         return render(request, 'accounts/signup.html', {'form':form})
 
 
-
-def home(request):
-    return render(request, 'accounts/home.html')
 
 
 def success(request):

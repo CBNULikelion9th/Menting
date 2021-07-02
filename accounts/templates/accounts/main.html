@@ -170,21 +170,21 @@
     <a href="main/notice/"><button class="btn btn-outline-primary" type="button">공지사항</button></a>
     <a href="main/community/"><button class="btn btn-outline-primary" type="button">커뮤니티</button></a>
     </div> -->
-    <form method = "POST">
-        {% csrf_token %}
-        멘팅을 할 대학교를 입력해주세요:{{a.univer}}
-        <button type = 'submit'> 검색</button>
-    </form>
-   
+    <div class = "option" >
+        <form method = "POST">
+            {% csrf_token %}
+            멘팅을 할 대학교를 입력해주세요:{{a.univer}}
+            <button type = 'submit'> 검색</button>
+        </form>
+    </div>
 
-    <div class="option">
+    <div class= "option">
         
-        <div>
-            <form onsubmit="searchPlaces(); experiment(); return false;">
-                <input type="text" placeholder='대학교를 입력하세요. ex) 충북대학교' id="keyword" size="40">
-                <button type="submit">검색하기</button>
-            </form>
-        </div>
+        <form onsubmit="searchPlaces(); experiment(); return false;">
+            <input type="text" placeholder='대학교를 입력하세요. ex) 충북대학교' id="keyword" size="40">
+            <button type="submit">검색하기</button>
+        </form>
+        
     </div>
     <article>
         <img src="static/img/멘토메인사진.jpg" alt="" class="mentoimg" />
@@ -204,7 +204,7 @@
             <div id="mentor"></div>
             <div id="pagination"></div>
 
-            <a href="{% url 'search_page' %}" class="menu-link">
+            <a href="{% url 'search_pages' %}" class="menu-link">
                 <p id="univ"></p>
             </a>
 

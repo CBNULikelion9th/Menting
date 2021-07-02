@@ -130,7 +130,7 @@
 
 <body>
     <div class="headerlogo">
-        <a href="http://127.0.0.1:8000/main/"><img src="{% static 'img/멋사로고.png' %}" alt=""></a>
+        <a href="http://127.0.0.1:8000/"><img src="{% static 'img/멋사로고.png' %}" alt=""></a>
         {% if user.is_authenticated %}
         <div class="rightnav">
             <a class="nav-right" href="{% url 'logout' %}">로그아웃</a>
@@ -172,15 +172,9 @@
     </div> -->
     <div class="option">
         <div>
-<<<<<<< HEAD
-            <form onsubmit="searchPlaces(); return false; " >
-                <input type="text" placeholder='대학교를 입력하세요. ex) 충북대' id="keyword" size="30"> 
-                <button type="submit">검색하기</button> 
-=======
             <form onsubmit="searchPlaces(); experiment(); return false;">
-                <input type="text" placeholder='대학교를 입력하세요. ex) 충북대학교' id="keyword" size="30">
+                <input type="text" placeholder='대학교를 입력하세요. ex) 충북대학교' id="keyword" size="40">
                 <button type="submit">검색하기</button>
->>>>>>> fd3f0d4aa4fa3ad52394fec33c0ed7f002bc8360
             </form>
         </div>
     </div>
@@ -198,8 +192,7 @@
             <hr>
             <ul id="placesList"></ul>
             <p id="univ"></p>
-
-            <h1>멘토 나오는 곳</h1>
+            <div id="mentor"></div>
             <div id="pagination"></div>
         </div>
     </div>
@@ -281,6 +274,7 @@
 <script type="text/javascript"
     src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a54fecdc7a8b95b1d99956fac243954c&libraries=services"></script>
 <script>
+
     // 마커를 담을 배열입니다
     var markers = [];
 
@@ -304,8 +298,8 @@
 
     function experiment() {
         var keyword = document.getElementById('keyword').value;
-
-        document.getElementById('univ').innerText = keyword;
+        document.getElementById('univ').innerHTML = (keyword +'<input type= "button" value = 선배찾기>');
+        
     }
 
     // 키워드 검색을 요청하는 함수입니다

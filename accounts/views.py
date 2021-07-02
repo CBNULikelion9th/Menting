@@ -32,7 +32,7 @@ def login_view(request):
             user = authenticate(request=request, username = username, password = password) #유저가 존재하는지를 확인
             if user is not None:
                 login(request, user)
-                return redirect('home')
+                return redirect('main')
 
         else:
             messages.add_message(request, messages.INFO, '아이디와 비밀번호를 확인하세요!')
@@ -49,7 +49,7 @@ def login_view(request):
 
 def logout_view(request):
     logout(request)
-    return redirect('home')
+    return redirect('main')
 
 
 def signup_view(request):

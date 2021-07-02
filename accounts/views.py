@@ -12,15 +12,15 @@ def main(request):
     
     print(u_uni)
     lis = [u_uni]
-    customer_list = CustomUser.objects.filter(university = request.POST.get('keyword'''))
-    a=[]
-    a.append(customer_list)
-    print(a)
-    if a == None:
-        print('오류')
-        return render(request, 'accounts/main.html', {'lis':lis} )
-    else:    
-        return render(request, 'accounts/main.html', {'a':a})
+  # customer_list = CustomUser.objects.filter(university = request.POST.get('keyword'''))
+   # a=[]#
+   # a.append(customer_list)#
+   # print(a)#
+    #if a == None:#
+        #print('오류')
+        #return render(request, 'accounts/main.html', {'lis':lis} )
+  #  else  #
+    return render(request, 'accounts/main.html')
  
 def login_view(request):
     if request.method == 'POST':

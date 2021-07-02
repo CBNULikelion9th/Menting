@@ -1,5 +1,6 @@
 from django.contrib.auth.forms import UserCreationForm
-from .models import CustomUser 
+from .models import CustomUser , University
+from django import forms
 
 
 class SignUpForm(UserCreationForm):
@@ -9,3 +10,7 @@ class SignUpForm(UserCreationForm):
          'studentnumber','mentor_check','name', 'major','highschool','entrancetype','image',]
 
 
+class UnivesityForm(forms.ModelForm):
+    class Meta:
+        model = University
+        fields = ['univer',]

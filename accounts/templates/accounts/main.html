@@ -141,9 +141,11 @@
 
     {% if user.is_authenticated %}
     <ul class="menu">
-        <li class="menu-item2"><a href="{% url 'search_page' %}" class="menu-link">선배찾기</a></li>
-        <li class="menu-item2"><a href="http://127.0.0.1:8000/notice/" class="menu-link">공지사항</a></li>
-        <li class="menu-item2"><a href="http://127.0.0.1:8000/community/" class="menu-link">커뮤니티</a></li>
+
+        <li class="menu-item2"><a href="{% url 'search_pages' %}" class="menu-link">선배찾기</a></li>
+        <li class="menu-item2"><a href="http://127.0.0.1:8000/main/community/" class="menu-link">공지사항</a></li>
+        <li class="menu-item2"><a href="http://127.0.0.1:8000/main/notice/" class="menu-link">커뮤니티</a></li>
+
     </ul>
     {%else%}
     <ul class="menu">
@@ -168,7 +170,15 @@
     <a href="main/notice/"><button class="btn btn-outline-primary" type="button">공지사항</button></a>
     <a href="main/community/"><button class="btn btn-outline-primary" type="button">커뮤니티</button></a>
     </div> -->
+    <form method = "POST">
+        {% csrf_token %}
+        멘팅을 할 대학교를 입력해주세요:{{a.univer}}
+        <button type = 'submit'> 검색</button>
+    </form>
+   
+
     <div class="option">
+        
         <div>
             <form onsubmit="searchPlaces(); experiment(); return false;">
                 <input type="text" placeholder='대학교를 입력하세요. ex) 충북대학교' id="keyword" size="40">
@@ -189,6 +199,7 @@
             <h1>멘토를 찾아보세요!</h1>
             <hr>
             <ul id="placesList"></ul>
+
             <p id="univ"></p>
             <div id="mentor"></div>
             <div id="pagination"></div>
@@ -207,6 +218,7 @@
                 <br>
                 {% endif %}
             {% endfor %}
+
         </div>
     </div>
 
@@ -289,7 +301,9 @@
 </body>
 <script type="text/javascript"
     src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a54fecdc7a8b95b1d99956fac243954c&libraries=services"></script>
+
 <script>
+
 
     // 마커를 담을 배열입니다
     var markers = [];
@@ -313,8 +327,9 @@
     searchPlaces();
 
     function experiment() {
-        var keyword = document.getElementById('keyword').value;        
-        document.getElementById('univ').innerText = keyword +" 멘팅 시작";
+
+        var keyword = document.getElementById('keyword').value;
+        document.getElementById('univ').innerText = keyword;
     }
 
     // 키워드 검색을 요청하는 함수입니다

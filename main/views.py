@@ -1,9 +1,8 @@
-from django import forms
 from django.shortcuts import get_object_or_404, render, redirect
 from .forms import PostForm, PostForm2, PostForm3
 from .models import Post, Comment, Post2, Mentor
 from accounts.forms import SignUpForm
-from accounts.models import CustomUser
+from accounts.models import CustomUser, University
 
 
 def home(request):
@@ -136,13 +135,29 @@ def notice_delete(request, post_id):
     post2.delete()   
     return redirect('notice_page')
 
-def search_page(request):
-    customer_list = CustomUser.objects.all()
+
+# def univer (request,a_id):
+#     t = University.objects.get(a_id =id)
+#     return render(request, 'search_page',{'t':t})
+
+
+def search_page(request,a_id):
+    univer = University.objects.get(id = a_id)
+    customer_list = CustomUser.objects.filter( university = univer.univer )
     context = {
         'customer_list': customer_list,
     }
 
     return render(request, 'main/search_page.html', context)
+
+def search_pages(request):
+    
+    customer_list = CustomUser.objects.all()
+    context = {
+        'customer_list': customer_list,
+    }
+
+    return render(request, 'main/search_pages.html', context)
 
 def example_page(request, post_id):
     custom = CustomUser.objects.get(id=post_id)

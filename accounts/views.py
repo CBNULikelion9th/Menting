@@ -1,19 +1,25 @@
 #from Menting.accounts.models import CustomUser 오류 나서 주석처리 했습니다 (승하)
-from .models import CustomUser  
+from django.http.response import HttpResponse
+from .models import CustomUser , University
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate, login, logout
-from .forms import SignUpForm
+from .forms import SignUpForm, UnivesityForm
 from django.contrib import messages
 
 
 def main(request):   
-    customuser_list = CustomUser.objects.all()
-    context = {
-        'customuser_list' : customuser_list,
-    }
-    
-    return render(request, 'accounts/main.html', context )
+    if request.method == 'GET':
+        a = UnivesityForm()
+
+    else:
+        a = UnivesityForm(request.POST)
+        if a.is_valid():
+            a.save()
+            return redirect ('search_page')
+        return HttpResponse('fail')
+
+    return render (request, 'accounts/main.html',{'a':a})
 
 def login_view(request):
     if request.method == 'POST':

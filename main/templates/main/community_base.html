@@ -1,27 +1,39 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+    <title>HOME</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="static/css/home.css" rel="stylesheet">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menting</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link href="{% static 'css/community.css' %}" rel="stylesheet"/>
+    <link href="{% static 'css/menubar2.css' %}" rel="stylesheet">
 </head>
 
 <body>
-  <div class="community_main">
-    <p>멘팅</p>
-    <div class="community_menu">
-    <a href="{% url 'search_page' %}"><h4>선배찾기</h4></a>
-    <a href="{% url 'notice_page' %}"><h4>공지사항</h4></a>
-    <a href="{% url 'community_page' %}"><h4>커뮤니티</h4></a>
-  </div>
-  </div> 
+    <div class="headerlogo">
+      <a href="http://127.0.0.1:8000/main/"><img src="{% static 'img/멋사로고.png' %}" alt=""></a>
+        {% if user.is_authenticated %}
+        <div class="rightnav">
+            <a class="nav-right" href="{% url 'logout' %}">로그아웃</a>
+        </div>
+        <div class="leftnav">
+            <a class="nav-left" href="{% url 'mypage' %}">{{user.name}}님의my page</a>
+        </div>
+        {% endif %}
+    </div>
+
+    <ul class="menu">
+        <li class="menu-item"><a href="{% url 'search_page' %}" class="menu-link">선배찾기</a></li>
+        <li class="menu-item"><a href="http://127.0.0.1:8000/main/notice/" class="menu-link">공지사항</a></li>
+        <li class="menu-item"><a href="http://127.0.0.1:8000/main/community/" class="menu-link">커뮤니티</a></li>
+    </ul>
+    <br> <br> <br>
     {% block content %}
     {% endblock content %}
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
+
 </html>

@@ -10,12 +10,12 @@ body{
 	height:40px;
 }
 .menu-item {
-	width: 25%;
+	width: 33.33333%;
 	background:	hsl(28, 83%, 81%);
 	transition: 0.5s;
 }
 .menu-item:hover {
-	width: 40%;
+	width: 50%;
 	background: rgb(228, 144, 105);
 }
 .menu-link {

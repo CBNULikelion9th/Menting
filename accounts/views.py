@@ -5,7 +5,6 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate, login, logout
 from .forms import SignUpForm, UnivesityForm
-from django.contrib import messages
 
 
 def main(request):   

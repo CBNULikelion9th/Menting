@@ -48,10 +48,14 @@
             <br>
             <p2> {{ recomment.updated_at }} </p2>
             <br><br>
+            {% if user.is_authenticated and user.username == recomment.name2 %}
+            <button class = "btn btn-outline-secondary" id = "delete_button"><a href="{% url 'recomment_delete' post.id recomment.id %}" class="link-dark">삭제</a></button> 
+            <br><br>
+            {% endif %}
             {% endfor %}
 
             {% if user.is_authenticated and user.username == comment.name %}
-            <button class = "btn btn-outline-secondary" id = "delete_button"><a href="{% url 'comment_delete' post.id comment.id %}" class="link-dark">삭제</a></button> 
+            <button class = "btn btn-outline-secondary" id = "delete_button"><a href="{% url 'comment_delete' post.id comment.id %}" class="link-dark">댓글삭제</a></button> 
             <button class = "btn btn-outline-secondary" id = "delete_button"><a href="{% url 'comment_edit' post.id comment.id %}" class="link-dark">편집</a></button> 
             {% endif %}
         </div>  

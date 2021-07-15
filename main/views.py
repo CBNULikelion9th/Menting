@@ -93,6 +93,12 @@ def comment_delete(request, post_id, comment_id):
     comment.delete()   
     return redirect('community_detail', post_id = post.id)
 
+def recomment_delete(request, post_id, recomment_id):
+    post = get_object_or_404(Post, id=post_id)
+    recomment = get_object_or_404(Recomment, id=recomment_id)
+    recomment.delete()   
+    return redirect('community_detail', post_id = post.id)
+
 def comment_edit(request, post_id, comment_id):
     post = Post.objects.get(id=post_id)
     comment = get_object_or_404(Comment, id=comment_id)

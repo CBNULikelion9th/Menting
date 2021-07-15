@@ -4,7 +4,8 @@ from .forms import Mentee_requestForm, ResponseForm ,PointForm
 from .models import Mentee_request, Mname
 from accounts.models import CustomUser
 from main.models import Mentor
-
+from django.core.mail import EmailMessage
+from django.conf import settings
 
 
 
@@ -40,8 +41,17 @@ def requests_list(request):
 
 
 def success_request_view(request):
-
+    email = EmailMessage(
+        'Menting의 요청이 들어왔습니다',                # 제목
+        'Menting에서 당신에게 필요한 요청이 들어왔습니다 홈페이지에 접속해서 확인헤 주세요. http://127.0.0.1:8000',       # 내용
+        to=[Mentor.email],  # 받는 이메일 리스트
+        )
+    email.send()
     return render (request, 'menteerequest/success_request.html')
+
+
+
+
 
 def request_detail(request,post_id):
     
@@ -80,23 +90,6 @@ def request_response_reject(request, post_id):
         form = ResponseForm()
     return render(request, 'menteerequest/request_response_reject.html', {'form': form})
 
-
-# def grade_point(request):
-    
-#     if request.method == 'POST':
-#         form = PointForm(request.POST)
-#         if form.is_valid():
-#             post = form.save(commit = False)
-#             post.username = Mname.username
-#             post.save()
-#             return redirect ('requestslist')
-        
-#         return HttpResponse('fail')
-
-#     else:
-#         form = PointForm()
-
-#     return render (request, 'menteerequest/grade.html',{'form':form})\
 
 
 def grade_point(request):

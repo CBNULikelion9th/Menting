@@ -7,6 +7,7 @@ urlpatterns = [
     path('community/<int:post_id>/',views.community_detail, name="community_detail"),
     path('community/<int:post_id>/delete/',views.community_delete, name="community_delete"),
     path('community/<int:post_id>/comment/',views.community_comment, name="community_comment"),
+    path('community/<int:post_id>/recomment/<int:comment_id>/',views.community_recomment, name="community_recomment"),
     path('community/<int:post_id>/comment/<int:comment_id>/delete/',views.comment_delete, name="comment_delete"),
     path('community/<int:post_id>/comment/<int:comment_id>/edit/',views.comment_edit, name="comment_edit"),
     path('community/<int:post_id>/edit/',views.community_edit, name="community_edit"),

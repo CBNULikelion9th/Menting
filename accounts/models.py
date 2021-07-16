@@ -19,3 +19,6 @@ class CustomUser(AbstractUser):
     count = models.IntegerField(default = 0)
     avg = models.IntegerField(default = 0)
 
+class University(models.Model):
+
+    univer = models.CharField(max_length=50)

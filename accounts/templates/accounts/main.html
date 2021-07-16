@@ -128,30 +128,32 @@
 
 <body>
     <div class="headerlogo">
-        <a href="http://127.0.0.1:8000/"><img src="{% static 'img/멋사로고.png' %}" alt=""></a>
+        <a href="http://127.0.0.1:8000/main/"><img src="{% static 'img/멋사로고.png' %}" alt=""></a>
         {% if user.is_authenticated %}
         <div class="rightnav">
             <a class="nav-right" href="{% url 'logout' %}">로그아웃</a>
         </div>
         <div class="leftnav">
-            <a class="nav-left" href="{% url 'mypage' %}">{{user.username}}님의 my page</a>
+            <a class="nav-left" href="{% url 'requestslist' %}">{{ user.username }}님의 my page</a>
         </div>
         {% endif %}
     </div>
 
     {% if user.is_authenticated %}
     <ul class="menu">
-        <li class="menu-item2"><a href="{% url 'search_page' %}" class="menu-link">선배찾기</a></li>
-        <li class="menu-item2"><a href="community/" class="menu-link">공지사항</a></li>
-        <li class="menu-item2"><a href="notice/" class="menu-link">커뮤니티</a></li>
+
+        <li class="menu-item2"><a href="{% url 'search_pages' %}" class="menu-link">선배찾기</a></li>
+        <li class="menu-item2"><a href="http://127.0.0.1:8000/notice/" class="menu-link">공지사항</a></li>
+        <li class="menu-item2"><a href="http://127.0.0.1:8000/community/" class="menu-link">커뮤니티</a></li>
+
     </ul>
     {%else%}
     <ul class="menu">
-        <li class="menu-item"><a href="http://127.0.0.1:8000/login/" class="menu-link">로그인</a></li>
-        <li class="menu-item"><a href="http://127.0.0.1:8000/signup/" class="menu-link">회원가입</a></li>
+        <li class="menu-item"><a href="login/" class="menu-link">로그인</a></li>
+        <li class="menu-item"><a href="signup/" class="menu-link">회원가입</a></li>
 
-        <li class="menu-item"><a href="community/" class="menu-link">공지사항</a></li>
-        <li class="menu-item"><a href="notice/" class="menu-link">커뮤니티</a></li>
+        <li class="menu-item"><a href="main/community/" class="menu-link">공지사항</a></li>
+        <li class="menu-item"><a href="main/notice/" class="menu-link">커뮤니티</a></li>
     </ul>
     {% endif %}
 
@@ -168,13 +170,21 @@
     <a href="main/notice/"><button class="btn btn-outline-primary" type="button">공지사항</button></a>
     <a href="main/community/"><button class="btn btn-outline-primary" type="button">커뮤니티</button></a>
     </div> -->
-    <div class="option">
-        <div>
-            <form onsubmit="searchPlaces(); experiment(); return false;">
-                <input type="text" placeholder='대학교를 입력하세요. ex) 충북대학교' id="keyword" size="40">
-                <button type="submit">검색하기</button>
-            </form>
-        </div>
+    <div class = "option" >
+        <form method = "POST">
+            {% csrf_token %}
+            멘팅을 할 대학교를 입력해주세요:{{a.univer}}
+            <button type = 'submit'> 검색</button>
+        </form>
+    </div>
+
+    <div class= "option">
+        
+        <form onsubmit="searchPlaces(); experiment(); return false;">
+            <input type="text" placeholder='대학교를 입력하세요. ex) 충북대학교' id="keyword" size="40">
+            <button type="submit">검색하기</button>
+        </form>
+        
     </div>
     <article>
         <img src="static/img/멘토메인사진.jpg" alt="" class="mentoimg" />
@@ -189,11 +199,12 @@
             <h1>멘토를 찾아보세요!</h1>
             <hr>
             <ul id="placesList"></ul>
+
             <p id="univ"></p>
             <div id="mentor"></div>
             <div id="pagination"></div>
 
-            <a href="{% url 'search_page' %}" class="menu-link">
+            <a href="{% url 'search_pages' %}" class="menu-link">
                 <p id="univ"></p>
             </a>
 
@@ -207,6 +218,7 @@
                 <br>
                 {% endif %}
             {% endfor %}
+
         </div>
     </div>
 
@@ -233,9 +245,9 @@
                 <span>캘린더</span>
             </h1>
             <div class="calendar_title">
-                <button class="prev">&larr;</button>
+                <button class="prev"></button>
                 <span class="current-year-month"></span>
-                <button class="next">&rarr;</button>
+                <button class="next"></button>
             </div>
         </header>
         <div class="contotal">
@@ -249,10 +261,10 @@
                         <div class="todo-title">모의고사 일정</div>
                         <div class="testlist">
                             <ul class='testlist2'>
-                                <li class='testlist3'>&#245; &nbsp;&nbsp; 7월 17일 모의고사</li>
-                                <li class='testlist3'>&#245; &nbsp;&nbsp; 8월 12일 모의고사</li>
-                                <li class='testlist4'>&#245; &nbsp;&nbsp; 9월 23일 모의고사</li>
-                                <li class='testlist3'>&#245; &nbsp;&nbsp; 10월 15일 모의고사</li>
+                                <li class='testlist3'> 7월 17일 모의고사</li>
+                                <li class='testlist3'> 8월 12일 모의고사</li>
+                                <li class='testlist4'>9월 23일 모의고사</li>
+                                <li class='testlist3'> 10월 15일 모의고사</li>
                             </ul>
                         </div>
                         <div class="showList">
@@ -289,7 +301,9 @@
 </body>
 <script type="text/javascript"
     src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a54fecdc7a8b95b1d99956fac243954c&libraries=services"></script>
+
 <script>
+
 
     // 마커를 담을 배열입니다
     var markers = [];
@@ -313,8 +327,9 @@
     searchPlaces();
 
     function experiment() {
-        var keyword = document.getElementById('keyword').value;        
-        document.getElementById('univ').innerText = keyword +" 멘팅 시작";
+
+        var keyword = document.getElementById('keyword').value;
+        document.getElementById('univ').innerText = keyword;
     }
 
     // 키워드 검색을 요청하는 함수입니다

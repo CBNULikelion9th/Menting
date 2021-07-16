@@ -12,13 +12,15 @@
 
 <body>
     <div class="headerlogo">
-        <a href="http://127.0.0.1:8000/"><img src="{% static 'img/멋사로고.png' %}" alt=""></a>
+        <a href="http://127.0.0.1:8000/main/"><img src="{% static 'img/멋사로고.png' %}" alt=""></a>
         {% if user.is_authenticated %}
         <div class="rightnav">
             <a class="nav-right" href="{% url 'logout' %}">로그아웃</a>
         </div>
         <div class="leftnav">
-            <a class="nav-left" href="{% url 'mypage' %}">{{ user.username }}님의 my page</a>
+            
+            <a class="nav-left" href="{% url 'requestslist' %}">{{ user.username }}님의 my page</a>
+            
         </div>
         {% endif %}
     </div>

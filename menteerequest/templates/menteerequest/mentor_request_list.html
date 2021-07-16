@@ -1,6 +1,6 @@
 {% if user.mentor_check == True %}
 
-<h1> {{user.name}} {{user}} 님 안녕하세요(멘토)</h1>
+<h1> {{user.name}} 님 안녕하세요(멘토)</h1>
 
 
 <h2>멘티들의 요청 리스트~</h2>
@@ -22,7 +22,7 @@
         <small>{{post.created_at}}</small>
         <br>
         <a href = '{{post.id}}'><button>상세보기 및 확인</button></a>
-        <a href="http://127.0.0.1:8000/"><button>홈으로</button></a>
+        <a href="http://127.0.0.1:8000/main/"><button>홈으로</button></a>
         <hr>
     {% endfor %}
 

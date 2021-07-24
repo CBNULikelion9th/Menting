@@ -34,11 +34,12 @@
             
             <form action="{% url 'community_recomment' post.id comment.id %}" method="POST">
                 {% csrf_token %}
+              
                 댓글 : {{ recomment_form.content }}
                 <br>
                 <br>
-            <input type="hidden" name="comment" value={{comment.id}}>
             <input type="submit" value="확인" class="btn btn-outline-secondary">
+            </form>
 
             <br><br>
             {% for recomment in comment.recomment_set.all %}

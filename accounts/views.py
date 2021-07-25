@@ -7,7 +7,8 @@ from django.contrib.auth import authenticate, login, logout
 from .forms import SignUpForm, UnivesityForm
 
 
-def main(request):   
+def main(request): 
+
     if request.method == 'GET':
         a = UnivesityForm()
 
@@ -17,10 +18,10 @@ def main(request):
 
             t = a
             
-            return render (request,'main/universityname.html',{'t':t})
+            return render (request,'main/universityname.html',{ 't': t })
         return HttpResponse('fail')
 
-    return render (request, 'accounts/main.html',{'a':a})
+    return render (request, 'accounts/main.html', { 'a': a })
 
 def login_view(request):
     if request.method == 'POST':

@@ -16,7 +16,6 @@ class Comment(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
 class Recomment(models.Model):
-    post = models.ForeignKey(Post, null = True, blank = True, on_delete=models.CASCADE)
     comment = models.ForeignKey(Comment, null = True, blank = True, on_delete=models.CASCADE)
     name2 = models.TextField(null =True)
     content = models.CharField(max_length=100)

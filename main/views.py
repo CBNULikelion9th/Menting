@@ -163,8 +163,8 @@ def notice_delete(request, post_id):
 
 def search_page(request,univers):
     # univer2 = University.objects.get(univer = chr(univers))
-    customer_list = CustomUser.objects.filter( university = univers[40:45] )
-    print(univers[40:45])
+    customer_list = CustomUser.objects.filter( university = univers )
+    
     context = {
         'customer_list': customer_list,
     }

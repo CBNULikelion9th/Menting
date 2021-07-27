@@ -1,7 +1,7 @@
 from django.forms.fields import CharField
 from django.shortcuts import get_object_or_404, render, redirect
 from .forms import PostForm, PostForm2, PostForm3
-from .models import Post, Comment, Post2, Mentor
+from .models import Post, Comment, Post2, Mentor 
 from accounts.forms import SignUpForm
 from accounts.models import CustomUser, University
 
@@ -143,9 +143,9 @@ def notice_delete(request, post_id):
 
 
 
-def search_page(request,univers):
+def search_page(request,univers): #첫 번째 홈 페이지에서 입력한 대학교를 가져오기 위해 univerr값을 가져온다
     # univer2 = University.objects.get(univer = chr(univers))
-    customer_list = CustomUser.objects.filter( university = univers[40:45] )
+    customer_list = CustomUser.objects.filter( university = univers[40:45] )    #주소창에서 대학교명을 입력한 부분을 가져오는 문자열 슬라이싱가져온 정보로 필터링을 하여 리스트 출력 
     print(univers[40:45])
     context = {
         'customer_list': customer_list,
@@ -163,8 +163,8 @@ def search_pages(request):
     return render(request, 'main/search_pages.html', context)
 
 
-def choice_mentor(request,customer_id):
-    mentor = CustomUser.objects.get(id =customer_id)
-    Mentor.username = mentor.username
-    Mentor.email = mentor.email
-    return redirect("requestform")
+def choice_mentor(request,customer_id): # 멘토들중 선택     
+    mentor = CustomUser.objects.get(id =customer_id)    #선택한 id를 통해서 유저 정보를 가져온다
+    Mentor.username = mentor.username   #가져온 유저 정보에서 정보를 requestform에 전달하기 위해 새로운 모델에 정보를 넣는다
+    Mentor.email = mentor.email #이멜일 정보를 가져옴
+    return redirect("requestform") #요청서 페이지로 넘어간다

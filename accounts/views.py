@@ -5,9 +5,9 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate, login, logout
 from .forms import SignUpForm, UnivesityForm
+from django.contrib import messages
 
-
-def main(request):   
+def main(request):   # 첫페이지에서 대학교 검색을 위한 임시 검색 창
     if request.method == 'GET':
         a = UnivesityForm()
 
@@ -22,25 +22,25 @@ def main(request):
 
     return render (request, 'accounts/main.html',{'a':a})
 
-def login_view(request):
+def login_view(request):   #로그인 
     if request.method == 'POST':
         form = AuthenticationForm(request = request, data = request.POST)
         if form.is_valid():
             username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password')
             user = authenticate(request=request, username = username, password = password) #유저가 존재하는지를 확인
-            if user is not None:
+            if user is not None: #유저가 존재할시 로그인 되고 홈으로 들어간다
                 login(request, user)
                 return redirect('home')
 
-        else:
+        else: #아이디와 비밀번호를 입력하지 않으면 로그인 페이지를 돌려줌
             messages.add_message(request, messages.INFO, '아이디와 비밀번호를 확인하세요!')
             return redirect('login')
         
                 
 
 
-    else:
+    else: #로그인 빈폼
         form = AuthenticationForm()
         return render (request, 'accounts/login.html', {'form':form})
 

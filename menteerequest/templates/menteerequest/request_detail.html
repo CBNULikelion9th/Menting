@@ -1,3 +1,11 @@
+{% load static %}   
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/grade.css' %}" />
+    <title>요청 상세보기</title>
+</head>
+
 {% if user == post.mentee or user.username == post.mentor  %}
     <div>  
         {{post.mentee}}님 요청의 멘팅
@@ -16,20 +24,23 @@
         <br>
         <small>{{post.created_at}}</small>
         <br>
-        
+        <hr>
+        <hr>
 
     {% for response in post.responses.all %}
     
         <div class="comment">
             
-            <p>{{ response.author }}의 응답</p>
+            <p>멘토 {{ response.author }}님의 응답</p>
             <p>{{ response.text|linebreaks }}</p>
             <small >{{ response.created_date }} </small>            
             
         </div>
 
         {% if user == post.mentee %}
-            <a href="{% url 'grade_point' %}"><button>완료(평점 남기기)</button></a>
+        <a href="{% url 'requestslist' %}" onclick="window.open('grade/','평점 남기기','width=300, height=300,menubar=no, status=no, toolbar=no');">
+            <button>완료(평점 남기기)</button></a>
+            
         {% endif %}  
         <hr>
     {% empty %}
@@ -44,6 +55,8 @@
 
         <a href='{% url "requestslist"%}'><button>돌아가기</button></a>
     </div>
+
+    
 {%  else  %}
 
     <div>

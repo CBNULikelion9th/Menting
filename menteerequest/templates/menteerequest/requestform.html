@@ -1,5 +1,7 @@
+{% load static %}
+
 <h1>
-        {{Mentor.username}}멘팅 상담서
+        멘팅 상담서
 </h1>
 
 <form action = "{% url 'requestform' %}" method ='POST'>
@@ -19,6 +21,5 @@
         <br>
         상담 내용:{{form.counsel}}
         <br><br>
-    <input type='submit' value ='상담 요청하기'/>
+    <button type='submit' onclick="return confirm(' 확인을 누르면 멘토에게 연락을 보냅니다 연락을 보내시겠습니까? ');" > 멘팅 요청하기 </button>
 </form>
-   

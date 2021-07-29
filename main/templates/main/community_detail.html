@@ -30,8 +30,33 @@
             <p2> 작성자 : {{ comment.name }}</p2>
             <br>
             <p2> 내용 : {{ comment.content }}</p2>
+            <br><br>
+            
+            <form action="{% url 'community_recomment' post.id comment.id %}" method="POST">
+                {% csrf_token %}
+              
+                댓글 : {{ recomment_form.content }}
+                <br>
+                <br>
+            <input type="submit" value="확인" class="btn btn-outline-secondary">
+            </form>
+
+            <br><br>
+            {% for recomment in comment.recomment_set.all %}
+            <p2> -> 작성자 : {{ recomment.name2 }}</p2>
+            <br>
+            <p2> -> 댓글 : {{ recomment.content }} </p2>
+            <br>
+            <p2> {{ recomment.updated_at }} </p2>
+            <br><br>
+            {% if user.is_authenticated and user.username == recomment.name2 %}
+            <button class = "btn btn-outline-secondary" id = "delete_button"><a href="{% url 'recomment_delete' post.id recomment.id %}" class="link-dark">삭제</a></button> 
+            <br><br>
+            {% endif %}
+            {% endfor %}
+
             {% if user.is_authenticated and user.username == comment.name %}
-            <button class = "btn btn-outline-secondary" id = "delete_button"><a href="{% url 'comment_delete' post.id comment.id %}" class="link-dark">삭제</a></button> 
+            <button class = "btn btn-outline-secondary" id = "delete_button"><a href="{% url 'comment_delete' post.id comment.id %}" class="link-dark">댓글삭제</a></button> 
             <button class = "btn btn-outline-secondary" id = "delete_button"><a href="{% url 'comment_edit' post.id comment.id %}" class="link-dark">편집</a></button> 
             {% endif %}
         </div>  

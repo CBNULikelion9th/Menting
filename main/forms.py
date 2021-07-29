@@ -1,6 +1,6 @@
 from django import forms
 from django.db.models import fields
-from .models import Post, Comment, Post2, Mentor
+from .models import Post, Comment, Post2, Mentor, Recomment
 
 class PostForm(forms.ModelForm):
 
@@ -13,6 +13,12 @@ class PostForm2(forms.ModelForm):
     class Meta:
         model = Comment
         fields = ['content']
+
+class RecommentForm(forms.ModelForm):   
+
+    class Meta:
+        model = Recomment
+        fields = ['content','comment']
 
 class PostForm3(forms.ModelForm):
 

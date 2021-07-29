@@ -1,13 +1,14 @@
 #from Menting.accounts.models import CustomUser 오류 나서 주석처리 했습니다 (승하)
 from django.http.response import HttpResponse
-from .models import CustomUser , University
+from .models import CustomUser ,University
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate, login, logout
 from .forms import SignUpForm, UnivesityForm
 from django.contrib import messages
 
-def main(request):   # 첫페이지에서 대학교 검색을 위한 임시 검색 창
+def main(request): 
+
     if request.method == 'GET':
         a = UnivesityForm()
 
@@ -17,10 +18,12 @@ def main(request):   # 첫페이지에서 대학교 검색을 위한 임시 검�
 
             t = a
             
-            return render (request,'main/universityname.html',{'t':t})
+
+            return render (request,'main/universityname.html',{ 't': t })
+
         return HttpResponse('fail')
 
-    return render (request, 'accounts/main.html',{'a':a})
+    return render (request, 'accounts/main.html', { 'a': a })
 
 def login_view(request):   #로그인 
     if request.method == 'POST':
@@ -31,7 +34,7 @@ def login_view(request):   #로그인
             user = authenticate(request=request, username = username, password = password) #유저가 존재하는지를 확인
             if user is not None: #유저가 존재할시 로그인 되고 홈으로 들어간다
                 login(request, user)
-                return redirect('home')
+                return redirect('main')
 
         else: #아이디와 비밀번호를 입력하지 않으면 로그인 페이지를 돌려줌
             messages.add_message(request, messages.INFO, '아이디와 비밀번호를 확인하세요!')
@@ -48,7 +51,7 @@ def login_view(request):   #로그인
 
 def logout_view(request):
     logout(request)
-    return redirect('home')
+    return redirect('main')
 
 
 def signup_view(request):

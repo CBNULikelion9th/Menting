@@ -1,7 +1,7 @@
 from django.forms.fields import CharField
 from django.shortcuts import get_object_or_404, render, redirect
-from .forms import PostForm, PostForm2, PostForm3
-from .models import Post, Comment, Post2, Mentor 
+from .forms import PostForm, PostForm2, PostForm3, RecommentForm
+from .models import Post, Comment, Post2, Mentor, Recomment
 from accounts.forms import SignUpForm
 from accounts.models import CustomUser, University
 
@@ -53,9 +53,11 @@ def community_edit(request, post_id):
 def community_detail(request, post_id):
     post = Post.objects.get(id=post_id)
     post_form2 = PostForm2()
+    recomment_form = RecommentForm()
     context = {
         'post': post,
         'post_form2': post_form2,
+        'recomment_form': recomment_form,
     }
 
     return render(request, 'main/community_detail.html',context)
@@ -75,10 +77,26 @@ def community_comment(request, post_id):
         commentt.save()
     return redirect('community_detail', post_id=post.id)
 
+def community_recomment(request, post_id, comment_id):
+    post = get_object_or_404(Post, id=post_id)
+    recomment = RecommentForm(request.POST)
+    if recomment.is_valid():
+        recomment = recomment.save(commit=False)
+        recomment.comment = get_object_or_404(Comment, pk=comment_id)
+        recomment.name2 = request.user
+        recomment.save()
+    return redirect('community_detail', post_id = post.id)
+
 def comment_delete(request, post_id, comment_id):
     post = get_object_or_404(Post, id=post_id)
     comment = get_object_or_404(Comment, id=comment_id)
     comment.delete()   
+    return redirect('community_detail', post_id = post.id)
+
+def recomment_delete(request, post_id, recomment_id):
+    post = get_object_or_404(Post, id=post_id)
+    recomment = get_object_or_404(Recomment, id=recomment_id)
+    recomment.delete()   
     return redirect('community_detail', post_id = post.id)
 
 def comment_edit(request, post_id, comment_id):
@@ -143,10 +161,9 @@ def notice_delete(request, post_id):
 
 
 
-def search_page(request,univers): #첫 번째 홈 페이지에서 입력한 대학교를 가져오기 위해 univerr값을 가져온다
+def search_page(request,univers):
     # univer2 = University.objects.get(univer = chr(univers))
-    customer_list = CustomUser.objects.filter( university = univers[40:45] )    #주소창에서 대학교명을 입력한 부분을 가져오는 문자열 슬라이싱가져온 정보로 필터링을 하여 리스트 출력 
-    print(univers[40:45])
+    customer_list = CustomUser.objects.filter( university = univers )
     context = {
         'customer_list': customer_list,
     }

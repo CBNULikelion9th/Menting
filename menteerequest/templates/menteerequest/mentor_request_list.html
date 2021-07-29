@@ -22,10 +22,9 @@
         <small>{{post.created_at}}</small>
         <br>
         <a href = '{{post.id}}'><button>상세보기 및 확인</button></a>
-        <a href="http://127.0.0.1:8000/"><button>홈으로</button></a>
         <hr>
     {% endfor %}
-
+    <a href="{% url 'main' %}"><button>홈으로</button></a>
 </div>
 
 {% endif %}

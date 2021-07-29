@@ -176,7 +176,6 @@ def notice_delete(request, post_id):
 def search_page(request,univers):
     # univer2 = University.objects.get(univer = chr(univers))
     customer_list = CustomUser.objects.filter( university = univers )
-    
     context = {
         'customer_list': customer_list,
     }
@@ -215,9 +214,10 @@ def search_pages(request):
 
     return render(request, 'main/search_pages.html', context)
 
-def choice_mentor(request,customer_id):
-    mentor = CustomUser.objects.get(id =customer_id)
-    Mentor.username = mentor.username
-    Mentor.email = mentor.email
-    return redirect("requestform")
+
+def choice_mentor(request,customer_id): # 멘토들중 선택     
+    mentor = CustomUser.objects.get(id =customer_id)    #선택한 id를 통해서 유저 정보를 가져온다
+    Mentor.username = mentor.username   #가져온 유저 정보에서 정보를 requestform에 전달하기 위해 새로운 모델에 정보를 넣는다
+    Mentor.email = mentor.email #이멜일 정보를 가져옴
+    return redirect("requestform") #요청서 페이지로 넘어간다
 

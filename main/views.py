@@ -1,9 +1,11 @@
 from django.forms.fields import CharField
 from django.shortcuts import get_object_or_404, render, redirect
+from django.core.paginator import Paginator
 from .forms import PostForm, PostForm2, PostForm3, RecommentForm
 from .models import Post, Comment, Post2, Mentor, Recomment
 from accounts.forms import SignUpForm
 from accounts.models import CustomUser, University
+
 
 
 def home(request):
@@ -11,8 +13,13 @@ def home(request):
 
 def community_page(request):
     post_list = Post.objects.all()
+
+    page = request.GET.get('page', '1')      #GET 방식으로 정보를 받아오는 데이터
+    paginator = Paginator(post_list, 5)      #Paginator(분할될 객체, 페이지 당 담길 객체수)
+    page_obj = paginator.get_page(page)      #페이지 번호를 받아 해당 페이지를 리턴 get_page 권장
+
     context = {
-        'post_list': post_list,
+        'post_list': page_obj,
     }
 
     return render(request, 'main/community_page.html', context)
@@ -120,8 +127,13 @@ def comment_edit(request, post_id, comment_id):
 
 def notice_page(request):
     post2_list = Post2.objects.all()
+
+    page = request.GET.get('page', '1')      #GET 방식으로 정보를 받아오는 데이터
+    paginator = Paginator(post2_list, 5)      #Paginator(분할될 객체, 페이지 당 담길 객체수)
+    page_obj = paginator.get_page(page)      #페이지 번호를 받아 해당 페이지를 리턴 get_page 권장
+
     context = {
-        'post2_list': post2_list,
+        'post2_list': page_obj,
     }
     return render(request, 'main/notice_page.html', context)
 
@@ -171,10 +183,33 @@ def search_page(request,univers):
     return render(request, 'main/search_page.html', context)
 
 def search_pages(request):
-    
-    customer_list = CustomUser.objects.all()
+    customer_list = CustomUser.objects.filter( mentor_check = True )  #멘토체크받은 리스트만 가져옴
+    search_type = request.GET.get('search_type','')       #검색 타입 받음
+    search_keyword = request.GET.get('search_keyword','')  #검색 키워드 받음
+
+    if search_keyword :   #검색 키워드가 있을 경우
+        if len(search_keyword) > 1 :
+            if search_type == '아이디':
+                customer_list = customer_list.filter(username__icontains = search_keyword)
+            elif search_type == '학교':
+                customer_list = customer_list.filter(university__icontains = search_keyword)
+            elif search_type == '학과':
+                customer_list = customer_list.filter(major__icontains = search_keyword)
+            elif search_type == '학번':
+                customer_list = customer_list.filter(studentnumber__icontains = search_keyword)    
+            elif search_type == '입시전형':
+                customer_list = customer_list.filter(entrancetype__icontains = search_keyword)  
+
+        #2글자 미만일 경우 경고창 띄우기 구현해야함
+
+    page = request.GET.get('page', '1')          #GET 방식으로 정보를 받아오는 데이터
+    paginator = Paginator(customer_list, 5)      #Paginator(분할될 객체, 페이지 당 담길 객체수)
+    page_obj = paginator.get_page(page)          #페이지 번호를 받아 해당 페이지를 리턴 get_page 권장
+
     context = {
-        'customer_list': customer_list,
+        'search_keyword': search_keyword,
+        'customer_list': page_obj,               
+        'search_type' : search_type,
     }
 
     return render(request, 'main/search_pages.html', context)
@@ -185,3 +220,4 @@ def choice_mentor(request,customer_id): # 멘토들중 선택
     Mentor.username = mentor.username   #가져온 유저 정보에서 정보를 requestform에 전달하기 위해 새로운 모델에 정보를 넣는다
     Mentor.email = mentor.email #이멜일 정보를 가져옴
     return redirect("requestform") #요청서 페이지로 넘어간다
+

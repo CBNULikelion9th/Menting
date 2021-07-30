@@ -8,6 +8,7 @@
 <h2>진행중인 멘팅</h2>
 <div>
     {% for post in request_list %}
+
         {% if post.finish_check == 0 %}
             신청자 : {{post.mentee}}
             <br>
@@ -50,6 +51,7 @@
         {% endif %}
     {% endfor %}
     
+
 </div>
 
 {% endif %}

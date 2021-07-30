@@ -44,3 +44,5 @@ class Point(models.Model):
   
 class Mname(models.Model):  
   username = models.CharField(max_length=20,blank = True)
+  post_id = models.CharField(max_length=20,blank = True)
+

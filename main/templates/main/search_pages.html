@@ -14,14 +14,61 @@
     </div>
     <div class ="search_page_detail">
         <form action="" method='GET'>
-            <div>                         
-                <select name="search_type" value="{{ search_type }}">
+            <div>
+                {% if not search_type %} 
+                <select name="search_type" value="{{ search_type }}" >
                     <option value="아이디">아이디</option>
                     <option value="학교">학교</option>
                     <option value="학과">학과</option>
                     <option value="학번">학번</option>
                     <option value="입시전형">입시전형</option>
                 </select>
+                {% endif %}
+                {% if search_type == "아이디" %}                        
+                <select name="search_type" value="{{ search_type }}" >
+                    <option value="아이디" selected>아이디</option>
+                    <option value="학교">학교</option>
+                    <option value="학과">학과</option>
+                    <option value="학번">학번</option>
+                    <option value="입시전형">입시전형</option>
+                </select>
+                {% endif %}
+                {% if search_type == "학교" %}                        
+                <select name="search_type" value="{{ search_type }}" >
+                    <option value="아이디">아이디</option>
+                    <option value="학교" selected>학교</option>
+                    <option value="학과">학과</option>
+                    <option value="학번">학번</option>
+                    <option value="입시전형">입시전형</option>
+                </select>
+                {% endif %}
+                {% if search_type == "학과" %}                        
+                <select name="search_type" value="{{ search_type }}" >
+                    <option value="아이디">아이디</option>
+                    <option value="학교">학교</option>
+                    <option value="학과" selected>학과</option>
+                    <option value="학번">학번</option>
+                    <option value="입시전형">입시전형</option>
+                </select>
+                {% endif %}
+                {% if search_type == "학번" %}                        
+                <select name="search_type" value="{{ search_type }}" >
+                    <option value="아이디">아이디</option>
+                    <option value="학교">학교</option>
+                    <option value="학과">학과</option>
+                    <option value="학번" selected>학번</option>
+                    <option value="입시전형">입시전형</option>
+                </select>
+                {% endif %}
+                {% if search_type == "입시전형" %}                        
+                <select name="search_type" value="{{ search_type }}" >
+                    <option value="아이디">아이디</option>
+                    <option value="학교">학교</option>
+                    <option value="학과">학과</option>
+                    <option value="학번">학번</option>
+                    <option value="입시전형" selected>입시전형</option>
+                </select>
+                {% endif %}
             </div>
 
             <div>

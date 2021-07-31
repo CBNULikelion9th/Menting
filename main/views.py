@@ -9,11 +9,14 @@ from django.contrib import messages
 
 
 
+
 def home(request):
     return render(request, 'accounts/main.html')
 
 def community_page(request):
+
     post_list = Post.objects.all().order_by('-created_at')
+
 
     page = request.GET.get('page', '1')      #GET 방식으로 정보를 받아오는 데이터
     paginator = Paginator(post_list, 5)      #Paginator(분할될 객체, 페이지 당 담길 객체수)
@@ -127,7 +130,9 @@ def comment_edit(request, post_id, comment_id):
     })
 
 def notice_page(request):
+
     post2_list = Post2.objects.all().order_by('-created_at')
+
 
     page = request.GET.get('page', '1')      #GET 방식으로 정보를 받아오는 데이터
     paginator = Paginator(post2_list, 5)      #Paginator(분할될 객체, 페이지 당 담길 객체수)
@@ -184,7 +189,9 @@ def search_page(request,univers):
     return render(request, 'main/search_page.html', context)
 
 def search_pages(request):
+
     customer_list = CustomUser.objects.filter( mentor_check = True)  #멘토체크받은 리스트만 가져옴
+
     search_type = request.GET.get('search_type','')       #검색 타입 받음
     search_keyword = request.GET.get('search_keyword','')  #검색 키워드 받음
 
@@ -199,10 +206,12 @@ def search_pages(request):
             elif search_type == '학번':
                 customer_list = customer_list.filter(studentnumber__icontains = search_keyword)    
             elif search_type == '입시전형':
+
                 customer_list = customer_list.filter(entrancetype__icontains = search_keyword)
         
         else :     #검색 키워드가 한글자인 경우
             messages.warning(request, "검색어는 2글자 이상 입력해주세요.")
+
 
     page = request.GET.get('page', '1')          #GET 방식으로 정보를 받아오는 데이터
     paginator = Paginator(customer_list, 5)      #Paginator(분할될 객체, 페이지 당 담길 객체수)

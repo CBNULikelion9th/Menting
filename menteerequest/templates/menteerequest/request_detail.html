@@ -25,7 +25,7 @@
         <small>{{post.created_at}}</small>
         <br>
         <hr>
-        <hr>
+
 
     {% for response in post.responses.all %}
     
@@ -38,9 +38,10 @@
         </div>
 
         {% if user == post.mentee %}
-        <a href="{% url 'requestslist' %}" onclick="window.open('grade/','평점 남기기','width=300, height=300,menubar=no, status=no, toolbar=no');">
-            <button>완료(평점 남기기)</button></a>
-            
+            {% if post.finish_check == 0 %}
+                <a href="{% url 'requestslist' %}" onclick="window.open('grade/','평점 남기기','width=300, height=300,menubar=no, status=no, toolbar=no');">
+                <button>완료(평점 남기기)</button></a>
+            {% endif %}
         {% endif %}  
         <hr>
     {% empty %}

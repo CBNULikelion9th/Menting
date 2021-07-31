@@ -31,10 +31,21 @@
         </form>
 
         <br>
-        {% if search_keyword %}
+
+        {% if search_keyword and search_keyword|length >= 2 %}   <!-- 2글자 이상만 결과 표시하도록함 -->
         <h5>'{{ search_keyword }}' 검색 결과입니다.</h5>
         <br>
         {% endif %}
+
+        {% if not search_keyword %}   <!-- 검색창이 비어있을 경우 -->
+        <h5>검색어를 입력해주세요.</h5>
+        <br>
+        {% endif %}
+
+        {% for message in messages %}   <!-- 메시지가 있는 경우 표시하도록 함 -->
+        <h5>{{ message }}</h5>
+        <br>
+        {% endfor %}
 
     <table width="85%" border="1">
         <thead class="table-secondary">
@@ -49,7 +60,7 @@
         </thead>
         <tbody>
     
-    {% if customer_list %}
+    {% if customer_list %}     <!-- 선배 목록이 있는 경우 -->
     {% for customer in customer_list %}
     {% if customer.mentor_check == True %}
     <tr>
@@ -71,6 +82,7 @@
     {% endfor %}
     {% endif %}
         </tbody>
+
     </table>
     </div>
 </div>

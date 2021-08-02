@@ -14,3 +14,9 @@ class UnivesityForm(forms.ModelForm):
     class Meta:
         model = University
         fields = ['univer',]
+
+
+class Change_emailForm(forms.ModelForm):
+    class Meta:
+        model = CustomUser
+        fields = ['email']

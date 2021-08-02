@@ -12,9 +12,7 @@
 
 <body>
     <div class="headerlogo">
-
         <a href="{% url 'main' %}"><img src="{% static 'img/멋사로고.png' %}" alt=""></a>
-
         {% if user.is_authenticated %}
         <div class="rightnav">
             <a class="nav-right" href="{% url 'logout' %}">로그아웃</a>

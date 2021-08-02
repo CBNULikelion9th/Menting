@@ -1,0 +1,9 @@
+<h1>
+    이메일 변경
+   </h1>
+   <form method="POST" >
+       {% csrf_token %}
+       {{ form.email }}
+       <button type="submit"  > 이메일 변경 </button>
+   </form>
+   

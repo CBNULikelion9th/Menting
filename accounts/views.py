@@ -11,21 +11,7 @@ from django.urls import reverse_lazy
 
 def main(request): 
 
-    if request.method == 'GET':
-        a = UnivesityForm()
-
-    else:
-        a = UnivesityForm(request.POST)
-        if a.is_valid():
-
-            t = a
-            
-
-            return render (request,'main/universityname.html',{ 't': t })
-
-        return HttpResponse('fail')
-
-    return render (request, 'accounts/main.html', { 'a': a })
+    return render (request, 'accounts/main.html')
 
 def login_view(request):   #로그인 
     if request.method == 'POST':

@@ -1,6 +1,7 @@
 
 
 <h1> {{ user.name }} 님 안녕하세요</h1>
+
         {% if messages %}
         <div style="margin: 0%; color: green;">
             {% for message in messages %}
@@ -8,6 +9,7 @@
             {% endfor %}
         </div>
         {% endif %}
+
 
 <p>
     {% if user.studenttype == True and user.mentor_check == True %}

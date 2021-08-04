@@ -112,7 +112,7 @@ class MyPasswordChangeView(PasswordChangeView):
     success_url=reverse_lazy('mypage')          #변경에 성공시 들어갈 페이지
     template_name='accounts/password_change_form.html'      #변경 페이지
     
-    def form_valid(self, form):                     #변경하고 message를 이용해서 성공여부를 띄우는데 뜨지 않는다
+    def form_valid(self, form):                     #변경하고 message를 이용해서 성공여부를 띄움
         messages.info(self.request, '암호 변경을 완료했습니다.')
         return super().form_valid(form)
     

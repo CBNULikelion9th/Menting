@@ -1,10 +1,10 @@
 #from Menting.accounts.models import CustomUser 오류 나서 주석처리 했습니다 (승하)
 from django.http.response import HttpResponse
-from .models import CustomUser ,University
+from .models import CustomUser 
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate, login, logout
-from .forms import SignUpForm, UnivesityForm, Change_emailForm
+from .forms import SignUpForm, Change_emailForm
 from django.contrib import messages
 from django.contrib.auth.views import  PasswordChangeView
 from django.urls import reverse_lazy

@@ -16,6 +16,14 @@
         </div>
         {% endif %}
 
+        {% if messages %}
+        <div style="margin: 0%; color: green;">
+            {% for message in messages %}
+              {{ message.message }}
+            {% endfor %}
+        </div>
+        {% endif %}
+
 
 <p>
     {% if user.studenttype == True and user.mentor_check == True %}

@@ -4,7 +4,7 @@ from django.core.paginator import Paginator
 from .forms import PostForm, PostForm2, PostForm3, RecommentForm
 from .models import Post, Comment, Post2, Mentor, Recomment
 from accounts.forms import SignUpForm
-from accounts.models import CustomUser, University
+from accounts.models import CustomUser
 from django.contrib import messages
 
 

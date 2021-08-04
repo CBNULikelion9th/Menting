@@ -11,8 +11,8 @@ urlpatterns = [
     path('', views.main, name ='main'),
     path('mypage/change_email/', views.change_email, name = 'change_email'),
     path('password_change/', views.MyPasswordChangeView.as_view(), name='password_change'),
-    path('password_reset/', auth_views.PasswordResetView.as_view(), name="password_reset"),
-    path('password_reset_done/', auth_views.PasswordResetDoneView.as_view(), name="password_reset_done"),
-    path('password_reset_confirm/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(), name="password_reset_confirm"),
-    path('password_reset_complete/', auth_views.PasswordResetCompleteView.as_view(), name="password_reset_complete"),
+    path('password_reset/', views.UserPasswordResetView.as_view(), name="password_reset"),
+    path('password_reset_done/', views.UserPasswordResetDoneView.as_view(), name="password_reset_done"),
+    path('password_reset_confirm/<uidb64>/<token>/', views.UserPasswordResetConfirmView.as_view(), name="password_reset_confirm"),
+    path('password_reset_complete/', views.UserPasswordResetCompleteView.as_view(), name="password_reset_complete"),
 ]

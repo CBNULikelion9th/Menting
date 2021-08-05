@@ -182,8 +182,37 @@ def notice_delete(request, post_id):
 def search_page(request,univers):
     # univer2 = University.objects.get(univer = chr(univers))
     customer_list = CustomUser.objects.filter( university = univers )
+
+    search_type = request.GET.get('search_type','')       #검색 타입 받음
+    search_keyword = request.GET.get('search_keyword','')  #검색 키워드 받음
+    university = univers
+
+    if search_keyword :   #검색 키워드가 있을 경우
+        if len(search_keyword) > 1 :
+            if search_type == '아이디':
+                customer_list = customer_list.filter(username__icontains = search_keyword)
+            elif search_type == '학교':
+                customer_list = customer_list.filter(university__icontains = search_keyword)
+            elif search_type == '학과':
+                customer_list = customer_list.filter(major__icontains = search_keyword)
+            elif search_type == '학번':
+                customer_list = customer_list.filter(studentnumber__icontains = search_keyword)    
+            elif search_type == '입시전형':
+
+                customer_list = customer_list.filter(entrancetype__icontains = search_keyword)
+        
+        else :     #검색 키워드가 한글자인 경우
+            messages.warning(request, "검색어는 2글자 이상 입력해주세요.")
+
+    page = request.GET.get('page', '1')          #GET 방식으로 정보를 받아오는 데이터
+    paginator = Paginator(customer_list, 5)      #Paginator(분할될 객체, 페이지 당 담길 객체수)
+    page_obj = paginator.get_page(page)          #페이지 번호를 받아 해당 페이지를 리턴 get_page 권장
+
     context = {
+        'search_keyword': search_keyword,
         'customer_list': customer_list,
+        'search_type' : search_type,
+        'university' : univers,
     }
 
     return render(request, 'main/search_page.html', context)

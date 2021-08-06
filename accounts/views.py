@@ -1,4 +1,5 @@
 #from Menting.accounts.models import CustomUser 오류 나서 주석처리 했습니다 (승하)
+from django.contrib.auth.hashers import check_password
 from django.http.response import HttpResponse
 from .models import CustomUser 
 from django.shortcuts import render, redirect
@@ -159,3 +160,14 @@ class UserPasswordResetCompleteView(PasswordResetCompleteView):
         context = super().get_context_data(**kwargs)
         context['login_url'] = resolve_url(settings.LOGIN_URL)
         return context
+
+
+def User_delete(request):
+    if request.method == "POST":
+        pw_del = request.POST["pw_del"]
+        user = request.user
+        if check_password(pw_del, user.password):
+            user.delete()
+            return redirect('main')
+
+    return render (request, 'accounts/user_delete.html')

@@ -1,40 +1,44 @@
-#from Menting.accounts.models import CustomUser 오류 나서 주석처리 했습니다 (승하)
+
+from django.contrib.auth.hashers import check_password
 from django.http.response import HttpResponse
-from .models import CustomUser ,University
+from .models import CustomUser 
 from django.shortcuts import render, redirect
-from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate, login, logout
-from .forms import SignUpForm, UnivesityForm, Change_emailForm
+from .forms import SignUpForm, Change_emailForm
 from django.contrib import messages
-from django.contrib.auth.views import  PasswordChangeView
+from django.contrib.auth.views import  PasswordChangeView, PasswordResetView, PasswordResetDoneView, PasswordResetConfirmView, PasswordResetCompleteView
 from django.urls import reverse_lazy
+from django.shortcuts import render, redirect
+from django.contrib import messages
+from django.shortcuts import resolve_url
+from django.conf import settings
+from django.contrib import messages
+from django.contrib.auth import login, authenticate
+from django.http import HttpResponse
+try:
+    from django.utils import simplejson as json
+except ImportError:
+    import json
+from django.http import HttpResponse, HttpResponseRedirect
+from django.views.decorators.http import require_POST
+from django.contrib.auth import (
+    REDIRECT_FIELD_NAME, get_user_model, login as auth_login,
+    logout as auth_logout, update_session_auth_hash,
+)
+from django.contrib.auth.forms import (
+    AuthenticationForm, PasswordChangeForm, PasswordResetForm, SetPasswordForm,
+)
+from django.utils.translation import gettext_lazy as _
+
+UserModel = get_user_model()
+INTERNAL_RESET_URL_TOKEN = 'set-password'
+INTERNAL_RESET_SESSION_TOKEN = '_password_reset_token'
+
 
 def main(request): 
 
-<<<<<<< HEAD
-def main(request): 
+    return render (request, 'accounts/main.html')
 
-=======
->>>>>>> 568aa6b3d58a9247dfb4bf29fe73d78339ebc21f
-    if request.method == 'GET':
-        a = UnivesityForm()
-
-    else:
-        a = UnivesityForm(request.POST)
-        if a.is_valid():
-
-            t = a
-            
-<<<<<<< HEAD
-            return render (request,'main/universityname.html',{ 't': t })
-=======
-
-            return render (request,'main/universityname.html',{ 't': t })
-
->>>>>>> 568aa6b3d58a9247dfb4bf29fe73d78339ebc21f
-        return HttpResponse('fail')
-
-    return render (request, 'accounts/main.html', { 'a': a })
 
 def login_view(request):   #로그인 
     if request.method == 'POST':
@@ -121,7 +125,51 @@ class MyPasswordChangeView(PasswordChangeView):
     success_url=reverse_lazy('mypage')          #변경에 성공시 들어갈 페이지
     template_name='accounts/password_change_form.html'      #변경 페이지
     
-    def form_valid(self, form):                     #변경하고 message를 이용해서 성공여부를 띄우는데 뜨지 않는다
+    def form_valid(self, form):                     #변경하고 message를 이용해서 성공여부를 띄움
         messages.info(self.request, '암호 변경을 완료했습니다.')
         return super().form_valid(form)
     
+
+class UserPasswordResetView(PasswordResetView):
+    template_name = 'accounts/password_reset.html' 
+    success_url = reverse_lazy('password_reset_done')
+    form_class = PasswordResetForm
+    
+    def form_valid(self, form):
+        if CustomUser.objects.filter(email=self.request.POST.get("email")).exists():
+            return super().form_valid(form)
+        else:
+            return render(self.request, 'password_reset_done_fail.html') #email이 존재하지 않을때 
+            
+class UserPasswordResetDoneView(PasswordResetDoneView):
+    template_name = 'accounts/password_reset_done.html' 
+
+
+
+
+class UserPasswordResetConfirmView(PasswordResetConfirmView):
+    form_class = SetPasswordForm
+    success_url=reverse_lazy('password_reset_complete')
+    template_name = 'accounts/password_reset_confirm.html'
+
+    def form_valid(self, form):
+        return super().form_valid(form)
+
+class UserPasswordResetCompleteView(PasswordResetCompleteView):
+    template_name = 'accounts/password_reset_complete.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['login_url'] = resolve_url(settings.LOGIN_URL)
+        return context
+
+
+def User_delete(request):
+    if request.method == "POST":
+        pw_del = request.POST["pw_del"]
+        user = request.user
+        if check_password(pw_del, user.password):
+            user.delete()
+            return redirect('main')
+
+    return render (request, 'accounts/user_delete.html')

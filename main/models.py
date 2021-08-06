@@ -28,7 +28,7 @@ class Post2(models.Model):
     created_at =models.DateTimeField(auto_now_add=True, null = True)
     updated_at = models.DateTimeField(auto_now=True, null = True)
 
-class Mentor(models.Model):
+class Mentor(models.Model):    #선택한 멘토 정보를 요청창에 넘기기위한 새로운 모델
     username = models.CharField(max_length=20)
     email = models.CharField(max_length=20)
 

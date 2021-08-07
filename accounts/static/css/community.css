@@ -16,3 +16,28 @@ a:link{
     height: 230px;
     text-align: center;
 }
+
+.community_new_page {
+    margin: 150px auto;
+    padding-top: 50px;
+    height: 320px;
+    text-align: center;
+}
+
+.commuinty_page_button {
+    margin-top: 50px;
+    margin-left: 50px;
+}
+
+.form-group-row{
+    display: flex;
+}
+
+textarea .form_title{
+    margin-left: 300px;
+    padding-left: 100px;
+}
+
+textarea .form_content{
+    text-align: center;
+}

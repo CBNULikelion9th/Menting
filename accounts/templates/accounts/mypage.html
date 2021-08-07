@@ -11,13 +11,6 @@
   <br>
     <h1> {{ user.name }} 님 안녕하세요</h1>
 
-    {% if messages %}
-    <div style="margin: 0%; color: green;">
-        {% for message in messages %}
-        {{ message.message }}
-        {% endfor %}
-    </div>
-    {% endif %}
 
     {% if messages %}
     <div style="margin: 0%; color: green;">

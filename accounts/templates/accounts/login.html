@@ -31,8 +31,7 @@
     </form>
 
     <a href="{% url 'signup' %}" class="button_signup" style="padding-bottom: 5px;"><span>회원가입하기</span></a>
-    <a href="{% url 'password_reset' %}" class="button_forgot"><span>비밀번호 찾기</span></a>
-    </br>
+    <a href="{% url 'login' %}" class ="button_forgot" onclick="window.open('password_reset/','비밀번호 초기화','width=500, height=500,menubar=no, status=no, toolbar=no');"><span>비밀번호 찾기</span></a>
     <a href="{% url 'main' %}" class="button_forgot"><span>홈으로</span></a>
   </div>
 

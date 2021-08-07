@@ -9,17 +9,14 @@ from django.contrib import messages
 from django.contrib.auth.views import  PasswordChangeView, PasswordResetView, PasswordResetDoneView, PasswordResetConfirmView, PasswordResetCompleteView
 from django.urls import reverse_lazy
 from django.shortcuts import render, redirect
-from django.contrib import messages
 from django.shortcuts import resolve_url
 from django.conf import settings
-from django.contrib import messages
 from django.contrib.auth import login, authenticate
 from django.http import HttpResponse
 try:
     from django.utils import simplejson as json
 except ImportError:
     import json
-from django.http import HttpResponse, HttpResponseRedirect
 from django.views.decorators.http import require_POST
 from django.contrib.auth import (
     REDIRECT_FIELD_NAME, get_user_model, login as auth_login,

@@ -1,5 +1,7 @@
+{% extends 'accounts/base.html' %}
 <!DOCTYPE html>
 {% load static %}
+{% block content %}
 <html>
 
 <head>
@@ -28,13 +30,24 @@
       <input type="submit" id="btn_login" value="로그인">
     </form>
 
-    <a href="{% url 'signup' %}" class="button_signup"><span>회원가입하기</span></a>
+    <a href="{% url 'signup' %}" class="button_signup" style="padding-bottom: 5px;"><span>회원가입하기</span></a>
     <a href="{% url 'password_reset' %}" class="button_forgot"><span>비밀번호 찾기</span></a>
     </br>
     <a href="{% url 'main' %}" class="button_forgot"><span>홈으로</span></a>
   </div>
 
-  
+  <footer>
+    <div class="inner">
+      <div class="info">
+        <span>멋쟁이사자처럼 at 충북대학교 2조팀.</span>
+      </div>
+
+      <p class="copyright">
+        &copy; <span class="this-year"></span> 2021 Menting Project
+      </p>
+    </div>
+  </footer>
 </body>
 
 </html>
+{% endblock content %}

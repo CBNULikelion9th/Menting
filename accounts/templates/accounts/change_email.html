@@ -1,4 +1,11 @@
-<h1>
+{% extends 'accounts/popup_base.html' %}
+{% load static %}
+{% block head_content %}
+이메일 변경하기
+{% endblock head_content %}
+
+{% block content %}
+    <h1>
     이메일 변경
    </h1>
    <form method="POST" >
@@ -6,4 +13,5 @@
        {{ form.email }}
        <button type="submit"  > 이메일 변경 </button>
    </form>
-   
+
+{% endblock content %}

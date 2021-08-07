@@ -1,35 +1,51 @@
-{% extends 'main/community_base.html' %}
+{% extends 'accounts/base.html' %}
+<!DOCTYPE html>
 {% load static %}
 {% block content %}
-<div class="community_page">
-    <div class="community_page_detail">
-            
-                <table class ="table table-hover" width= 82%; border="3">
-                    <thead class="table-secondary">
-                        <th width="10%">번호</th>
-                        <th width="15%">작성자</th>
-                        <th width="25%">제목</th>
-                        <th width="20%">작성시간</th>
-                    </thead>
-                    <tbody>
-                      {% for post in post_list %}
-                      <tr>
-                          <td>{{ post.id }}</td>
-                          <td>{{ post.user }}</td>
-                          <td><a href="{% url 'community_detail' post.id %}" class="link-dark">{{ post.title }}</a></td>
-                          <td>{{ post.created_at }}</td>
-                      </tr>
-                      {% endfor %}
-                    </tbody>
-                </table>
-                <br><br>  
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Community</title>
+    <link href="{% static 'css/common.css' %}" rel="stylesheet">
+    <link href="{% static 'css/community.css' %}" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="community_page">
+        <div class="community_page_detail">
+
+            <table class="table table-hover" width=82%; border="3">
+                <thead class="table-secondary">
+                    <th width="10%">번호</th>
+                    <th width="15%">작성자</th>
+                    <th width="25%">제목</th>
+                    <th width="20%">작성시간</th>
+                </thead>
+                <tbody>
+                    {% for post in post_list %}
+                    <tr>
+                        <td>{{ post.id }}</td>
+                        <td>{{ post.user }}</td>
+                        <td><a href="{% url 'community_detail' post.id %}" class="link-dark">{{ post.title }}</a></td>
+                        <td>{{ post.created_at }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <br><br>
+        </div>
+    </div>
+    <div class="commuinty_page_button">
+        <!-- 새 글쓰기 버튼-->
+        <button class="btn btn-outline-secondary"><a href="{% url 'community_new' %}" class="link-dark">새 글
+                쓰기</a></button>
     </div>
 
-    <div class="commuinty_page_button">    <!-- 새 글쓰기 버튼-->
-        <button class="btn btn-outline-secondary"><a href = "{% url 'community_new' %}" class="link-dark">새 글 쓰기</a></button> 
-    </div>
 
-    
     <!--페이징-->
 
     <ul class="pagination justify-content-center">
@@ -45,7 +61,7 @@
         {% endif %}
         <!-- 페이지리스트 -->
         {% for page_number in post_list.paginator.page_range %}
-        {% if page_number >= post_list.number|add:-2 and page_number <= post_list.number|add:2 %}  <!-- 템플릿 필터 -->
+        {% if page_number >= post_list.number|add:-2 and page_number <= post_list.number|add:2 %} <!-- 템플릿 필터 -->
             {% if page_number == post_list.number %}
             <li class="page-item active" aria-current="page">
                 <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
@@ -55,19 +71,34 @@
                 <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
             </li>
             {% endif %}
-        {% endif %}
-        {% endfor %}
-        <!-- 다음페이지 -->
-        {% if post_list.has_next %}
-        <li class="page-item">
-            <a class="page-link" href="?page={{ post_list.next_page_number }}">다음</a>
-        </li>
-        {% else %}
-        <li class="page-item disabled">
-            <a class="page-link" tabindex="-1" aria-disabled="true" href="#">다음</a>
-        </li>
-        {% endif %}
+            {% endif %}
+            {% endfor %}
+            <!-- 다음페이지 -->
+            {% if post_list.has_next %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ post_list.next_page_number }}">다음</a>
+            </li>
+            {% else %}
+            <li class="page-item disabled">
+                <a class="page-link" tabindex="-1" aria-disabled="true" href="#">다음</a>
+            </li>
+            {% endif %}
     </ul>
 
-</div>
+
+
+    <footer>
+        <div class="inner">
+            <div class="info">
+                <span>멋쟁이사자처럼 at 충북대학교 2조팀.</span>
+            </div>
+
+            <p class="copyright">
+                &copy; <span class="this-year"></span> 2021 Menting Project
+            </p>
+        </div>
+    </footer>
+</body>
+
+</html>
 {% endblock content %}

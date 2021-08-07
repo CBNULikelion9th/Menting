@@ -1,5 +1,14 @@
+* {
+    box-sizing: border-box;
+    font-family: 'helvetica neue', 'Apple SD Gothic Neo', Roboto, Helvetica, Arial, sans-serif;
+}
+
 a:link{
     text-decoration: none;
+}
+
+p, span {
+    font-size: 14px;
 }
 
 

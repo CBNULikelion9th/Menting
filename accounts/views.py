@@ -38,6 +38,7 @@ def main(request):
 
     return render (request, 'accounts/main2.html')
 
+
 def login_view(request):   #로그인 
     if request.method == 'POST':
         form = AuthenticationForm(request = request, data = request.POST)
@@ -170,4 +171,6 @@ def User_delete(request):
             user.delete()
             return redirect('main')
 
+
     return render (request, 'accounts/user_delete.html')
+

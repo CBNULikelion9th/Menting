@@ -25,10 +25,7 @@
             <br><br>
             제목 : {{ form.title }}
             <br><br>
-            <div class="form-group-row">
-                <label for="content">내용 : </label>
-                <textarea class="form_content" name="content" rows="3" cols="150"></textarea>
-            </div>
+            내용 : {{ form.content }}
             <br><br>
             <input type="submit" value="작성" class="btn btn-outline-secondary">
             <button class="btn btn-outline-secondary"><a href="{% url 'community_page' %}"

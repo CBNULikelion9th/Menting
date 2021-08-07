@@ -6,18 +6,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="static/img/패비콘.png" />
+    <link href="{% static 'css/popup_base.css' %}" rel="stylesheet">
+        {% block head_content %}
+        {% endblock head_content %}
   <!--브라우저 스타일 초기화-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css" />
     <!--Google Fonts - 나눔고딕-->
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet" />
-    <title>
-        {% block head_content %}
-        {% endblock head_content %}
-    </title>
+
+    
 </head>
 <body>
-    <img src="/static/img/menting removeback.png" />
+    <center>
+        <img src="/static/img/menting removeback.png" />
+    </center>
+    
     {% block content %}
     {% endblock content %}
 </body>

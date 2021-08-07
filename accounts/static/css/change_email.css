@@ -1,0 +1,15 @@
+.title {
+    font-size: 2em;
+    text-align: center;
+    text-decoration-style: strong;
+}
+
+.explain {
+    text-align: center;
+    color: gray;
+}
+
+.submit {
+    padding-top: 3%;
+    text-align: center;
+}

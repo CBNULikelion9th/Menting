@@ -1,0 +1,177 @@
+{% extends 'accounts/base.html' %}
+<!DOCTYPE html>
+{% load static %}
+{% block content %}
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Menting</title>
+
+  <!--파비콘-->
+  <!--<link rel="shortcut icon" href="favicon.ico" />-->
+  <link rel="icon" href="static/img/패비콘.png" />
+  <!--브라우저 스타일 초기화-->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css" />
+  <!--Google Fonts - 나눔고딕-->
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet" />
+  <!--Google Material Icons-->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+  <link rel="stylesheet" href="{% static 'css/map2.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/main2.css' %}" />
+
+
+  <!--GSAP & ScrollToPlugin-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"
+    integrity="sha512-IQLehpLoVS4fNzl7IfH8Iowfm5+RiMGtHykgZJl9AWMgqx0AmJ6cRWcB+GaGVtIsnC4voMfm8f2vwtY+6oPjpQ=="
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/ScrollToPlugin.min.js"
+    integrity="sha512-nTHzMQK7lwWt8nL4KF6DhwLHluv6dVq/hNnj2PBN0xMl2KaMm1PM02csx57mmToPAodHmPsipoERRNn4pG7f+Q=="
+    crossorigin="anonymous"></script>
+  <!--Swiper-->
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  <!--ScrollMagic-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.8/ScrollMagic.min.js"></script>
+  <!--Lodash-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"
+    integrity="sha512-90vH1Z83AJY9DmlWa8WkjkV79yfS2n2Oxhsi2dZbIv0nC4E6m5AbH8Nh156kkM7JePmqD6tcZsfad1ueoaovww=="
+    crossorigin="anonymous"></script>
+
+  <script defer src="static/js/main2.js"></script>
+</head>
+
+<body>
+
+  <!--HEADER-->
+  
+
+  
+  <!--VISUAL-->
+  <!--PROMOTION-->
+  <section class="notice">
+    <div class="promotion">
+      <div class="swiper-container">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <img src="static/img/슬라이드1.png" style="margin-left:20px;" />
+
+          </div>
+          <div class="swiper-slide">
+            <img src="static/img/슬라이드2.png" style="margin-left:20px;" />
+
+          </div>
+          <div class="swiper-slide">
+            <img src="static/img/슬라이드3.png" />
+
+          </div>
+
+        </div>
+      </div>
+
+      <div class="swiper-pagination"></div>
+
+      <div class="swiper-prev">
+        <span class="material-icons">arrow_back</span>
+      </div>
+      <div class="swiper-next">
+        <span class="material-icons">arrow_forward</span>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!--REWARDS-->
+  <section class="rewards">
+    <div class="bg-left"></div>
+    <div class="bg-right"></div>
+    <div class="inner">
+      <div class="btn-group">
+        <a href="http://127.0.0.1:8000/signup/" ><div class="btn sign-up">회원가입</div></a>
+        <a href="http://127.0.0.1:8000/login/" ><div class="btn sign-in">로그인</div></a>
+        <a href=""><div class="btn gift" style="width: 251px;" >My Page</div></a>
+      </div>
+
+    </div>
+  </section>
+  <section class="pick-your-favorite scroll-spy">
+    <div class="inner">
+
+      <div class="text-group">
+        <h1 class="title back-to-position to-right delay-0">Pick</h1>
+        
+      </div>
+      <div class="text-group">
+        
+        <h2 class="description back-to-position to-right delay-1">Your</h2>
+       
+      </div>
+      <div class="text-group">
+       
+        <h3 class="more back-to-position to-right delay-2">Mentor</h3>
+      </div>
+
+    </div>
+  </section>
+  <!--커뮤니티-->
+  <section class="reserve-store">
+    <div class="inner">
+
+      <div class="medal">
+        <div class="front">
+          <img src="static/img/reserve_store_medal_front2.png" alt="R" width="400px">
+        </div>
+        <div class="back">
+          <img src="static/img/커뮤니티2.png" width="400px">
+          <a href="https://www.google.co.kr/maps/dir//%EC%B6%A9%EC%B2%AD%EB%B6%81%EB%8F%84+%EC%B2%AD%EC%A3%BC%EC%8B%9C+%EC%84%9C%EC%9B%90%EA%B5%AC+%EC%84%B1%ED%99%94.%EA%B0%9C%EC%8B%A0.%EC%A3%BD%EB%A6%BC%EB%8F%99+%EC%B6%A9%EB%8C%80%EB%A1%9C+1+%EC%B6%A9%EB%B6%81%EB%8C%80%ED%95%99%EA%B5%90+%EA%B0%9C%EC%8B%A0%EC%BA%A0%ED%8D%BC%EC%8A%A4/@36.6290439,127.4541514,17z/data=!4m8!4m7!1m0!1m5!1m1!1s0x356528908c783763:0xcaf84252a899a885!2m2!1d127.4563401!2d36.6290439?hl=ko"
+            class="btn">
+            게시판 이동
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+ <!--지도-->
+ <section class="season-product scroll-spy">
+  <div class="inner">
+    <img src="/static/img/학교검색.png" class="product back-to-position to-right delay-0" style="margin-top: 100px;" />
+    <div class="more back-to-position to-left delay-3">
+    </div>
+  </div>
+  <div class= "option mapcon">
+    <form onsubmit="searchPlaces(); experiment(); return false;">
+        <input type="text" placeholder='대학교를 입력하세요. ex) 충북대학교' id="keyword" size="40" class="mapinput">
+        <button type="submit" class="btn mapsearch">검색하기</button>
+    </form>    
+</div>
+</section>
+  
+  <!--FOOTER-->
+  <footer>
+    <div class="inner">
+      <div class="info">
+        <span>멋쟁이사자처럼 at 충북대학교 2조팀.</span>
+      </div>
+
+      <p class="copyright">
+        &copy; <span class="this-year"></span> 2021 Menting Project
+      </p>
+    </div>
+  </footer>
+
+
+  <!--TO TOP BUTTON-->
+  <div id="to-top">
+    <div class="material-icons">arrow_upward</div>
+  </div>
+
+</body>
+
+</html>
+{% endblock content %}

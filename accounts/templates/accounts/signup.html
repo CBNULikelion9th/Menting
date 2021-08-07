@@ -1,5 +1,7 @@
+{% extends 'accounts/base.html' %}
 <!DOCTYPE html>
 {% load static %}
+{% block content %}
 <html>
 
 <head>
@@ -27,27 +29,27 @@
     <form action="{% url 'signup' %}" method="POST">
       {% csrf_token %}
       <div class="signupform">
-        <span>이&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp름&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span>
+        <span>이&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp름&nbsp&nbsp</span>
         {{form.name}}
       </div>
       <br>
       <div class="signupform">
-        <span>이&nbsp&nbsp 메&nbsp&nbsp 일&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span>
+        <span>이&nbsp&nbsp&nbsp&nbsp 메&nbsp&nbsp&nbsp&nbsp 일&nbsp&nbsp</span>
         {{form.email}}
       </div>
       <br>
       <div class="signupform">
-        <span>아 &nbsp&nbsp이&nbsp&nbsp 디&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span>
+        <span>아 &nbsp&nbsp&nbsp&nbsp이&nbsp&nbsp&nbsp&nbsp 디&nbsp&nbsp</span>
         {{form.username}}
       </div>
       <br>
       <div class="signupform">
-        <span>비 &nbsp밀 &nbsp번&nbsp 호&nbsp&nbsp</span>
+        <span>비 &nbsp밀 &nbsp번&nbsp&nbsp 호&nbsp&nbsp</span>
         {{form.password1}}
       </div>
       <br>
       <div class="signupform">
-        <span>비밀번호 확인</span>
+        <span>비밀번호 확인&nbsp&nbsp</span>
         {{form.password2}}
       </div>
       <br>
@@ -57,7 +59,7 @@
       </div>
       <br>
       <details>
-        <summary>멘토 가입 전용</summary>
+        <summary class="cursor">멘토 가입 전용</summary>
         <br><br>
         대학교 : {{form.university}}
         <br><br>
@@ -81,5 +83,17 @@
   
   </div>
 </body>
+<footer>
+    <div class="inner">
+      <div class="info">
+        <span>멋쟁이사자처럼 at 충북대학교 2조팀.</span>
+      </div>
+
+      <p class="copyright">
+        &copy; <span class="this-year"></span> 2021 Menting Project
+      </p>
+    </div>
+  </footer>
 
 </html>
+{% endblock content %}

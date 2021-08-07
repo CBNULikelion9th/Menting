@@ -1,7 +1,7 @@
 .container {
     width: 800px;
-    height: 950px;
-    margin: 60px auto;
+    
+    margin: 170px auto;
     display: flex;
     flex-direction: column;
     align-content: center;
@@ -133,4 +133,7 @@ span{
 }
 .signupform{
     margin:5px auto;
+}
+.cursor{
+    cursor: pointer;
 }

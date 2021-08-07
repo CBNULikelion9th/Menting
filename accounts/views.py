@@ -36,7 +36,7 @@ INTERNAL_RESET_SESSION_TOKEN = '_password_reset_token'
 
 def main(request): 
 
-    return render (request, 'accounts/main.html')
+    return render (request, 'accounts/main2.html')
 
 def login_view(request):   #로그인 
     if request.method == 'POST':
@@ -76,7 +76,7 @@ def signup_view(request):
         
         if form.is_valid():
             user = form.save()
-            return redirect('success')
+            return redirect('main')
 
 
 

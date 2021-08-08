@@ -3,7 +3,8 @@
   <br><br><br>
   <br><br><br>
   <br><br><br>
-  <br><br><br>
+  <br><br><br>  
+  <!-- 위에 base와 겹쳐서 보이지 않는다 그래서 추가 -->
   
     <h1> {{ user.name }} 님 안녕하세요</h1>
 
@@ -17,7 +18,8 @@
     {% endif %}
 
     <p>
-        {% if user.studenttype == True and user.mentor_check == True %}
+        <!-- 멘토 -->
+        {% if user.studenttype == True and user.mentor_check == True %}   멘토
         회원 타입 : 멘토<br>
         아이디 : {{user.username}}<br>
         이메일 : {{user.email}} <a href="{% url 'mypage' %}"
@@ -28,7 +30,8 @@
         입학전형 : {{user.entrancetype}}<br>
         출신 고등학교 : {{user.highschool}}<br>
         {% endif %}
-
+        
+        <!-- 멘토 미인증 -->
         {% if user.studenttype == True and user.mentor_check == False %}
         회원 타입 : 멘토(검토예정)<br>
         아이디 : {{user.username}}<br>
@@ -40,7 +43,8 @@
         입학전형 : {{user.entrancetype}}<br>
         출신 고등학교 : {{user.highschool}}<br>
         {% endif %}
-
+        
+        <!-- 멘티 보여주는 정보량이 가장 적음 -->
         {% if user.studenttype == False and user.mentor_check == False %}
         회원 타입 : 멘티<br>
         아이디 : {{user.username}}<br>
@@ -51,7 +55,7 @@
     </p>
 
     <a href="{% url 'mypage' %}"
-            onclick="window.open('password_change/','비밀번호 변경','width=500, height=500,menubar=no, status=no, toolbar=no');"><button>암호 변경하기</button></a><br>
+            onclick="window.open('password_change/','비밀번호 변경','width=500, height=500,menubar=no, status=no, toolbar=no');"><button>암호 변경하기</button></a>
     <a  href="{% url 'requestslist' %}"><button>멘팅 리스트 보러가기</button></a>
     <a href="{% url 'mypage' %}"
             onclick="window.open('user_delete/','회원 탈퇴','width=500, height=500,menubar=no, status=no, toolbar=no');"><button>회원 탈퇴</button></a><br>

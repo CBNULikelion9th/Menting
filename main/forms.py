@@ -32,6 +32,10 @@ class PostForm3(forms.ModelForm):
     class Meta:
         model = Post2
         fields = ['title','content']
+        widgets = {
+            'title': forms.Textarea(attrs={'rows':1, 'cols':165}),
+            'content': forms.Textarea(attrs={'rows':4, 'cols':165}),
+        }
 
 class MentorForm(forms.ModelForm):
 

@@ -1,17 +1,55 @@
-{% extends 'main/community_base.html' %}
-
+{% extends 'accounts/base.html' %}
+<!DOCTYPE html>
+{% load static %}
 {% block content %}
-<div class="community_new">
-<h1>새 글 작성하기</h1>
-<br>
-<form action="{% url 'notice_new' %}" method="POST">
-    {% csrf_token %}
-    제목 : {{ form.title }}
-    <br><br>
-    내용 : {{ form.content }}
-    <br><br>
-    <input type="submit" value="작성" class="btn btn-outline-secondary">
-    <button class="btn btn-outline-secondary"><a href="{% url 'notice_page' %}" class="link-dark">취소</a></button> 
-</form>
-</div>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Notice</title>
+    <link href="{% static 'css/common.css' %}" rel="stylesheet">
+    <link href="{% static 'css/notice.css' %}" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!--Google Fonts - 나눔고딕-->
+</head>
+
+<body>
+    <div class="community_new_page">
+        <h1>새 글 작성하기</h1>
+        <br>
+        <form action="{% url 'notice_new' %}" method="POST">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">제목 </label>
+                <input class="form-control form-control-sm" type="text" aria-label=".form-control-sm example"
+                    name="title">
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlTextarea1" class="form-label">내용 </label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" name="content" rows="4"></textarea>
+            </div>
+            <br>
+            <div class="button_locate">
+                <input type="submit" value="작성" class="btn btn-outline-secondary btn-sm">
+                <a class="btn btn-outline-secondary btn-sm" href="{% url 'notice_page' %}" role="button">취소</a>
+            </div>
+        </form>
+    </div>
+
+    <footer>
+        <div class="inner">
+            <div class="info">
+                <span>멋쟁이사자처럼 at 충북대학교 2조팀.</span>
+            </div>
+
+            <p class="copyright">
+                &copy; <span class="this-year"></span> 2021 Menting Project
+            </p>
+        </div>
+    </footer>
+</body>
+
+</html>
 {% endblock content %}

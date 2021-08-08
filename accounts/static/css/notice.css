@@ -1,0 +1,85 @@
+body {
+    font-family: 'Nanum Gothic', sans-serif;
+    line-height: 1.4;
+    color: #333;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+a:link{
+    text-decoration: none;
+}
+
+p, span {
+    font-size: 14px;
+}
+
+.notice_page {
+    margin: 168px auto;
+    height: 230px;
+    text-align: center;
+}
+
+.notice_detail{
+    margin: 202px auto;
+}
+
+.notice_page_button{
+    padding-left: 10%;
+}
+
+#notice_button{
+    margin-left: 112px;
+    margin-top: -240px;
+}
+#notice_delete_button{
+    margin-left: 10px;
+    margin-top: -240px;
+}
+
+.post_title{
+    font-size: 30px;
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.post_user{
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+    font-size:15px;
+}   /* 게시글 작성자 */
+
+.post_update{
+    margin-left: 30px;
+    font-size:12px;
+}   /* 게시글 작성시간 */
+
+.post_content{
+    margin-top: 100px;
+    font-size: 30px;
+}
+
+.community_new_page {
+    margin: 150px auto;
+    padding-top: 40px;
+    height: 320px;
+}
+
+.community_new_page h1{
+    padding-left: 10%;
+    font-size: 30px;
+}
+
+.community_new_page h6{
+    padding-left: 10%;
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+
+.button_locate{
+    padding-left: 10%;
+}
+
+.mb-3{
+    padding-left: 10%;
+    padding-right: 10%;
+}

@@ -2,9 +2,8 @@ a:link{
     text-decoration: none;
 }
 
-
 .community_detail {
-    margin: 150px 0px 150px 0px;
+    margin: 150px 0px 100px 0px;
 }
 
 .community_detail h4{
@@ -12,3 +11,67 @@ a:link{
     margin-left: 110px;
 }
 
+.post_title{
+    font-size: 30px;
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.post_user{
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+    font-size:15px;
+}   /* 게시글 작성자 */
+
+.post_update{
+    margin-left: 30px;
+    font-size:12px;
+}   /* 게시글 작성시간 */
+
+.post_content{
+    margin-top: 100px;
+    font-size: 30px;
+}
+
+.form_content{  
+    margin-top: 20px;
+    display: flex;
+} 
+
+.content_form{
+    margin-top: 20px;
+    margin-left: 112px;
+}
+
+.community_end{
+    padding-bottom: 30px;
+    margin-left: 112px;   
+    font-size:25px;
+}
+
+.comment_list{
+    margin-top: 20px;
+    margin-left: 112px;   
+    font-size:25px;
+}
+
+
+.writer{
+    font-size:12px;
+}   /* 댓글, 대댓글 작성자 */
+
+.coment_content{
+    font-size:10px;
+}   /* 댓글 내용 */   
+
+.recoment_content{
+    font-size:10px;
+}   /* 대댓글 내용 */   
+
+.recoment_update{
+    font-size:10px; 
+    opacity: 0.8;   
+}   /* 대댓글 시간 */  
+
+#comment_submit{
+    margin-left: 1166px;
+}

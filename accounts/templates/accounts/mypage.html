@@ -12,6 +12,15 @@
     <h1> {{ user.name }} 님 안녕하세요</h1>
 
 
+<<<<<<< HEAD
+{% if messages %}
+<div style="margin: 0%; color: green;">
+    {% for message in messages %}
+    {{ message.message }}
+    {% endfor %}
+</div>
+{% endif %}
+=======
     {% if messages %}
     <div style="margin: 0%; color: green;">
         {% for message in messages %}
@@ -44,6 +53,7 @@
         입학전형 : {{user.entrancetype}}<br>
         출신 고등학교 : {{user.highschool}}<br>
         {% endif %}
+>>>>>>> dcec74b967a2de8dc57675993fa574f926492a0b
 
         {% if user.studenttype == False and user.mentor_check == False %}
         회원 타입 : 멘티<br>

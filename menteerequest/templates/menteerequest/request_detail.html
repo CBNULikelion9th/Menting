@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="{% static 'css/grade.css' %}" />
     <title>요청 상세보기</title>
 </head>
 
@@ -39,7 +38,7 @@
 
         {% if user == post.mentee %}
             {% if post.finish_check == 0 %}
-                <a href="{% url 'requestslist' %}" onclick="window.open('grade/','평점 남기기','width=300, height=300,menubar=no, status=no, toolbar=no');">
+                <a href="{% url 'requestslist' %}" onclick="window.open('grade/','평점 남기기','width=500, height=500,menubar=no, status=no, toolbar=no');">
                 <button>완료(평점 남기기)</button></a>
             {% endif %}
         {% endif %}  

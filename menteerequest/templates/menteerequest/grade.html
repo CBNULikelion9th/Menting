@@ -1,8 +1,32 @@
-<h1>
- 평점 남기기
-</h1>
-<form method="POST" >
-    {% csrf_token %}
-    {{ form.grade }}
-    <button type="submit"  > 평점 남기기 </button>
-</form>
+{% extends 'accounts/popup_base.html' %}
+{% load static %}
+
+{% block head_content %}
+<link href="{% static 'css/grade.css' %}" rel="stylesheet">
+    <title>
+        평점 남기기
+    </title>
+{% endblock head_content %}
+
+{% block content %}
+<br>
+<br>
+    <p class="title">
+        이번 멘팅의 <span style="color:skyblue">평점</span>을 알려주세요
+    </p>
+<hr>
+    <div class="explain">
+        <li>멘팅을 완료한 후에 평점을 작성해 주세요</li>
+        <li>평점은 한번만 작성 가능합니다</li>
+        <li>평점을 남기면 해당 멘팅은 완료된 멘팅으로 이동합니다</li>
+    </div>
+
+    <div class ="submit">
+        <form method="POST" >
+            {% csrf_token %}
+            {{ form.grade }}
+            <button type="submit"  > 평점 남기기 </button>
+        </form>
+    </div>
+
+{% endblock content %}

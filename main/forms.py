@@ -7,6 +7,10 @@ class PostForm(forms.ModelForm):
     class Meta:
         model = Post
         fields = ['title','content']
+        widgets = {
+            'title': forms.Textarea(attrs={'rows':1, 'cols':165}),
+            'content': forms.Textarea(attrs={'rows':4, 'cols':165}),
+        }
 
 
 

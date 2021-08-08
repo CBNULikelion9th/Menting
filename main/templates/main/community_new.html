@@ -31,7 +31,7 @@
 
             <div class="mb-3">
                 <label for="exampleFormControlTextarea1" class="form-label">내용 </label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" name="content" rows="3"></textarea>
+                <textarea class="form-control" id="exampleFormControlTextarea1" name="content" rows="4"></textarea>
             </div>
 
             <!-- <div class="form-group-row">
@@ -46,12 +46,11 @@
 
             <br>
             <div class="button_locate">
-                <input type="submit" value="작성" class="btn btn-outline-secondary">
-                <button class="btn btn-outline-secondary"><a href="{% url 'community_page' %}"
-                        class="link-dark">취소</a></button>
+                <input type="submit" value="작성" class="btn btn-outline-secondary btn-sm">
+                <a class="btn btn-outline-secondary btn-sm" href="{% url 'community_page' %}" role="button">취소</a>
             </div>
             {%else%}
-            <p>로그인 하셔야 글을 작성 하실 수 있습니다.</p>
+            <h6>로그인 하셔야 글을 작성 하실 수 있습니다.</h6>
             {% endif %}
 
         </form>

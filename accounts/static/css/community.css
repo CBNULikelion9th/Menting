@@ -1,9 +1,9 @@
 body {
     font-family: 'Nanum Gothic', sans-serif;
-    font-size: 16px;
-    font-weight: 400;
     line-height: 1.4;
     color: #333;
+    font-size: 14px;
+    font-weight: 600;
   }
 
 a:link{
@@ -24,7 +24,7 @@ p, span {
 }
 
 .community_page {
-    margin: 150px auto;
+    margin: 152px auto;
     height: 230px;
     text-align: center;
 }
@@ -44,6 +44,24 @@ p, span {
     padding-left: 10%;
     padding-top: 10px;
     padding-bottom: 5px;
+}
+
+.community_edit_page {
+    margin: 150px auto;
+    padding-top: 40px;
+    height: 320px;
+}
+
+.community_edit_page h1{
+    padding-left: 10%;
+    padding-right: 10%;
+    font-size: 30px;
+}
+
+.community_edit_page h6{
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-top: 10px;
 }
 
 .commuinty_page_button {
@@ -76,3 +94,4 @@ textarea .form_title{
 textarea .form_content{
     text-align: center;
 }
+

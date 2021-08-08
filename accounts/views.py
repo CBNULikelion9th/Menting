@@ -6,7 +6,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from .forms import SignUpForm, Change_emailForm
 from django.contrib import messages
-from django.contrib.auth.views import  PasswordChangeView, PasswordResetView, PasswordResetDoneView, PasswordResetConfirmView, PasswordResetCompleteView
+from django.contrib.auth.views import  PasswordChangeView, PasswordChangeDoneView, PasswordResetView, PasswordResetDoneView, PasswordResetConfirmView, PasswordResetCompleteView
 from django.urls import reverse_lazy
 from django.shortcuts import render, redirect
 from django.shortcuts import resolve_url
@@ -118,13 +118,19 @@ def change_email(request):
 
 
 class MyPasswordChangeView(PasswordChangeView):
-    success_url=reverse_lazy('mypage')          #변경에 성공시 들어갈 페이지
+    success_url=reverse_lazy('password_change_done')          #변경에 성공시 들어갈 페이지
     template_name='accounts/password_change_form.html'      #변경 페이지
     
     def form_valid(self, form):                     #변경하고 message를 이용해서 성공여부를 띄움
         messages.info(self.request, '암호 변경을 완료했습니다.')
         return super().form_valid(form)
+
+
+class MyPasswordChangeDoneView(PasswordChangeDoneView):
+    template_name = 'accounts/password_change_done.html'
     
+
+
 
 class UserPasswordResetView(PasswordResetView):
     template_name = 'accounts/password_reset.html' 
@@ -135,7 +141,7 @@ class UserPasswordResetView(PasswordResetView):
         if CustomUser.objects.filter(email=self.request.POST.get("email")).exists():
             return super().form_valid(form)
         else:
-            return render(self.request, 'password_reset_done_fail.html') #email이 존재하지 않을때 
+            return render(self.request, 'accounts/password_reset_done_fail.html') #email이 존재하지 않을때 
             
 class UserPasswordResetDoneView(PasswordResetDoneView):
     template_name = 'accounts/password_reset_done.html' 

@@ -141,7 +141,7 @@ class UserPasswordResetView(PasswordResetView):
         if CustomUser.objects.filter(email=self.request.POST.get("email")).exists():
             return super().form_valid(form)
         else:
-            return render(self.request, 'password_reset_done_fail.html') #email이 존재하지 않을때 
+            return render(self.request, 'accounts/password_reset_done_fail.html') #email이 존재하지 않을때 
             
 class UserPasswordResetDoneView(PasswordResetDoneView):
     template_name = 'accounts/password_reset_done.html' 

@@ -1,9 +1,32 @@
-<h1>
-    이메일 변경
-   </h1>
-   <form method="POST" >
-       {% csrf_token %}
-       {{ form.email }}
-       <button type="submit"  > 이메일 변경 </button>
-   </form>
-   
+{% extends 'accounts/popup_base.html' %}
+{% load static %}
+
+{% block head_content %}
+<link href="{% static 'css/change_email.css' %}" rel="stylesheet">
+<title>
+    이메일 변경하기
+</title>
+{% endblock head_content %}
+
+{% block content %}
+    <p class = "title">
+    멘팅 계정의 이메일을 <br><span style ="color:deepskyblue">변경</span>하시겠습니까?
+    </p>
+    <hr>
+    <div class ="explain">
+        <li>이메일을 비밀번호 찾기에 이용 됩니다.</li>
+        <li>멘토라면 이메일을 통해서 멘팅 요청을 확인 할 수 있습니다.</li>
+        <li>현재 계정에 저장된 이메일은 <span style = "color:black">{{user.email}}</span>입니다</li>
+    </div>
+    
+    
+
+    <div class="submit">
+        <form method="POST" >
+            {% csrf_token %}
+            {{ form.email }}
+            <button type="submit"  > 이메일 변경하기 </button>
+        </form>
+    </div>
+
+{% endblock content %}

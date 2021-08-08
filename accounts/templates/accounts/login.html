@@ -14,7 +14,7 @@
 
 <body>
   <div class="container">
-    <img class="logo" src="{% static 'img/멋사로고.png' %}" alt="logo">
+    <img class="logo" src="{% static 'img/menting removeback.png' %}" alt="logo" width="145" height="72" >
     <form action="{% url 'login' %}" method="POST">
       <span class="error" style="margin: 0%; color: red;">
         {% if messages %}
@@ -31,8 +31,7 @@
     </form>
 
     <a href="{% url 'signup' %}" class="button_signup" style="padding-bottom: 5px;"><span>회원가입하기</span></a>
-    <a href="{% url 'password_reset' %}" class="button_forgot"><span>비밀번호 찾기</span></a>
-    </br>
+    <a href="{% url 'login' %}" class ="button_forgot" onclick="window.open('password_reset/','비밀번호 초기화','width=500, height=500,menubar=no, status=no, toolbar=no');"><span>비밀번호 찾기</span></a>
     <a href="{% url 'main' %}" class="button_forgot"><span>홈으로</span></a>
   </div>
 

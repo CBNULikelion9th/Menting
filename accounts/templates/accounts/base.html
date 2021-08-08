@@ -1,13 +1,14 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>멘팅 Menting</title>
-    <link href="{% static 'css/menubar2.css' %}" rel="stylesheet">
-   <!--파비콘-->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>멘팅 Menting</title>
+  <link href="{% static 'css/menubar2.css' %}" rel="stylesheet">
+  <!--파비콘-->
   <!--<link rel="shortcut icon" href="favicon.ico" />-->
   <link rel="icon" href="static/img/패비콘.png" />
   <!--브라우저 스타일 초기화-->
@@ -17,239 +18,237 @@
   <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet" />
   <!--Google Material Icons-->
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
-        <li class="menu-item2"><a href="notice/" class="menu-link">공지사항</a></li>
-        <li class="menu-item2"><a href="community/" class="menu-link">커뮤니티</a></li>
 
 </head>
 
 
 <body>
-    {% if user.is_authenticated %}
-    <header>
-        <div class="inner">
-    
-          <a href="{% url 'main' %}" class="logo">
-            <img src="/static/img/멋사로고.png" />
-          </a>
+  {% if user.is_authenticated %}
+  <header>
+    <div class="inner">
 
-          <div class="sub-menu">
-            <ul class="menu">
-              <li>
-                <a href="{% url 'logout' %}">Logout</a>
-              </li>
-             
-            </ul>
-    
-          </div>
+      <a href="{% url 'main' %}" class="logo">
+        <img src="/static/img/menting removeback.png" />
+      </a>
 
-          <ul class="main-menu">
-            <li class="item">
-              <div class="item__name">About</div>
-              <div class="item__contents">
-                <div class="contents__menu">
-                  <ul class="inner">
-                    <li>
-                      <a href="">
-                        <h4>Menting 소개</h4>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="">
-                        <h4>홈페이지 사용법</h4>
-                      </a>
-    
-                    </li>
-                    <li>
-                      <a href="">
-                        <h4>새 소식</h4>
-                      </a>
-    
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </li>
-            <li class="item">
-              <div class="item__name">학년 별 공지사항</div>
-              <div class="item__contents">
-                <div class="contents__menu">
-                  <ul class="inner">
-                    <li>
-                      <a href="">
-                        <h4>예비 고1</h4>
-                      </a>
-    
-                    </li>
-                    <li>
-                      <a href="">
-                        <h4>고1</h4>
-                      </a>
-    
-                    </li>
-                    <li>
-                      <a href="">
-                        <h4>고2</h4>
-                      </a>
-    
-                    </li>
-                    <li>
-                      <a href="">
-                        <h4>고3</h4>
-                      </a>
-    
-                    </li>
-                    <li>
-                      <a href="">
-                        <h4>N/수생</h4>
-                      </a>
-    
-                    </li>
-    
-    
-                </div>
-              </div>
-            </li>
-            <li class="item">
-              <div class="item__name">입시 정보</div>
-              <div class="item__contents">
-                <div class="contents__menu">
-                  <ul class="inner">
-                    <li>
-                      <a href="">
-                        <h4>모의고사 일정</h4>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="">
-                        <h4>학생 게시판</h4>
-                      </a>
-    
-                    </li>
-    
-                </div>
-              </div>
-            </li>
-    
-        </div>
-      </header>       
-    {%else%}
-    <header>
-        <div class="inner">
-    
-          <a href="{% url 'main' %}" class="logo cursor" >
-            <img src="/static/img/멋사로고.png" style="margin-top:20px; width:220px" />
-          </a>
-    
-          <div class="sub-menu">
-            <ul class="menu">
-              <li>
-                <a href="http://127.0.0.1:8000/login/">Login</a>
-              </li>
-              <li>
-                <a href="http://127.0.0.1:8000/signup/">Signup</a>
-              </li>
-              <li>
-                <a href="javascript:void(0)">My Page</a>
-              </li>
-            </ul>
-    
+      <div class="sub-menu">
+        <ul class="menu">
+          <li>
+            <a href="{% url 'logout' %}">Logout</a>
+          </li>
+
+        </ul>
+
+      </div>
+
+      <ul class="main-menu">
+        <li class="item">
+          <div class="item__name">About</div>
+          <div class="item__contents">
+            <div class="contents__menu">
+              <ul class="inner">
+                <li>
+                  <a href="">
+                    <h4>Menting 소개</h4>
+                  </a>
+                </li>
+                <li>
+                  <a href="">
+                    <h4>홈페이지 사용법</h4>
+                  </a>
+
+                </li>
+                <li>
+                  <a href="{% url 'notice_page' %}">
+                    <h4>새 소식</h4>
+                  </a>
+
+                </li>
+              </ul>
+            </div>
           </div>
-    
-          <ul class="main-menu">
-            <li class="item">
-              <div class="item__name">About</div>
-              <div class="item__contents">
-                <div class="contents__menu">
-                  <ul class="inner">
-                    <li>
-                      <a href="">
-                        <h4>Menting 소개</h4>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="">
-                        <h4>홈페이지 사용법</h4>
-                      </a>
-    
-                    </li>
-                    <li>
-                      <a href="">
-                        <h4>새 소식</h4>
-                      </a>
-    
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </li>
-            <li class="item">
-              <div class="item__name">학년 별 공지사항</div>
-              <div class="item__contents">
-                <div class="contents__menu">
-                  <ul class="inner">
-                    <li>
-                      <a href="">
-                        <h4>예비 고1</h4>
-                      </a>
-    
-                    </li>
-                    <li>
-                      <a href="">
-                        <h4>고1</h4>
-                      </a>
-    
-                    </li>
-                    <li>
-                      <a href="">
-                        <h4>고2</h4>
-                      </a>
-    
-                    </li>
-                    <li>
-                      <a href="">
-                        <h4>고3</h4>
-                      </a>
-    
-                    </li>
-                    <li>
-                      <a href="">
-                        <h4>N/수생</h4>
-                      </a>
-    
-                    </li>
-    
-    
-                </div>
-              </div>
-            </li>
-            <li class="item">
-              <div class="item__name">입시 정보</div>
-              <div class="item__contents">
-                <div class="contents__menu">
-                  <ul class="inner">
-                    <li>
-                      <a href="">
-                        <h4>모의고사 일정</h4>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="">
-                        <h4>학생 게시판</h4>
-                      </a>
-    
-                    </li>
-    
-                </div>
-              </div>
-            </li>
-    
-        </div>
-      </header>       
-    {% endif %}
-    <!--HEADER-->
-    
-    {% block content %}
-    {% endblock content %}
-    
-</body>
+        </li>
+        <li class="item">
+          <div class="item__name">학년 별 공지사항</div>
+          <div class="item__contents">
+            <div class="contents__menu">
+              <ul class="inner">
+                <li>
+                  <a href="">
+                    <h4>예비 고1</h4>
+                  </a>
+
+                </li>
+                <li>
+                  <a href="">
+                    <h4>고1</h4>
+                  </a>
+
+                </li>
+                <li>
+                  <a href="">
+                    <h4>고2</h4>
+                  </a>
+
+                </li>
+                <li>
+                  <a href="">
+                    <h4>고3</h4>
+                  </a>
+
+                </li>
+                <li>
+                  <a href="">
+                    <h4>N/수생</h4>
+                  </a>
+
+                </li>
+
+
+            </div>
+          </div>
+        </li>
+        <li class="item">
+          <div class="item__name">입시 정보</div>
+          <div class="item__contents">
+            <div class="contents__menu">
+              <ul class="inner">
+                <li>
+                  <a href="">
+                    <h4>모의고사 일정</h4>
+                  </a>
+                </li>
+                <li>
+                  <a href="{% url 'community_page' %}">
+                    <h4>학생 게시판</h4>
+                  </a>
+
+                </li>
+
+            </div>
+          </div>
+        </li>
+
+    </div>
+  </header>
+  {%else%}
+  <header>
+    <div class="inner">
+
+      <a href="{% url 'main' %}" class="logo cursor">
+        <img src="/static/img/menting removeback.png" />
+      </a>
+
+      <div class="sub-menu">
+        <ul class="menu">
+          <li>
+            <a href="http://127.0.0.1:8000/login/">Login</a>
+          </li>
+          <li>
+            <a href="http://127.0.0.1:8000/signup/">Signup</a>
+          </li>
+          <li>
+            <a href="javascript:void(0)">My Page</a>
+          </li>
+        </ul>
+
+      </div>
+
+      <ul class="main-menu">
+        <li class="item">
+          <div class="item__name">About</div>
+          <div class="item__contents">
+            <div class="contents__menu">
+              <ul class="inner">
+                <li>
+                  <a href="">
+                    <h4>Menting 소개</h4>
+                  </a>
+                </li>
+                <li>
+                  <a href="">
+                    <h4>홈페이지 사용법</h4>
+                  </a>
+
+                </li>
+                <li>
+                  <a href="{% url 'notice_page' %}">
+                    <h4>새 소식</h4>
+                  </a>
+
+                </li>
+              </ul>
+            </div>
+          </div>
+        </li>
+        <li class="item">
+          <div class="item__name">학년 별 공지사항</div>
+          <div class="item__contents">
+            <div class="contents__menu">
+              <ul class="inner">
+                <li>
+                  <a href="">
+                    <h4>예비 고1</h4>
+                  </a>
+
+                </li>
+                <li>
+                  <a href="">
+                    <h4>고1</h4>
+                  </a>
+
+                </li>
+                <li>
+                  <a href="">
+                    <h4>고2</h4>
+                  </a>
+
+                </li>
+                <li>
+                  <a href="">
+                    <h4>고3</h4>
+                  </a>
+
+                </li>
+                <li>
+                  <a href="">
+                    <h4>N/수생</h4>
+                  </a>
+
+                </li>
+
+
+            </div>
+          </div>
+        </li>
+        <li class="item">
+          <div class="item__name">입시 정보</div>
+          <div class="item__contents">
+            <div class="contents__menu">
+              <ul class="inner">
+                <li>
+                  <a href="">
+                    <h4>모의고사 일정</h4>
+                  </a>
+                </li>
+                <li>
+                  <a href="{% url 'community_page' %}">
+                    <h4>학생 게시판</h4>
+                  </a>
+
+                </li>
+
+            </div>
+          </div>
+        </li>
+
+    </div>
+  </header>
+  {% endif %}
+
+
+  {% block content %}
+  {% endblock content %}
+
+
 </html>

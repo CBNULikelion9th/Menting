@@ -15,96 +15,104 @@
 </head>
 
 <body>
+
     <div class="community_detail">
         <br>
-        <h1>제목 : {{ post.title }}</h1>
-        <br>
-        <p>작성자 : {{ post.user }}</p>
-        <p>{{ post.content }}</p>
-        <small> 작성시간 : {{ post.updated_at }}</small>
-
-
-
-        {% if user.is_authenticated == True %}
-        <form action="{% url 'community_comment' post.id %}" method="POST">
-            <br>
-            {% csrf_token %}
-            <div class="form_community_detail">
-                <textarea class="form-content" name="content" rows="2" cols="100"></textarea>
-            </div>
-            <br>
-            <br>
-            <input type="submit" value="작성" class="btn btn-outline-secondary">
-            <button class="btn btn-outline-secondary"><a href="{% url 'community_detail' post.id %}"
-                    class="link-dark">취소</a></button>
-        </form>
-        {% endif %}
-
-        <br><br>
-        <h4>댓글 목록</h4>
-        <br>
-        {% for comment in post.comment_set.all %}
         <div class="container">
             <div class="card">
                 <div class="card-body">
-                    <p2> 작성자 : {{ comment.name }}</p2>
+                    <span class="post_title">제목 : {{ post.title }}</span>
+                    <span class="post_user">작성자 : {{ post.user }}<span class="post_update">작성시간 :
+                            {{post.updated_at}}</span></span>
                     <br>
-                    <p2> 내용 : {{ comment.content }}</p2>
-                    <br>
-
-                    <form action="{% url 'community_recomment' post.id comment.id %}" method="POST">
+                    <span class="post_content">{{ post.content }}</span>
+                    <!-- {% if user.is_authenticated == True %}
+                    <form action="{% url 'community_comment' post.id %}" method="POST">
                         {% csrf_token %}
-                        {% if user.is_authenticated == True %}
-                        댓글 : {{ recomment_form.content }}
-
-                        <br><br>
-                        <input type="submit" value="확인" class="btn btn-outline-secondary">
-                    </form>
-                    {% endif %}
-
-                    <br>
-                    {% for recomment in comment.recomment_set.all %}
-                    <p2> -> 작성자 : {{ recomment.name2 }}</p2>
-                    <br>
-                    <p2> -> 대댓글 : {{ recomment.content }} </p2>
-                    <br>
-                    <p2> {{ recomment.updated_at }} </p2>
-                    <br><br>
-                    {% if user.is_authenticated and user.username == recomment.name2 %}
-                    <button class="btn btn-outline-secondary" id="delete_button"><a
-                            href="{% url 'recomment_delete' post.id recomment.id %}" class="link-dark">삭제</a></button>
-                    <br><br>
-                    {% endif %}
-                    {% endfor %}
-
-                    {% if user.is_authenticated and user.username == comment.name %}
-                    <button class="btn btn-outline-secondary" id="delete_button"><a
-                            href="{% url 'comment_delete' post.id comment.id %}" class="link-dark">댓글삭제</a></button>
-                    <button class="btn btn-outline-secondary" id="delete_button"><a
-                            href="{% url 'comment_edit' post.id comment.id %}" class="link-dark">편집</a></button>
-                    {% endif %}
+                        <div class="form_community_detail"></div>
+                        <textarea class="form-content" name="content" rows="2" cols="100"></textarea>
+                        <input type="submit" value="작성" class="btn btn-outline-secondary btn-sm"> -->
+                    <!-- <button class="btn btn-outline-secondary btn-sm"><a href="{% url 'community_detail' post.id %}"
+                    class="link-dark">취소</a></button> -->
                 </div>
+                <!-- </form>
+                {% endif %} -->
             </div>
         </div>
-        {% endfor %}
+        {% if user.is_authenticated == True %}
+        <form action="{% url 'community_comment' post.id %}" method="POST" class="content_form">
+            {% csrf_token %}
+            <div class="form_community_detail"></div>
+            <textarea class="form-content" name="content" rows="2" cols="177"></textarea>
+            <br>
+            <input type="submit" value="작성" class="btn btn-outline-secondary btn-sm" id="comment_submit">
+        </form>
+        {% endif %}
+    </div>
+    <br><br>
+    <span class="comment_list">댓글 목록</span>
+    <br><br>
+    {% for comment in post.comment_set.all %}
+    <div class="container">
+        <div class="card">
+            <div class="card-body">
+                <p2 class="writer"> {{ comment.name }}</p2>
+                <br>
+                <p2 class="coment_content"> {{ comment.content }}</p2>
+                <br>
+
+                <form action="{% url 'community_recomment' post.id comment.id %}" method="POST">
+                    {% csrf_token %}
+                    {% if user.is_authenticated == True %}
+                    {{ recomment_form.content }}
+                    <input type="submit" value="작성" class="btn btn-outline-secondary btn-sm">
+                </form>
+                {% endif %}
+
+                <br>
+                {% for recomment in comment.recomment_set.all %}
+                <p2 class="writer"> {{ recomment.name2 }}</p2>
+                <br>
+                <p2 class="recoment_content"> {{ recomment.content }} </p2>
+                <br>
+                <p2 class="recoment_update"> {{ recomment.updated_at }} </p2>
+
+                {% if user.is_authenticated and user.username == recomment.name2 %}
+                <button class="btn btn-outline-secondary btn-sm" id="delete_button"><a
+                        href="{% url 'recomment_delete' post.id recomment.id %}" class="link-dark">삭제</a></button>
+                <hr>
+                <br><br>
+                {% endif %}
+                {% endfor %}
+
+                {% if user.is_authenticated and user.username == comment.name %}
+                <button class="btn btn-outline-secondary btn-sm" id="delete_button"><a
+                        href="{% url 'comment_delete' post.id comment.id %}" class="link-dark">댓글삭제</a></button>
+                <button class="btn btn-outline-secondary btn-sm" id="delete_button"><a
+                        href="{% url 'comment_edit' post.id comment.id %}" class="link-dark">편집</a></button>
+                {% endif %}
+                <br>
+            </div>
+        </div>
+        <br>
+    </div>
+    {% endfor %}
     </div>
 
     <div class="community_end">
         <br>
-        <button class="btn btn-outline-secondary"><a href="{% url 'community_page' %}" class="link-dark">목록</a></button>
+        <button class="btn btn-outline-secondary btn-sm"><a href="{% url 'community_page' %}"
+                class="link-dark">목록</a></button>
         {% if user.is_authenticated and user == post.user %}
-        <button class="btn btn-outline-secondary"><a href="{% url 'community_edit' post.id %}"
+        <button class="btn btn-outline-secondary btn-sm"><a href="{% url 'community_edit' post.id %}"
                 class="link-dark">편집</a></button>
-        <button class="btn btn-outline-secondary"><a href="{% url 'community_delete' post.id %}"
-                class="link-dark">삭제</a></button>
+        <button class="btn btn-outline-secondary btn-sm"><a href="{% url 'community_delete' post.id %}"
+                class="link-dark">게시글
+                삭제</a></button>
         <br><br><br>
         {% endif %}
 
     </div>
-
-
-
-
 
     <footer>
         <div class="inner">

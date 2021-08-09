@@ -29,6 +29,11 @@ p, span {
     text-align: center;
 }
 
+.community_page_detail{
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
 .community_new_page {
     margin: 150px auto;
     padding-top: 40px;

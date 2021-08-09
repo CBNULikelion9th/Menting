@@ -62,7 +62,6 @@
                 <br>
 
                 <form action="{% url 'community_recomment' post.id comment.id %}" method="POST" class="commentform">
-
                     {% csrf_token %}
                     {% if user.is_authenticated == True %}
                     {{ recomment_form.content }}
@@ -72,7 +71,6 @@
 
                 <br>
                 {% for recomment in comment.recomment_set.all %}
-
                 <p2 class="writer2"> ┖> {{ recomment.name2 }}</p2>
 
                 <br>
@@ -104,7 +102,6 @@
 
     <div class="community_end">
         <br>
-
         <button class="btn btn-outline-secondary btn-sm"><a href="{% url 'community_page' %}" class="link-dark">게시글
                 목록</a></button>
         {% if user.is_authenticated and user == post.user %}

@@ -56,18 +56,32 @@ a:link{
 
 
 .writer{
+    margin-left: 10px;
     font-size:12px;
-}   /* 댓글, 대댓글 작성자 */
+}   /* 댓글 작성자 */
 
 .coment_content{
+    margin-left: 10px;
     font-size:10px;
 }   /* 댓글 내용 */   
 
+.commentform{
+    margin-left: 10px;    
+}
+
+.writer2{
+    margin-left: 30px;
+    font-size:12px;
+}   /*대댓글 작성자 */
+
+
 .recoment_content{
+    margin-left: 50px;
     font-size:10px;
 }   /* 대댓글 내용 */   
 
 .recoment_update{
+    margin-left: 50px;
     font-size:10px; 
     opacity: 0.8;   
 }   /* 대댓글 시간 */  

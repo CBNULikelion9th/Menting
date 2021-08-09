@@ -24,6 +24,11 @@ p, span {
     margin: 202px auto;
 }
 
+.notice_page_detail{
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
 .notice_page_button{
     padding-left: 10%;
 }

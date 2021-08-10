@@ -156,11 +156,11 @@
   </div>
 
   <div class= "option mapcon">
-    <form onsubmit="searchPlaces(); experiment(); return false;">
+    <form onsubmit="searchPlaces(); return false;">
         <input type="text" placeholder='대학교를 입력하세요. ex) 충북대학교' id="keyword" size="40" class="mapinput">
         <button type="submit" class="btn mapsearch">검색하기</button>
     </form>    
-</div>
+  </div>
 </section>
   
   <!--FOOTER-->
@@ -183,7 +183,6 @@
   </div>
 </body>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a54fecdc7a8b95b1d99956fac243954c&libraries=services"></script>
-
 <script>
     // 마커를 담을 배열입니다
     var markers = [];

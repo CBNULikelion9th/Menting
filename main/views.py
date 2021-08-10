@@ -11,7 +11,7 @@ from django.contrib import messages
 
 
 def home(request):
-    return render(request, 'accounts/main.html')
+    return render(request, 'accounts/main2.html')
 
 def community_page(request):
 

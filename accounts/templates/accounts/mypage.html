@@ -19,7 +19,7 @@
 
     <p>
         <!-- 멘토 -->
-        {% if user.studenttype == True and user.mentor_check == True %}   멘토
+        {% if user.studenttype == True and user.mentor_check == True %}
         회원 타입 : 멘토<br>
         아이디 : {{user.username}}<br>
         이메일 : {{user.email}} <a href="{% url 'mypage' %}"

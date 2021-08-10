@@ -17,20 +17,12 @@
             <form action = "{% url 'requestform' %}" method ='POST' class = "submit">
                     
                 {% csrf_token %}
-                    고등학교 : {{form.mentee_highschool}}
-                    <br>
-                    <br>
-                    학년 선택 {{form.grade}}
-                    <br>
-                    <br>
-                    원하는 입시 전형 : {{form.mentee_entrancetype}}
-                    <br>
-                    <br>
-                    원하는 학과 : {{form.mentee_major}} 
-                    <br>
-                    <br>
-                    상담 내용:{{form.counsel}}
-                    <br><br>
+                    <p>고등학교 : {{form.mentee_highschool}}</p>
+                    <p>학년 선택 {{form.grade}}</p>
+                    <p>원하는 입시 전형 : {{form.mentee_entrancetype}}</p>
+                    <p>원하는 학과 : {{form.mentee_major}}</p>
+                    <p >상담 내용을 입력해 주세요.</p>
+                    <p >{{form.counsel}}</p>
                 <button type='submit' onclick="return confirm(' 확인을 누르면 멘토에게 연락을 보냅니다 연락을 보내시겠습니까? ');" > 멘팅 신청하기 </button>
             </form>
         {% endif %}

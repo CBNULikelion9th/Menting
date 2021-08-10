@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="static/img/패비콘.png" />
+    <link rel="stylesheet" href="{% static 'css/requestform.css' %}" />
+  <!--브라우저 스타일 초기화-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css" />
+    <!--Google Fonts - 나눔고딕-->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet" />
+    <title>
+        멘팅 신청서
+    </title>
+
+    
+</head>
+<body>
+
+    <header>
+        <center>
+            <img src="/static/img/menting removeback.png"  class = "logo"/>
+        </center>
+    </header>
+    <br><br>
+    {% block content %}
+    {% endblock content %}
+</body>
+<footer>
+    <p class= "info" >멋쟁이사자처럼 at 충북대학교 2조팀.</p>
+    <p class="copyright">
+        &copy; <span class="this-year"></span> 2021 Menting Project
+      </p>
+</footer>
+
+</html>

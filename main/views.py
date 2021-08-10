@@ -11,7 +11,7 @@ from django.contrib import messages
 
 
 def home(request):
-    return render(request, 'accounts/main.html')
+    return render(request, 'accounts/main2.html')
 
 def community_page(request):
 
@@ -182,6 +182,7 @@ def notice_delete(request, post_id):
 def search_page(request,univers):
     # univer2 = University.objects.get(univer = chr(univers))
     customer_list = CustomUser.objects.filter( university = univers )
+
 
     search_type = request.GET.get('search_type','')       #검색 타입 받음
     search_keyword = request.GET.get('search_keyword','')  #검색 키워드 받음

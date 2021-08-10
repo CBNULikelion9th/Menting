@@ -128,7 +128,7 @@
 
 <body>
     <div class="headerlogo">
-        <a href="http://127.0.0.1:8000/main/"><img src="{% static 'img/멋사로고.png' %}" alt=""></a>
+        <a href="main/"><img src="{% static 'img/멋사로고.png' %}" alt=""></a>
         {% if user.is_authenticated %}
         <div class="rightnav">
             <a class="nav-right" href="{% url 'logout' %}">로그아웃</a>
@@ -143,8 +143,8 @@
     <ul class="menu">
 
         <li class="menu-item2"><a href="{% url 'search_pages' %}" class="menu-link">선배찾기</a></li>
-        <li class="menu-item2"><a href="http://127.0.0.1:8000/notice/" class="menu-link">공지사항</a></li>
-        <li class="menu-item2"><a href="http://127.0.0.1:8000/community/" class="menu-link">커뮤니티</a></li>
+        <li class="menu-item2"><a href="notice/" class="menu-link">공지사항</a></li>
+        <li class="menu-item2"><a href="community/" class="menu-link">커뮤니티</a></li>
 
     </ul>
     {%else%}
@@ -170,25 +170,19 @@
     <a href="main/notice/"><button class="btn btn-outline-primary" type="button">공지사항</button></a>
     <a href="main/community/"><button class="btn btn-outline-primary" type="button">커뮤니티</button></a>
     </div> -->
-    <div class = "option" >
-              <!-- <form method = "POST">
+
+
+    <!-- <div class = "option" >
+        <form method = "POST">
             {% csrf_token %}
             멘팅을 할 대학교를 입력해주세요:{{a.univer}}
             <button type = 'submit'> 검색</button>
         </form>
-    </div>
+    </div> -->
 
-    <div class= "option">
-        
-        <form onsubmit="searchPlaces(); experiment(); return false;">
-            <input type="text" placeholder='대학교를 입력하세요. ex) 충북대학교' id="keyword" size="40">
-            <button type="submit">검색하기</button> 
-
-
-        </div> -->
                 <div class= "option">
        
-            <form method="GET" onsubmit=" searchPlaces();  return false;">
+            <form  onsubmit=" searchPlaces();  return false;">
                 <input type="text" placeholder='대학교를 입력하세요. ex) 충북대학교' id="keyword"  size="40"> 
                 <button type="submit">검색하기</button>
 
@@ -214,6 +208,7 @@
             <div id="pagination"></div>
 
             <a href="{% url 'search_pages' %}" class="menu-link">
+            
                 <p id="univ"></p>
             </a>
             <div id="pagination"></div> 
@@ -340,7 +335,7 @@
 
     // 키워드 검색을 요청하는 함수입니다
 
-        function searchPlaces() {
+    function searchPlaces() {
 
         var keyword = document.getElementById('keyword').value;
         // 장소검색 객체를 통해 키워드로 장소검색을 요청합니다
@@ -426,7 +421,7 @@
     function getListItem(index, places) {
         var unili = document.getElementById('keyword').value
         console.log(unili);
-        var el = document.createElement('li'),
+        var el = document.createElement('li'), 
             itemStr = '<span class="markerbg marker_' + (index + 1) + '"></span>' +
                 '<div class="info">' +
                 '   <h5>' + places.place_name + '</h5>'+

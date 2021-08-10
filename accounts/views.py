@@ -1,4 +1,4 @@
-#from Menting.accounts.models import CustomUser 오류 나서 주석처리 했습니다 (승하)
+
 from django.contrib.auth.hashers import check_password
 from django.http.response import HttpResponse
 from .models import CustomUser 
@@ -30,6 +30,7 @@ from django.utils.translation import gettext_lazy as _
 UserModel = get_user_model()
 INTERNAL_RESET_URL_TOKEN = 'set-password'
 INTERNAL_RESET_SESSION_TOKEN = '_password_reset_token'
+
 
 def main(request): 
 

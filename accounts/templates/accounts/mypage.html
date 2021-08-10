@@ -22,7 +22,7 @@
 
         <!-- 멘토 -->
         {% if user.studenttype == True and user.mentor_check == True %}
-        <div class ="information">
+        <div class ="information" style="font-size:0.8rem;">
             <p>회원 타입 : <span style="color:gray">멘토</span></p><br>
             <p>아이디 : {{user.username}}</p><br>
             <p>이메일 : {{user.email}}</p> <br>
@@ -32,11 +32,39 @@
             <p>출신 고등학교 : {{user.highschool}}</p><br>
             <p>멘팅 평점 : {{user.avg}} 점</p><br>
         </div>
+        <div class="js-todo todo">
+          <div class="todo-container-wrapper">
+            <div class="js-todoContainer todo-container">
+              <div class="js-todoHeader todo-header">
+                <div class="js-tab-list tab-list tab_active" data-tabnum="0">
+                  <a href="#">Approved</a>
+                </div>
+                <div class="js-tab-list tab-list" data-tabnum="1">
+                  <a href="#">Rejected</a>
+                </div>
+              </div>
+    
+              <div class="js-todoContent todo-content">
+                <ul id="todo-list" class="todoList"></ul>
+                <ul id="done-list" class="todoList"></ul>
+              </div>
+    
+              <div class="js-todoInput todo-input">
+                <form id="inputForm">
+                  <input type="text" id="inputTodo" placeholder="Note mentor you want." 
+                  autocomplete="off"/>
+                </form>
+              </div>
+            </div>
+            <div class="nipple"></div>
+          </div>
+          <div class="btn-group" style="margin-left:130px;"><div class="btn sign-up"><h3 class="js-todo-h3 todo-h3">Memo</h3></div></div>
+        </div>
         {% endif %}
         
         <!-- 멘토 미인증 -->
         {% if user.studenttype == True and user.mentor_check == False %}
-        <div class ="information">
+        <div class ="information" style="font-size:0.8rem;">
             <p>회원 타입 : <span style="color:gray">멘토(검토예정)</span></p><br>
             <p>아이디 : {{user.username}}</p><br>
             <p>이메일 : {{user.email}}</p> <br>
@@ -45,16 +73,45 @@
             <p>입학전형 : {{user.entrancetype}}</p><br>
             <p>출신 고등학교 : {{user.highschool}}</p><br>
         </div>
+        
+        <div class="js-todo todo">
+          <div class="todo-container-wrapper">
+            <div class="js-todoContainer todo-container">
+              <div class="js-todoHeader todo-header">
+                <div class="js-tab-list tab-list tab_active" data-tabnum="0">
+                  <a href="#">Approved</a>
+                </div>
+                <div class="js-tab-list tab-list" data-tabnum="1">
+                  <a href="#">Rejected</a>
+                </div>
+              </div>
+    
+              <div class="js-todoContent todo-content">
+                <ul id="todo-list" class="todoList"></ul>
+                <ul id="done-list" class="todoList"></ul>
+              </div>
+    
+              <div class="js-todoInput todo-input">
+                <form id="inputForm">
+                  <input type="text" id="inputTodo" placeholder="Note mentor you want." 
+                  autocomplete="off"/>
+                </form>
+              </div>
+            </div>
+            <div class="nipple"></div>
+          </div>
+          <div class="btn-group" style="margin-left:130px;"><div class="btn sign-up"><h3 class="js-todo-h3 todo-h3">Memo</h3></div></div>
+        </div>
         {% endif %}
         
         <!-- 멘티 보여주는 정보량이 가장 적음 -->
         {% if user.studenttype == False and user.mentor_check == False %}
-        <div class ="information">
+        <div class ="information" >
             <p>회원 타입 : <span style="color:gray">멘티</span></p><br>
             <p>아이디 : {{user.username}}</p><br>
             <p>이메일 : {{user.email}} </p><br>
             <br><br><br><br><br><br><br><br>
-            
+    
         </div>
 
         <div class="js-todo todo">
@@ -83,7 +140,7 @@
               </div>
               <div class="nipple"></div>
             </div>
-            <h3 class="js-todo-h3 todo-h3">Todo</h3>
+            <div class="btn-group" style="margin-left:130px;"><div class="btn sign-up"><h3 class="js-todo-h3 todo-h3">Memo</h3></div></div>
           </div>
 
         {% endif %}

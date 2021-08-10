@@ -2,9 +2,8 @@ a:link{
     text-decoration: none;
 }
 
-
 .community_detail {
-    margin: 150px 0px 150px 0px;
+    margin: 150px 0px 100px 0px;
 }
 
 .community_detail h4{
@@ -12,3 +11,130 @@ a:link{
     margin-left: 110px;
 }
 
+.post_title{
+    font-size: 30px;
+    display: flex;
+    margin-bottom: 20px;
+    margin-left: 10px;
+}
+
+.post_user{
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+    font-size:15px;
+    margin-left: 5px;
+}   /* 게시글 작성자 */
+
+.post_update{
+    margin-left: 20px;
+    font-size:12px;
+}   /* 게시글 작성시간 */
+
+.post_content{
+    margin-top: 100px;
+    font-size: 20px;
+    margin-left: 10px;
+}
+
+.form_content{  
+    margin-top: 20px;
+    display: flex;
+} 
+
+.content_form{
+    margin-top: 20px;
+    margin-left: 7.5%;  
+}
+
+.community_end{
+    padding-bottom: 30px;
+    margin-left: 112px;   
+    font-size:25px;
+}
+
+.comment_list{
+    margin-top: 20px;
+    margin-left: 112px;   
+    font-size:25px;
+}
+
+
+.writer{
+    margin-left: 5px;
+    font-size:12px;
+}   /* 댓글 작성자 */
+
+.coment_content{
+    margin-left: 36px;
+    font-size:10px;
+}   /* 댓글 내용 */   
+
+.coment_update{
+    margin-left: 38px;
+    font-size:10px; 
+    opacity: 0.8;   
+}   /* 댓글 시간 */ 
+
+.commentform{
+    margin-top: 10px;
+    margin-left: 10px; 
+}
+
+.writer2{
+    margin-left: 30px;
+    font-size:12px;
+}   /*대댓글 작성자 */
+
+
+.recoment_content{
+    margin-left: 75px;
+    font-size:10px;
+}   /* 대댓글 내용 */   
+
+.recoment_update{
+    margin-left: 77px;
+    font-size:10px; 
+    opacity: 0.8;   
+}   /* 대댓글 시간 */  
+
+#comment_submit{
+    margin-left: 82.8%;
+}
+
+#comment_submit2{
+    margin-left: 88.5%;
+}
+.userbutton{
+    margin-left: 10px;
+}
+
+#peopleicon{
+    margin-left: 10px;
+}
+
+#peopleicon2{
+    margin-right: 10px;
+}
+
+.form-content{
+    border-radius: 4px;
+    width: 92%;
+    height: 60px;
+}
+
+.form-content2{
+    border-radius: 4px;
+    width: 99%;
+    height: 30px;
+}
+
+#contain1{
+    border-radius: 15px;
+    border-width: 3px;
+
+}
+
+#contain2{
+    border-radius: 10px;
+    border-width: 3px;
+    
+}

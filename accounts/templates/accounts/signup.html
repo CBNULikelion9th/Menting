@@ -16,7 +16,7 @@
   {{error}}
   <div class="container">
     <div class="con5">
-    <img class="logo_instagram" src="{% static 'img/멋사로고.png' %}" alt="instagram_logo">
+    <img class="logo_instagram" src="{% static 'img/signup2.png' %}" alt="instagram_logo" style="width:400px">
     <span class="error" style="margin: 0%; color: red;">
       {% if messages %}
       <div>
@@ -26,7 +26,9 @@
       </div>
       {% endif %}
    </span>
-    <form action="{% url 'signup' %}" method="POST">
+    <form action="{% url 'signup' %}" method="POST" style="
+    margin-left: 95px;
+">
       {% csrf_token %}
       <div class="signupform">
         <span>이&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp름&nbsp&nbsp</span>
@@ -55,7 +57,7 @@
       <br>
       <div class="signupform">
         <span>멘토입니까</span>
-        {{form.studenttype}}
+        {{form.studenttype}} <small>멘토라면 체크 후 아래까지 작성해주세요</small>
       </div>
       <br>
       <details>
@@ -77,8 +79,10 @@
       <br>
       <button type='submit', class="btnmid", onclick="return confirm('이 정보로 회원가입 하시겠습니까?');"> 회 원 가 입 </button>
     </form>
-    <span><a href="{% url 'main' %}"><button id="btn_pre">Cancel</button></a></span>
-    <span><a href="{% url 'login' %}"><button id="btn_next" style="margin-left:29px;">Login</button></a></span>
+    <span><a href="{% url 'main' %}"><button id="btn_pre" style="
+      margin-left: 94px;
+  ">Cancel</button></a></span>
+    <span><a href="{% url 'login' %}"><button id="btn_next" style="margin-left:126px;">Login</button></a></span>
   </div>
   
   </div>

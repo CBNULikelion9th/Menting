@@ -17,10 +17,10 @@
 
 <body>
     <div class="community_new_page">
-        <h1>새 글 작성하기</h1>
         <br>
         <form action="{% url 'community_new' %}" method="POST">
             {% if user.is_authenticated %}
+            <h1>새 글 작성하기</h1>
             {% csrf_token %}
             <h6>작성자 : {{ user.username }}</h6>
             <div class="mb-3">

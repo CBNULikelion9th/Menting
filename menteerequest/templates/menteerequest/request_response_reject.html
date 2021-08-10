@@ -1,8 +1,18 @@
+{% extends 'menteerequest/requestform_base.html' %}
+{% block headcontent %}
+<title>
+    멘팅 요청 거절하기
+</title>
+{% endblock headcontent %}
 
-    <form method="POST" >
+
+{% block content %}
+
+    <form method="POST"  class= "submit">
         {% csrf_token %}
-        <h1>아래 버튼을 누르면 해당 멘팅은 거절됩니다</h1>
+        <p >아래 버튼을 누르면 해당 멘팅은 거절됩니다</p>
         <button type="submit" >거절</button>
+        <button ><a href="{% url 'requestslist' %}">취소</a> </button>
     </form>
 
-    <button ><a href="{% url 'requestslist' %}">취소</a> </button>
+{% endblock content %}

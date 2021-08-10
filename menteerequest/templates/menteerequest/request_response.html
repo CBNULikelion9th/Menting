@@ -1,8 +1,20 @@
-<h1>응답하기</h1>
-    <form method="POST" >
+{% extends 'menteerequest/requestform_base.html' %}
+{% block headcontent %}
+<title>
+    멘팅 요청 수락하기
+</title>
+{% endblock headcontent %}
+
+
+
+{% block content %}
+<p class="title"> 멘팅 응답하기 </p>
+    <form method="POST" class = "submit">
         {% csrf_token %}
-        {{ form.text }}
-        연락을 주고 받을 오픈 카톡 주소를 넣어주세요!
+        <p>연락을 주고 받을 오픈 카톡 주소를 넣어주세요!</p>
+        <p>{{ form.text }}</p>
         <button type="submit" >작성</button>
         <button ><a href="{% url 'requestslist' %}">취소</a> </button>
     </form>
+
+{% endblock content %}

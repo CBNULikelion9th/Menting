@@ -1,70 +1,115 @@
-{% load static %}   
+{% extends 'accounts/base.html' %}
+<!DOCTYPE html>
+{% load static %}
+{% block content %}
+<html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="{% static 'css/grade.css' %}" />
-    <title>요청 상세보기</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>요청상세보기</title>
+    <link href="{% static 'css/common.css' %}" rel="stylesheet">
+    <link href="{% static 'css/request_detail.css' %}" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
 </head>
 
-{% if user == post.mentee or user.username == post.mentor  %}
-    <div>  
-        {{post.mentee}}님 요청의 멘팅
+<body>
+    <div class="request_page">
+        {% if user == post.mentee or user.username == post.mentor %}
+
+        <span class="lettertitle"><i class="fas fa-user-circle fa-lg" id="peopleicon"></i> {{post.mentee}}님 요청의
+            멘팅</span>
+        <br><br>
+        <span class="letter">멘토 : {{post.mentor}}</span>
         <br>
-        멘토 : {{post.mentor}}
+        <span class="letter">고등학교 : {{post.mentee_highschool}} {{post.grade}}학년</span>
         <br>
-        고등학교 : {{post.mentee_highschool}}
+        <span class="letter">원하는 입시전형 : {{post.mentee_entrancetype}}</span>
         <br>
-        {{post.grade}} 학년
+        <span class="letter">원하는 학과 : {{post.mentee_major}}</span>
         <br>
-        원하는 입시전형 : {{post.mentee_entrancetype}}
+        <span class="letter">상담 내용 : {{post.counsel}}</span>
         <br>
-        원하는 학과 : {{post.mentee_major}} 
+        <span class="letter">신청 날짜 : {{post.created_at}}</span>
         <br>
-        상담 내용 : {{post.counsel}}
-        <br>
-        <small>{{post.created_at}}</small>
-        <br>
-        <hr>
+        <hr class="line">
 
 
-    {% for response in post.responses.all %}
-    
-        <div class="comment">
-            
-            <p>멘토 {{ response.author }}님의 응답</p>
-            <p>{{ response.text|linebreaks }}</p>
-            <small >{{ response.created_date }} </small>            
-            
+        {% for response in post.responses.all %}
+        <div class="container">
+            <div class="card" id="contain">
+                <div class="card-body">
+                    <span class><i class="fas fa-user-circle" id="peopleicon2"></i> 멘토
+                        {{response.author}}님의 응답</span>
+                    <br>
+                    <span class="comment_let2"> {{ response.text }}</span>
+                    <br>
+                    <span class="comment_let3">{{ response.created_date }} </span>
+                </div>
+            </div>
         </div>
 
         {% if user == post.mentee %}
-            {% if post.finish_check == 0 %}
-                <a href="{% url 'requestslist' %}" onclick="window.open('grade/','평점 남기기','width=300, height=300,menubar=no, status=no, toolbar=no');">
-                <button>완료(평점 남기기)</button></a>
-            {% endif %}
-        {% endif %}  
-        <hr>
-    {% empty %}
+        {% if post.finish_check == 0 %}
+        <br><br>
+        <div class="buttonlocate">
+            <button class="btn btn-outline-secondary btn-sm"><a href="{% url 'requestslist' %}"
+                    onclick="window.open('grade/','평점 남기기','width=500, height=500,menubar=no, status=no, toolbar=no');"
+                    class="link-dark">
+                    완료(평점 남기기)</a></button>
+        </div>
+        {% endif %}
+        {% endif %}
+        <hr class="line">
+        {% empty %}
         {% if user.username == post.mentor %}
-            <a href="{% url 'response' post.id %}"><button>수락</button></a>
-            <a href="{% url 'response_reject' post.id %}"><button>거절</button></a>
-        {% endif %} 
-        <hr>
-        <p>아직 응답이 없습니다 :( </p>
-        <hr>
-    {% endfor %}
+        <div class="buttonlocate">
+            <button class="btn btn-outline-secondary btn-sm"><a href="{% url 'response' post.id %}" class="link-dark">
+                    수락</a></button>
+            <button class="btn btn-outline-secondary btn-sm"><a href="{% url 'response_reject' post.id %}"
+                    class="link-dark">
+                    거절</a></button>
+        </div>
+        {% endif %}
+        <hr class="line">
+        <span class="letter">아직 응답이 없습니다 :( </span>
+        <hr class="line">
+        {% endfor %}
+        <div class="buttonlocate">
+            <button class="btn btn-outline-secondary btn-sm"><a href='{% url "requestslist"%}' class="link-dark">
+                    돌아가기</a></button>
+        </div>
 
-        <a href='{% url "requestslist"%}'><button>돌아가기</button></a>
+        {% else %}
+        <div>
+            <span class="letter">
+                접근 권한이 없습니다
+            </span>
+            <br>
+            <button class="btn btn-outline-secondary btn-sm"><a href='{% url "requestslist"%}' class="link-dark">
+                    돌아가기</a></button>
+        </div>
+
+        {% endif %}
     </div>
 
-    
-{%  else  %}
+    <footer>
+        <div class="inner">
+            <div class="info">
+                <span>멋쟁이사자처럼 at 충북대학교 2조팀.</span>
+            </div>
 
-    <div>
-        <h1>
-            접근 권한이 없습니다
-            <a href='{% url "requestslist"%}'><button>돌아가기</button></a>
-        </h1>
-    </div>
+            <p class="copyright">
+                &copy; <span class="this-year"></span> 2021 Menting Project
+            </p>
+        </div>
+    </footer>
+</body>
 
-{%  endif  %}
+</html>
+{% endblock content %}

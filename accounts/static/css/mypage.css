@@ -17,7 +17,7 @@ body {
     border-radius: 5%;
 }
 
-.name {
+.name { 
     position:relative;
     font-size: 1rem;
     right:240px;

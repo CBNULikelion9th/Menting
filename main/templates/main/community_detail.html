@@ -22,7 +22,7 @@
     <div class="community_detail">
         <br>
         <div class="container">
-            <div class="card">
+            <div class="card" id="contain1">
                 <div class="card-body">
                     <span class="post_title">{{ post.title }}</span>
                     <span class="post_user"><i class="fas fa-user-circle fa-lg" id="peopleicon"></i> {{ post.user}}<span
@@ -57,7 +57,7 @@
     <br><br>
     {% for comment in post.comment_set.all %}
     <div class="container">
-        <div class="card">
+        <div class="card" id="contain2">
             <div class="card-body">
                 <i class="fas fa-user-circle" id="peopleicon"></i>
                 <p2 class="writer"> {{ comment.name }}</p2>
@@ -66,15 +66,15 @@
                 <br>
                 <p2 class="coment_update"> {{ comment.updated_at }} </p2>
 
+                {% if user.is_authenticated == True %}
                 <form action="{% url 'community_recomment' post.id comment.id %}" method="POST" class="commentform">
                     {% csrf_token %}
-                    {% if user.is_authenticated == True %}
                     <textarea class="form-content2" name="content"></textarea>
                     <input type="submit" value="작성" class="btn btn-outline-secondary btn-sm" id="comment_submit2">
                 </form>
                 {% endif %}
 
-                <br>
+                <br><br>
                 {% for recomment in comment.recomment_set.all %}
                 <p2 class="writer2">┖> <i class="fas fa-user-circle" id="peopleicon2"></i>{{ recomment.name2 }}</p2>
 

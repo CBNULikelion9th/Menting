@@ -1,0 +1,42 @@
+body {
+    font-family: 'Nanum Gothic', sans-serif;
+    line-height: 1.4;
+    color: #333;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+a:link{
+    text-decoration: none;
+}
+
+p, span {
+    font-size: 14px;
+}
+
+.search_page {
+    margin: 152px auto 100px auto;
+}
+
+.search_page_detail{
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.table-default{
+    padding-bottom: 40px;
+}
+
+.search_mid h1{
+    margin-left: 10%;
+}
+
+.search_tp{
+    padding-left: 10%;
+}
+
+.selectbar{
+    height: 29.5px;
+    margin-right: 5px;
+}
+

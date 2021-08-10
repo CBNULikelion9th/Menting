@@ -13,7 +13,6 @@
 
 img.logo {
     align-self: center;
-    width: 175px;
     margin: 20px 0;
 }
 .input_login {
@@ -39,13 +38,14 @@ img.logo {
     width: 268px;
     height: 30px;
     margin: 20px auto;
-    background-color: skyblue;
+    background-color: #335858;
     border: none;
     border-radius: 3px;
     color: white;
     font-size: 14px;
     font-weight: 600;
 }
+
 /* #btn_login:disabled {
     background-color: #7ad83f;
 }

@@ -1,163 +1,192 @@
-{% extends 'main/community_base.html' %}
+{% extends 'accounts/base.html' %}
+<!DOCTYPE html>
 {% load static %}
 {% block content %}
-<div class="search_page">
-    <div class="search_mid">
+<html>
 
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Search</title>
+    <link href="{% static 'css/common.css' %}" rel="stylesheet">
+    <link href="{% static 'css/searchuniv.css' %}" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!--Google Fonts - 나눔고딕-->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet" />
+</head>
 
-        <h1>{{ university }}의 선배님들</h1>
-        <br><br>
-    </div>
-
-    <form action="" method='GET'>
-        <div>
-            {% if not search_type %}
-            <select name="search_type" value="{{ search_type }}">
-                <option value="아이디">아이디</option>
-                <option value="학과">학과</option>
-                <option value="학번">학번</option>
-                <option value="입시전형">입시전형</option>
-            </select>
-            {% endif %}
-            {% if search_type == "아이디" %}
-            <select name="search_type" value="{{ search_type }}">
-                <option value="아이디" selected>아이디</option>
-                <option value="학과">학과</option>
-                <option value="학번">학번</option>
-                <option value="입시전형">입시전형</option>
-            </select>
-            {% endif %}
-            {% if search_type == "학과" %}
-            <select name="search_type" value="{{ search_type }}">
-                <option value="아이디">아이디</option>
-                <option value="학과" selected>학과</option>
-                <option value="학번">학번</option>
-                <option value="입시전형">입시전형</option>
-            </select>
-            {% endif %}
-            {% if search_type == "학번" %}
-            <select name="search_type" value="{{ search_type }}">
-                <option value="아이디">아이디</option>
-                <option value="학과">학과</option>
-                <option value="학번" selected>학번</option>
-                <option value="입시전형">입시전형</option>
-            </select>
-            {% endif %}
-            {% if search_type == "입시전형" %}
-            <select name="search_type" value="{{ search_type }}">
-                <option value="아이디">아이디</option>
-                <option value="학과">학과</option>
-                <option value="학번">학번</option>
-                <option value="입시전형" selected>입시전형</option>
-            </select>
-            {% endif %}
+<body>
+    <div class="search_page">
+        <br>
+        <div class="search_mid">
+            <br>
+            <h1>{{ university }}의 선배님들</h1>
+            <br><br>
         </div>
 
-        <div>
-            <input type="text" name="search_keyword" value="{{ search_keyword }}">
-            <input class="button" type="submit" value="Search">
+        <form action="" method='GET'>
+            <div class="search_tp">
+                {% if not search_type %}
+                <select name="search_type" value="{{ search_type }}" class="selectbar">
+                    <option value="아이디">아이디</option>
+                    <option value="학과">학과</option>
+                    <option value="학번">학번</option>
+                    <option value="입시전형">입시전형</option>
+                </select>
+                {% endif %}
+                {% if search_type == "아이디" %}
+                <select name="search_type" value="{{ search_type }}" class="selectbar">
+                    <option value="아이디" selected>아이디</option>
+                    <option value="학과">학과</option>
+                    <option value="학번">학번</option>
+                    <option value="입시전형">입시전형</option>
+                </select>
+                {% endif %}
+                {% if search_type == "학과" %}
+                <select name="search_type" value="{{ search_type }}" class="selectbar">
+                    <option value="아이디">아이디</option>
+                    <option value="학과" selected>학과</option>
+                    <option value="학번">학번</option>
+                    <option value="입시전형">입시전형</option>
+                </select>
+                {% endif %}
+                {% if search_type == "학번" %}
+                <select name="search_type" value="{{ search_type }}" class="selectbar">
+                    <option value="아이디">아이디</option>
+                    <option value="학과">학과</option>
+                    <option value="학번" selected>학번</option>
+                    <option value="입시전형">입시전형</option>
+                </select>
+                {% endif %}
+                {% if search_type == "입시전형" %}
+                <select name="search_type" value="{{ search_type }}" class="selectbar">
+                    <option value="아이디">아이디</option>
+                    <option value="학과">학과</option>
+                    <option value="학번">학번</option>
+                    <option value="입시전형" selected>입시전형</option>
+                </select>
+                {% endif %}
+                <input type="text" name="search_keyword" value="{{ search_keyword }}">
+                <input class="button" type="submit" value="Search">
+            </div>
+        </form>
+
+        <br>
+        <div class="search_page_detail">
+            {% if search_keyword and search_keyword|length >= 2 %}
+            <!-- 2글자 이상만 결과 표시하도록함 -->
+            <h5>'{{ search_keyword }}' 검색 결과입니다.</h5>
+            <br>
+            {% endif %}
+
+            {% if not search_keyword %}
+            <!-- 검색창이 비어있을 경우 -->
+            <h5>검색어를 입력해주세요.</h5>
+            <br>
+            {% endif %}
+
+            {% for message in messages %}
+            <!-- 메시지가 있는 경우 표시하도록 함 -->
+            <h5>{{ message }}</h5>
+            <br>
+            {% endfor %}
+
+            <table class="table table-hover" width=60%; border="1">
+                <thead class="table-default">
+                    <th width="9%" class="thcell">아이디</th>
+                    <th width="9%" class="thcell">학교</th>
+                    <th width="9%">학과</th>
+                    <th width="9%">학번</th>
+                    <th width="9%">입시전형</th>
+                    <th width="9%">출신고등학교</th>
+                    <th width="9%">평점 <small>(5점 만점)</small></th>
+                    <th width="9%">선택</th>
+                </thead>
+                <tbody>
+
+                    {% if customer_list %}
+                    <!-- 선배 목록이 있는 경우 -->
+                    {% for customer in customer_list %}
+                    {% if customer.mentor_check == True %}
+                    <tr>
+                        <td>{{ customer.username }}</td>
+                        <td>{{ customer.university }}</td>
+                        <td>{{ customer.major }}</td>
+                        <td>{{ customer.studentnumber }}</a></td>
+                        <td>{{ customer.entrancetype }}</td>
+                        <td>{{ customer.highschool }}</td>
+                        <td>{% if customer.count == 0 %}
+                            <p>미평가</p>
+                            {% else %}
+                            {{customer.avg}}
+                            {% endif %}
+                        </td>
+                        <td><a href="{% url 'choice_mentor' customer.id %}" class="link-dark">선배연결</a></td>
+                    </tr>
+                    {% endif %}
+                    {% endfor %}
+                    {% endif %}
+                </tbody>
+
+            </table>
         </div>
-    </form>
-
-    <br>
-
-    {% if search_keyword and search_keyword|length >= 2 %}
-    <!-- 2글자 이상만 결과 표시하도록함 -->
-    <h5>'{{ search_keyword }}' 검색 결과입니다.</h5>
-    <br>
-    {% endif %}
-
-    {% if not search_keyword %}
-    <!-- 검색창이 비어있을 경우 -->
-    <h5>검색어를 입력해주세요.</h5>
-    <br>
-    {% endif %}
-
-    {% for message in messages %}
-    <!-- 메시지가 있는 경우 표시하도록 함 -->
-    <h5>{{ message }}</h5>
-    <br>
-    {% endfor %}
-
-    <div class="search_page_detail">
-
-        <table width="85%" border="1">
-            <thead class="table-secondary">
-                <th width="9%" class="thcell">아이디</th>
-                <th width="9%" class="thcell">학교</th>
-                <th width="9%">학과</th>
-                <th width="9%">학번</th>
-                <th width="9%">입시전형</th>
-                <th width="9%">출신고등학교</th>
-                <th width="9%">평점 <small>(5점 만점)</small></th>
-                <th width="9%">선택</th>
-            </thead>
-            <tbody>
-
-                {% if customer_list %}
-                <!-- 선배 목록이 있는 경우 -->
-                {% for customer in customer_list %}
-                {% if customer.mentor_check == True %}
-                <tr>
-                    <td>{{ customer.username }}</td>
-                    <td>{{ customer.university }}</td>
-                    <td>{{ customer.major }}</td>
-                    <td>{{ customer.studentnumber }}</a></td>
-                    <td>{{ customer.entrancetype }}</td>
-                    <td>{{ customer.highschool }}</td>
-                    <td>{% if customer.count == 0 %}
-                        <p>미평가</p>
-                        {% else %}
-                        {{customer.avg}}
-                        {% endif %}
-                    </td>
-                    <td><a href="{% url 'choice_mentor' customer.id %}" class="link-dark">선배연결</a></td>
-                </tr>
-                {% endif %}
-                {% endfor %}
-                {% endif %}
-            </tbody>
-
-        </table>
     </div>
-</div>
-<!--페이징-->
+    <!--페이징-->
 
-<ul class="pagination justify-content-center">
-    <!-- 이전페이지 -->
-    {% if customer_list.has_previous %}
-    <li class="page-item">
-        <a class="page-link" href="?page={{ customer_list.previous_page_number }}">이전</a>
-    </li>
-    {% else %}
-    <li class="page-item disabled">
-        <a class="page-link" tabindex="-1" aria-disabled="true" href="#">이전</a>
-    </li>
-    {% endif %}
-    <!-- 페이지리스트 -->
-    {% for page_number in customer_list.paginator.page_range %}
-    {% if page_number >= customer_list.number|add:-2 and page_number <= customer_list.number|add:2 %} <!-- 템플릿 필터 -->
-        {% if page_number == customer_list.number %}
-        <li class="page-item active" aria-current="page">
-            <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
-        </li>
-        {% else %}
+    <ul class="pagination justify-content-center">
+        <!-- 이전페이지 -->
+        {% if customer_list.has_previous %}
         <li class="page-item">
-            <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
-        </li>
-        {% endif %}
-        {% endif %}
-        {% endfor %}
-        <!-- 다음페이지 -->
-        {% if customer_list.has_next %}
-        <li class="page-item">
-            <a class="page-link" href="?page={{ customer_list.next_page_number }}">다음</a>
+            <a class="page-link" href="?page={{ customer_list.previous_page_number }}">이전</a>
         </li>
         {% else %}
         <li class="page-item disabled">
-            <a class="page-link" tabindex="-1" aria-disabled="true" href="#">다음</a>
+            <a class="page-link" tabindex="-1" aria-disabled="true" href="#">이전</a>
         </li>
         {% endif %}
-</ul>
+        <!-- 페이지리스트 -->
+        {% for page_number in customer_list.paginator.page_range %}
+        {% if page_number >= customer_list.number|add:-2 and page_number <= customer_list.number|add:2 %} <!-- 템플릿 필터
+            -->
+            {% if page_number == customer_list.number %}
+            <li class="page-item active" aria-current="page">
+                <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
+            </li>
+            {% else %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
+            </li>
+            {% endif %}
+            {% endif %}
+            {% endfor %}
+            <!-- 다음페이지 -->
+            {% if customer_list.has_next %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ customer_list.next_page_number }}">다음</a>
+            </li>
+            {% else %}
+            <li class="page-item disabled">
+                <a class="page-link" tabindex="-1" aria-disabled="true" href="#">다음</a>
+            </li>
+            {% endif %}
+    </ul>
 
+
+
+    <footer>
+        <div class="inner">
+            <div class="info">
+                <span>멋쟁이사자처럼 at 충북대학교 2조팀.</span>
+            </div>
+
+            <p class="copyright">
+                &copy; <span class="this-year"></span> 2021 Menting Project
+            </p>
+        </div>
+    </footer>
+</body>
+
+</html>
 {% endblock content %}

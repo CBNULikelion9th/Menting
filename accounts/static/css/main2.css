@@ -126,9 +126,7 @@ header .logo {
   left: -10%;
   margin: auto;
 }
-header img {
-  width:220px
-}
+
 header .sub-menu {
   position: absolute;
   top: 10px;
@@ -240,7 +238,7 @@ header .main-menu .item .item__contents .contents__menu > ul > li {
 header .main-menu .item .item__contents .contents__menu > ul > li h4 {
   padding: 3px 0 12px 0;
   font-size: 14px;
-  color: #FFF0F5;
+  color: #FFFAF0;
 }
 header .main-menu .item .item__contents .contents__menu > ul > li h4:hover {
   text-decoration: underline;

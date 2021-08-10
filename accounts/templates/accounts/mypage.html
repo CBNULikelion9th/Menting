@@ -2,7 +2,10 @@
 {% load static %}
 {% block content %}
 <head>
-    <link href="{% static 'css/mypage.css' %}" rel="stylesheet" type="text/css" />  
+    <link href="{% static 'css/mypage.css' %}" rel="stylesheet" type="text/css" /> 
+    <link href="{% static 'css/done.css' %}" rel="stylesheet" type="text/css" /> 
+    <link href="{% static 'css/todo.css' %}" rel="stylesheet" type="text/css" /> 
+    <link href="{% static 'css/tab.css' %}" rel="stylesheet" type="text/css" /> 
 </head>
 
 <body>
@@ -52,29 +55,62 @@
             <br><br><br><br><br><br><br><br>
             
         </div>
+
+        <div class="js-todo todo">
+            <div class="todo-container-wrapper">
+              <div class="js-todoContainer todo-container">
+                <div class="js-todoHeader todo-header">
+                  <div class="js-tab-list tab-list tab_active" data-tabnum="0">
+                    <a href="#">WANTED</a>
+                  </div>
+                  <div class="js-tab-list tab-list" data-tabnum="1">
+                    <a href="#">REQUESTED</a>
+                  </div>
+                </div>
+      
+                <div class="js-todoContent todo-content">
+                  <ul id="todo-list" class="todoList"></ul>
+                  <ul id="done-list" class="todoList"></ul>
+                </div>
+      
+                <div class="js-todoInput todo-input">
+                  <form id="inputForm">
+                    <input type="text" id="inputTodo" placeholder="Note mentor you want." 
+                    autocomplete="off"/>
+                  </form>
+                </div>
+              </div>
+              <div class="nipple"></div>
+            </div>
+            <h3 class="js-todo-h3 todo-h3">Todo</h3>
+          </div>
+
         {% endif %}
     
         <div class = "buttons">
             <a href="{% url 'mypage' %}"
                     onclick="window.open('change_email/','이메일 변경','width=500, height=500,menubar=no, status=no, toolbar=no');"><button class="button" style="vertical-align:middle"><span>이메일
-                        변경하기</span></button></a>
+                        변경</span></button></a>
             <a href="{% url 'mypage' %}"
-                    onclick="window.open('password_change/','비밀번호 변경','width=500, height=500,menubar=no, status=no, toolbar=no');"><button class="button" style="vertical-align:middle"><span>암호 변경하기</span></button></a>
-            <a  href="{% url 'requestslist' %}"><button class="button" style="vertical-align:middle"><span>멘팅 리스트 보러가기</span></button></a>
+                    onclick="window.open('password_change/','비밀번호 변경','width=500, height=500,menubar=no, status=no, toolbar=no');"><button class="button" style="vertical-align:middle"><span>비밀번호 변경</span></button></a>
+            <a  href="{% url 'requestslist' %}"><button class="button" style="vertical-align:middle"><span>멘팅 리스트</span></button></a>
             <a href="{% url 'mypage' %}"
                     onclick="window.open('user_delete/','회원 탈퇴','width=500, height=500,menubar=no, status=no, toolbar=no');"><button class="button1">회원 탈퇴</button></a><br>
         </div>
         
     </p>
     
-</body>
 
 <footer>
-    <p class= "info" >멋쟁이사자처럼 at 충북대학교 2조팀.</p>
-    <p class="copyright">
-        &copy; <span class="this-year"></span> 2021 Menting Project
-      </p>
+  <p class= "info" >멋쟁이사자처럼 at 충북대학교 2조팀.</p>
+  
 </footer>
+</body>
+<script defer src="/static/js/todo.js"></script>
+    <script defer src="/static/js/done.js"></script>
+    <script defer src="/static/js/tab.js"></script>
+
+
 
 {% endblock content %}
 

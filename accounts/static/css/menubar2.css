@@ -127,8 +127,8 @@ body {
     margin: auto;
   }
   header img {
-    width:220px;
-    height:101px;
+    height:70px;
+    margin-top:10px;
   }
   header .sub-menu {
     position: absolute;
@@ -215,8 +215,8 @@ body {
     font-weight: 500;
   }
   header .main-menu .item:hover .item__name {
-    background-color: #2C2A29;
-    color: #e07d3b;
+    background-color: #708090;
+    color: #ADD8E6;
     border-radius: 6px 6px 0 0;
   }
   header .main-menu .item .item__contents {
@@ -229,7 +229,7 @@ body {
     display: block;
   }
   header .main-menu .item .item__contents .contents__menu {
-    background-color: #2C2A29;
+    background-color: #708090;
   }
   header .main-menu .item .item__contents .contents__menu > ul {
     padding: 20px 0;
@@ -241,7 +241,7 @@ body {
   header .main-menu .item .item__contents .contents__menu > ul > li h4 {
     padding: 3px 0 12px 0;
     font-size: 14px;
-    color: #fff;
+    color: #FFF0F5;
   }
   header .main-menu .item .item__contents .contents__menu > ul > li h4:hover {
     text-decoration: underline;

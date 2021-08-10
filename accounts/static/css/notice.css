@@ -95,3 +95,8 @@ p, span {
 #peopleicon{
     margin-left: 10px;
 }
+
+#contain{
+    border-radius: 15px;
+    border-width: 3px;
+}

@@ -90,7 +90,7 @@ img {
 .show .back-to-position {
   opacity: 1;
   transform: translateX(0);
-  color:rgb(15, 71, 94);
+  color:rgb(13, 53, 70);
   font-weight: 800;
 }
 .show .back-to-position.delay-0 {

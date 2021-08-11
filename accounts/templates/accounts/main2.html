@@ -142,7 +142,29 @@
   </section>
 
  <!--지도-->
- 
+ <section class="season-product scroll-spy">
+  <div class="inner">
+    <img src="/static/img/학교검색.png" class="product back-to-position to-right delay-0" style="margin-top: 35px; margin-left: -450px; width: 400px;" />
+    <div class="more back-to-position to-left delay-3">
+    </div>
+    <div class="map_wrap">
+      <div id="map" style="width:1250px; height:700px; position:sticky; overflow:hidden; margin-top: 400px; margin-left: -430px;"></div>
+      <div id="menu_wrap" class="bg_white" style=" margin-top: -700px; margin-left: 930px;">
+          <h1>멘토를 찾아보세요!</h1>
+          <hr>
+          <ul id="placesList"></ul>
+
+  </div>
+  </div>
+</div>
+
+  <div class= "option mapcon"> 
+    <form onsubmit="searchPlaces(); return false;">
+        <input type="text" placeholder='대학교를 입력하세요. ex) 충북대학교' id="keyword" size="40" class="mapinput"  style="margin-top:-400px; margin-left: 500px;">
+        <button type="submit" class="btn mapsearch" style="margin-top:-400px; margin-left: 430px;">검색하기</button>
+    </form>    
+ </div>
+</section>
   
   <!--FOOTER-->
   <footer>

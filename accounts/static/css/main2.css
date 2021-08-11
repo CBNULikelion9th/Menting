@@ -563,6 +563,7 @@ header .badges .badge {
 /*SEASON PRODUCT*/
 .season-product {
   background-image: url("/static/img/season_product_bg.jpg");
+  background-color: #F6F5F0;
 }
 .season-product .inner {
   height: 1200px;

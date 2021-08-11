@@ -16,28 +16,30 @@
 </head>
 
 <body>
-    <div class="community_new_page">
-        <h1>새 글 작성하기</h1>
-        <br>
-        <form action="{% url 'notice_new' %}" method="POST">
-            {% csrf_token %}
-            <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">제목 </label>
-                <input class="form-control form-control-sm" type="text" aria-label=".form-control-sm example"
-                    name="title">
-            </div>
-            <div class="mb-3">
-                <label for="exampleFormControlTextarea1" class="form-label">내용 </label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" name="content" rows="4"></textarea>
-            </div>
+    <div class="contant">
+        <div class="community_new_page">
+            <h1>새 글 작성하기</h1>
             <br>
-            <div class="button_locate">
-                <input type="submit" value="작성" class="btn btn-outline-secondary btn-sm">
-                <a class="btn btn-outline-secondary btn-sm" href="{% url 'notice_page' %}" role="button">취소</a>
-            </div>
-        </form>
+            <form action="{% url 'notice_new' %}" method="POST">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">제목 </label>
+                    <input class="form-control form-control-sm" type="text" aria-label=".form-control-sm example"
+                        name="title">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlTextarea1" class="form-label">내용 </label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" name="content" rows="4"></textarea>
+                </div>
+                <br>
+                <div class="button_locate">
+                    <input type="submit" value="작성" class="btn btn-outline-secondary btn-sm">
+                    <a class="btn btn-outline-secondary btn-sm" href="{% url 'notice_page' %}" role="button">취소</a>
+                </div>
+            </form>
+        </div>
     </div>
-
+    
     <footer>
         <div class="inner">
             <div class="info">

@@ -18,80 +18,82 @@
 </head>
 
 <body>
-    <div class="community_page">
-        <div class="community_page_detail">
+    <div class="contant">
+        <div class="community_page">
+            <div class="community_page_detail">
 
-            <table class="table table-hover" width=82%; border="3" id="community_table">
-                <thead class="table-default">
-                    <th width="10%">번호</th>
-                    <th width="15%">작성자</th>
-                    <th width="25%">제목</th>
-                    <th width="20%">작성시간</th>
-                </thead>
-                <tbody>
-                    {% for post in post_list %}
-                    <tr>
-                        <td>{{ post.id }}</td>
-                        <td>{{ post.user }}</td>
-                        <td><a href="{% url 'community_detail' post.id %}" class="link-dark">{{ post.title }}</a></td>
-                        <td>{{ post.created_at }}</td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-            <br><br>
+                <table class="table table-hover" width=82%; border="3" id="community_table">
+                    <thead class="table-default">
+                        <th width="10%">번호</th>
+                        <th width="15%">작성자</th>
+                        <th width="25%">제목</th>
+                        <th width="20%">작성시간</th>
+                    </thead>
+                    <tbody>
+                        {% for post in post_list %}
+                        <tr>
+                            <td><a href="{% url 'community_detail' post.id %}" class="link-dark">{{ post.id }}</a></td>
+                            <td><a href="{% url 'community_detail' post.id %}" class="link-dark">{{ post.user }}</a></td>
+                            <td><a href="{% url 'community_detail' post.id %}" class="link-dark">{{ post.title }}</a></td>
+                            <td>{{ post.created_at }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <br><br>
+            </div>
         </div>
-    </div>
 
-    <!-- 새 글쓰기 버튼-->
-    <div class="button_locate">
-        <a class="btn btn-outline-secondary btn-sm" href="{% url 'community_new' %}" role="button">새 글 쓰기</a>
-    </div>
-
+        <!-- 새 글쓰기 버튼-->
+        <div class="button_locate">
+            <a class="btn btn-outline-secondary btn-sm" href="{% url 'community_new' %}" role="button">새 글 쓰기</a>
+        </div>
 
 
-    <!--페이징-->
 
-    <ul class="pagination justify-content-center">
-        <!-- 이전페이지 -->
-        {% if post_list.has_previous %}
-        <li class="page-item">
-            <a class="page-link" href="?page={{ post_list.previous_page_number }}">이전</a>
-        </li>
-        {% else %}
-        <li class="page-item disabled">
-            <a class="page-link" tabindex="-1" aria-disabled="true" href="#">이전</a>
-        </li>
-        {% endif %}
-        <!-- 페이지리스트 -->
-        {% for page_number in post_list.paginator.page_range %}
-        {% if page_number >= post_list.number|add:-2 and page_number <= post_list.number|add:2 %} <!-- 템플릿 필터 -->
-            {% if page_number == post_list.number %}
-            <li class="page-item active" aria-current="page">
-                <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
-            </li>
-            {% else %}
+        <!--페이징-->
+
+        <ul class="pagination justify-content-center">
+            <!-- 이전페이지 -->
+            {% if post_list.has_previous %}
             <li class="page-item">
-                <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
-            </li>
-            {% endif %}
-            {% endif %}
-            {% endfor %}
-            <!-- 다음페이지 -->
-            {% if post_list.has_next %}
-            <li class="page-item">
-                <a class="page-link" href="?page={{ post_list.next_page_number }}">다음</a>
+                <a class="page-link" href="?page={{ post_list.previous_page_number }}">이전</a>
             </li>
             {% else %}
             <li class="page-item disabled">
-                <a class="page-link" tabindex="-1" aria-disabled="true" href="#">다음</a>
+                <a class="page-link" tabindex="-1" aria-disabled="true" href="#">이전</a>
             </li>
             {% endif %}
-    </ul>
+            <!-- 페이지리스트 -->
+            {% for page_number in post_list.paginator.page_range %}
+            {% if page_number >= post_list.number|add:-2 and page_number <= post_list.number|add:2 %} <!-- 템플릿 필터 -->
+                {% if page_number == post_list.number %}
+                <li class="page-item active" aria-current="page">
+                    <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
+                </li>
+                {% else %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
+                </li>
+                {% endif %}
+                {% endif %}
+                {% endfor %}
+                <!-- 다음페이지 -->
+                {% if post_list.has_next %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ post_list.next_page_number }}">다음</a>
+                </li>
+                {% else %}
+                <li class="page-item disabled">
+                    <a class="page-link" tabindex="-1" aria-disabled="true" href="#">다음</a>
+                </li>
+                {% endif %}
+        </ul>
 
 
+    </div>
 
-    <footer>
+    <footer class ="bottombanner">
         <div class="inner">
             <div class="info">
                 <span>멋쟁이사자처럼 at 충북대학교 2조팀.</span>

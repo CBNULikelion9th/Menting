@@ -262,5 +262,6 @@ def choice_mentor(request,customer_id): # 멘토들중 선택
     mentor = CustomUser.objects.get(id =customer_id)    #선택한 id를 통해서 유저 정보를 가져온다
     Mentor.username = mentor.username   #가져온 유저 정보에서 정보를 requestform에 전달하기 위해 새로운 모델에 정보를 넣는다
     Mentor.email = mentor.email #이멜일 정보를 가져옴
+    Mentor.university = mentor.university
     return redirect("requestform") #요청서 페이지로 넘어간다
 

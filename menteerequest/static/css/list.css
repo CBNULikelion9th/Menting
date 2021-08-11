@@ -1,0 +1,98 @@
+body {
+    font-family: 'Nanum Gothic', sans-serif;
+    line-height: 1.4;
+    color: #333;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+.title {
+    font-size: 2em;
+}
+
+.title2 {
+    margin-left:5%;
+}
+
+a:link{
+    text-decoration: none;
+}
+
+p, span {
+    font-size: 14px;
+}
+
+.request_page {
+    margin: 50px 150px 150px 150px;
+    padding-top: 20px;
+    height: 200px;
+}
+
+.lettertitle{
+    font-weight: bold;
+    font-size: 25px;
+    margin-left: 10%;
+}
+
+.letter{
+    font-size: 20px;
+    margin-left: 12.2%;
+}
+
+.letterbutton {
+    margin-left:80%;
+}
+
+.comment{
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.comment_letter{
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.comment_text{
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.buttonlocate{
+    margin-left: 10%;
+}
+
+.line{
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.line2{
+    margin-left: 5%;
+    margin-right: 5%;
+
+}
+
+#contain{
+    margin-left: 2.6%;
+    margin-right: 2.8%;
+    border-radius: 15px;
+    border-width: 2px;
+}
+
+.comment_let2{
+    margin-top: 10px;
+    margin-left: 20px;
+}
+
+.comment_let3{
+    margin-left: 20px;
+}
+
+#peopleicon{
+    margin-right: 5px;
+}
+
+#peopleicon2{
+    margin-right: 3px;
+}

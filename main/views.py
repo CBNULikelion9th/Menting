@@ -271,3 +271,6 @@ def cat_1(request):
 def cat_2(request):
     return render(request, 'main/모의고사일정.html')
 
+def cat_3(request):
+    return render(request, 'main/멘토만나기.html')
+

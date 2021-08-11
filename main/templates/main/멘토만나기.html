@@ -1,0 +1,267 @@
+{% extends 'accounts/base.html' %}
+<!DOCTYPE html>
+{% load static %}
+{% block content %}
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <link rel="stylesheet" href="{% static 'css/map2.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/main2.css' %}" />
+  <title>Menting</title>
+  <!--파비콘-->
+  <!--<link rel="shortcut icon" href="favicon.ico" />-->
+  <link rel="icon" href="static/img/패비콘.png" />
+  <!--브라우저 스타일 초기화-->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css" />
+  <!--Google Fonts - 나눔고딕-->
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet" />
+  <!--Google Material Icons-->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+  <link rel="stylesheet" href="{% static 'css/map2.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/main2.css' %}" />
+
+
+  <!--GSAP & ScrollToPlugin-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"
+    integrity="sha512-IQLehpLoVS4fNzl7IfH8Iowfm5+RiMGtHykgZJl9AWMgqx0AmJ6cRWcB+GaGVtIsnC4voMfm8f2vwtY+6oPjpQ=="
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/ScrollToPlugin.min.js"
+    integrity="sha512-nTHzMQK7lwWt8nL4KF6DhwLHluv6dVq/hNnj2PBN0xMl2KaMm1PM02csx57mmToPAodHmPsipoERRNn4pG7f+Q=="
+    crossorigin="anonymous"></script>
+  <!--Swiper-->
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  <!--ScrollMagic-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.8/ScrollMagic.min.js"></script>
+  <!--Lodash-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"
+    integrity="sha512-90vH1Z83AJY9DmlWa8WkjkV79yfS2n2Oxhsi2dZbIv0nC4E6m5AbH8Nh156kkM7JePmqD6tcZsfad1ueoaovww=="
+    crossorigin="anonymous"></script>
+
+  <script defer src="/static/js/main2.js"></script>
+</head>
+
+<body>
+    <!--지도-->
+ <section class="season-product scroll-spy" >
+
+    <h1 style=" margin-bottom: 565px; margin-top: 120px; padding-top:60px; margin-left: 200px; font-size: 30px; font-family: 'Cafe24SsurroundAir';">멘팅할 대학교를 찾아보세요!</h1>
+   <div class="inner">
+     
+     <div class="more back-to-position to-left delay-3">
+     </div>
+     <div class="map_wrap">
+       <div id="map" style="width:900px; height:600px; position:sticky; overflow:hidden; margin-left: -540px;"></div>
+       <div id="menu_wrap" class="bg_white" style=" margin-top: -605px; margin-left: 390px;">
+           <h1 style=" font-family: 'Cafe24SsurroundAir'; font-size: 20px;">멘토를 찾아보세요!</h1>
+           <hr>
+           <ul id="placesList"></ul>
+   </div>
+   </div>
+ </div>
+ 
+   <div class= "option mapcon"> 
+     <form onsubmit="searchPlaces(); return false;">
+ 
+         <input type="text" placeholder='대학교를 입력하세요. ex) 충북대학교' id="keyword" size="40" class="mapinput"  style=" font-size:14px; height: 30px; margin-top: 49px; margin-left: 35px;">
+         <button type="submit" class="btn mapsearch" style="margin-top: 50px; margin-left: 110px; height: 35px;">검색하기</button>
+ 
+     </form>    
+  </div>
+ </section>
+    
+
+
+
+
+  <footer>
+    <div class="inner">
+      <div class="info">
+        <span>멋쟁이사자처럼 at 충북대학교 2조팀.</span> </br>
+        2021 Menting Project    
+      </div>
+
+    </div>
+  </footer>
+</body>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a54fecdc7a8b95b1d99956fac243954c&libraries=services"></script>
+<script>
+    // 마커를 담을 배열입니다
+    var markers = [];
+
+    var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+        mapOption = {
+            center: new kakao.maps.LatLng(37.566826, 126.9786567), // 지도의 중심좌표
+            level: 3 // 지도의 확대 레벨
+        };
+
+    // 지도를 생성합니다    
+    var map = new kakao.maps.Map(mapContainer, mapOption);
+
+    // 장소 검색 객체를 생성합니다
+    var ps = new kakao.maps.services.Places();
+
+    // 검색 결과 목록이나 마커를 클릭했을 때 장소명을 표출할 인포윈도우를 생성합니다
+    var infowindow = new kakao.maps.InfoWindow({ zIndex: 1 });
+
+    // 키워드로 장소를 검색합니다
+    searchPlaces();
+
+    function experiment() {
+
+        var keyword = document.getElementById('keyword').value;
+        document.getElementById('univ').innerText = keyword;
+        console.log.innerhtml('<link href "search_pages.html">')
+    }
+
+    // 키워드 검색을 요청하는 함수입니다
+
+    function searchPlaces() {
+
+        var keyword = document.getElementById('keyword').value;
+        // 장소검색 객체를 통해 키워드로 장소검색을 요청합니다
+        ps.keywordSearch(keyword, placesSearchCB);
+    }
+
+    // 장소검색이 완료됐을 때 호출되는 콜백함수 입니다
+    function placesSearchCB(data, status, pagination) {
+        if (status === kakao.maps.services.Status.OK) {
+
+            // 정상적으로 검색이 완료됐으면
+            // 검색 목록과 마커를 표출합니다
+            displayPlaces(data);
+
+            // 페이지 번호를 표출합니다
+            // displayPagination(pagination);
+
+        } else if (status === kakao.maps.services.Status.ERROR) {
+
+            alert('검색 결과 중 오류가 발생했습니다.');
+            return;
+
+        }
+    }
+
+    // 검색 결과 목록과 마커를 표출하는 함수입니다
+    function displayPlaces(places) {
+
+        var listEl = document.getElementById('placesList'),
+            menuEl = document.getElementById('menu_wrap'),
+            fragment = document.createDocumentFragment(),
+            bounds = new kakao.maps.LatLngBounds(),
+            listStr = '';
+
+        // 검색 결과 목록에 추가된 항목들을 제거합니다
+        removeAllChildNods(listEl);
+
+        // 지도에 표시되고 있는 마커를 제거합니다
+        removeMarker();
+
+
+        // 마커를 생성하고 지도에 표시합니다
+        var placePosition = new kakao.maps.LatLng(places[0].y, places[0].x),
+            marker = addMarker(placePosition, 0),
+            itemEl = getListItem(0, places[0]); // 검색 결과 항목 Element를 생성합니다
+
+        // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
+        // LatLngBounds 객체에 좌표를 추가합니다
+        bounds.extend(placePosition);
+
+        // 마커와 검색결과 항목에 mouseover 했을때
+        // 해당 장소에 인포윈도우에 장소명을 표시합니다
+        // mouseout 했을 때는 인포윈도우를 닫습니다
+        (function (marker, title) {
+            kakao.maps.event.addListener(marker, 'mouseover', function () {
+                displayInfowindow(marker, title);
+            });
+
+            kakao.maps.event.addListener(marker, 'mouseout', function () {
+                infowindow.close();
+            });
+
+            itemEl.onmouseover = function () {
+                displayInfowindow(marker, title);
+            };
+
+            itemEl.onmouseout = function () {
+                infowindow.close();
+            };
+        })(marker, places[0].place_name);
+
+        fragment.appendChild(itemEl);
+
+        // 검색결과 항목들을 검색결과 목록 Elemnet에 추가합니다
+        listEl.appendChild(fragment);
+        menuEl.scrollTop = 0;
+
+        // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
+        map.setBounds(bounds);
+    }
+
+    // 검색결과 항목을 Element로 반환하는 함수입니다
+    function getListItem(index, places) {
+        var unili = document.getElementById('keyword').value
+        console.log(unili);
+        var el = document.createElement('li'), 
+            itemStr = '<span class="markerbg marker_' + (index + 1) + '"></span>' +
+                '<div class="info">' +
+                '   <h5>' + places.place_name + '</h5>'+
+                '<br>'+
+                '<a href = "search/' + unili + '/">'+ '<strong>' + unili + '<strong>' + ' 선배님들 볼래요! ' +'</a>';
+        el.innerHTML = itemStr;
+        el.className = 'item';
+
+        return el;
+    }
+
+    // 마커를 생성하고 지도 위에 마커를 표시하는 함수입니다
+    function addMarker(position, idx, title) {
+        var imageSrc = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png', // 마커 이미지 url, 스프라이트 이미지를 씁니다
+            imageSize = new kakao.maps.Size(36, 37),  // 마커 이미지의 크기
+            imgOptions = {
+                spriteSize: new kakao.maps.Size(36, 691), // 스프라이트 이미지의 크기
+                spriteOrigin: new kakao.maps.Point(0, (idx * 46) + 10), // 스프라이트 이미지 중 사용할 영역의 좌상단 좌표
+                offset: new kakao.maps.Point(13, 37) // 마커 좌표에 일치시킬 이미지 내에서의 좌표
+            },
+            markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imgOptions),
+            marker = new kakao.maps.Marker({
+                position: position, // 마커의 위치
+                image: markerImage
+            });
+
+        marker.setMap(map); // 지도 위에 마커를 표출합니다
+        markers.push(marker);  // 배열에 생성된 마커를 추가합니다
+
+        return marker;
+    }
+
+    // 지도 위에 표시되고 있는 마커를 모두 제거합니다
+    function removeMarker() {
+        for (var i = 0; i < markers.length; i++) {
+            markers[i].setMap(null);
+        }
+        markers = [];
+    }
+
+    // 검색결과 목록 또는 마커를 클릭했을 때 호출되는 함수입니다
+    // 인포윈도우에 장소명을 표시합니다
+    function displayInfowindow(marker, title) {
+        var unili = document.getElementById('keyword').value
+        var ul = document.createElement('li'),
+            uniStr = '<a href = "search/' + unili + '/">'+ unili +'</a>';
+        ul.innerHTML = uniStr;
+        var content = '<div style="padding:5px;z-index:1;">' + title + '</div>';
+        infowindow.setContent(content);
+        infowindow.open(map, marker);
+    }
+    function removeAllChildNods(el) {
+        while (el.hasChildNodes()) {
+            el.removeChild(el.lastChild);
+        }
+    }
+</script>
+</html>
+{% endblock content %}

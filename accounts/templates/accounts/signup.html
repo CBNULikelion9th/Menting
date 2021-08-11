@@ -16,7 +16,7 @@
   {{error}}
   <div class="container">
     <div class="con5">
-    <img class="logo_instagram" src="{% static 'img/signup2.png' %}" alt="instagram_logo" style="width:400px">
+    <img class="logo_instagram" src="{% static 'img/signup2.png' %}" alt="instagram_logo" style="width: 460px;margin-right: 20px;">
     <span class="error" style="margin: 0%; color: red;">
       {% if messages %}
       <div>
@@ -27,7 +27,7 @@
       {% endif %}
    </span>
     <form action="{% url 'signup' %}" method="POST" style="
-    margin-left: 95px;
+    margin-left: 130px;
 ">
       {% csrf_token %}
       <div class="signupform">
@@ -80,9 +80,9 @@
       <button type='submit', class="btnmid", onclick="return confirm('이 정보로 회원가입 하시겠습니까?');"> 회 원 가 입 </button>
     </form>
     <span><a href="{% url 'main' %}"><button id="btn_pre" style="
-      margin-left: 94px;
+      margin-left: 130px;
   ">Cancel</button></a></span>
-    <span><a href="{% url 'login' %}"><button id="btn_next" style="margin-left:126px;">Login</button></a></span>
+    <span><a href="{% url 'login' %}"><button id="btn_next" style="margin-left:161px;">Login</button></a></span>
   </div>
   
   </div>

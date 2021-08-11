@@ -1,71 +1,41 @@
-<<<<<<< HEAD
-body {
-    text-align: center;
-    height: 900px;
-=======
-
 body {
     text-align: center;
     background-color: #eceaea;
->>>>>>> 21729194e8556c5bdb4a3e79d40d0a3b243f4e31
 }
 
 .profile {
     display: flex;
     position: absolute;
     top: 150px;
-<<<<<<< HEAD
-    width: 1000px;
-    height: 600px;
-    background-color: skyblue;
-    left: 50%;
-    transform: translatex(-50%);
-    border: dashed 3px gray;
-=======
     width: 800px;
     height: 500px;
     background-color: #fff;;
     left: 50%;
     transform: translatex(-50%);
     border: 1px solid #DBDBDB;
->>>>>>> 21729194e8556c5bdb4a3e79d40d0a3b243f4e31
     border-radius: 5%;
 }
 
 .name {
     position:relative;
-<<<<<<< HEAD
-    font-size: 2em;
-    right:240px;
-=======
     font-size: 1rem;
     right:240px;
     bottom:-230px;
->>>>>>> 21729194e8556c5bdb4a3e79d40d0a3b243f4e31
 }
 
 .profileimg {
     position:relative;
-<<<<<<< HEAD
-    width:350px;
-    display: inline-block;
-    right:80px;
-=======
     width:150px;
     display: inline-block;
     right:80px;
     top:-80px;
->>>>>>> 21729194e8556c5bdb4a3e79d40d0a3b243f4e31
 }
 
 .information {
     position:relative;
     display: inline-block;
-<<<<<<< HEAD
-=======
     height:130px;
     bottom:-52px;
->>>>>>> 21729194e8556c5bdb4a3e79d40d0a3b243f4e31
 }
 
 .information p {

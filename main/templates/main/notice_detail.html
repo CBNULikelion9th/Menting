@@ -17,31 +17,32 @@
 </head>
 
 <body>
-    <div class="notice_detail">
-        <br>
+    <div class="contant">
+        <div class="notice_detail">
+            <br>
 
-        <div class="container">
-            <div class="card" id="contain">
-                <div class="card-body">
-                    <span class="post_title">{{ post2.title }}</span>
-                    <span class="post_user"><i class="fas fa-user-circle fa-lg" id="peopleicon"></i> STAFF<span
-                            class="post_update">
-                            {{post2.updated_at}}</span></span>
-                    <br><br>
-                    <span class="post_content">{{ post2.content }}</span>
+            <div class="container">
+                <div class="card" id="contain">
+                    <div class="card-body">
+                        <span class="post_title">{{ post2.title }}</span>
+                        <span class="post_user"><i class="fas fa-user-circle fa-lg" id="peopleicon"></i> STAFF<span
+                                class="post_update">
+                                {{post2.updated_at}}</span></span>
+                        <br><br>
+                        <span class="post_content">{{ post2.content }}</span>
+                    </div>
                 </div>
             </div>
         </div>
+
+        <button class="btn btn-outline-secondary btn-sm" id="notice_button"><a href="{% url 'notice_page' %}"
+                class="link-dark">목록</a></button>
+        {% if user.is_superuser == True %}
+        <button class="btn btn-outline-secondary btn-sm" id="notice_delete_button"><a
+                href="{% url 'notice_delete' post2.id %}" class="link-dark">삭제</a></button>
+        {% endif %}
+
     </div>
-
-    <button class="btn btn-outline-secondary btn-sm" id="notice_button"><a href="{% url 'notice_page' %}"
-            class="link-dark">목록</a></button>
-    {% if user.is_superuser == True %}
-    <button class="btn btn-outline-secondary btn-sm" id="notice_delete_button"><a
-            href="{% url 'notice_delete' post2.id %}" class="link-dark">삭제</a></button>
-    {% endif %}
-
-
     <footer>
         <div class="inner">
             <div class="info">

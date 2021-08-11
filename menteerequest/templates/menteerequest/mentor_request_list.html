@@ -24,91 +24,97 @@
     <br><br><br>
     <br><br><br>
 
-{% if user.mentor_check == True %}
+    {% if user.mentor_check == True %}
 
-    <p class="title"> {{user.name}} 님 안녕하세요(멘토) {{user.university}}</p>
+    <p class="title"> {{user.name}}님 안녕하세요</p>
+    <br>
 
-    <h1>멘티들의 요청 리스트~</h1>
+    <span class="mentee_request"> ○ 멘티들의 요청 리스트</span>
 
     {% if request_list %}
-        <h2 class = "title2 ">진행중인 멘팅</h2>
-            {% for post in request_list %}
-                {% if post.finish_check == 0 %}
-                    <div class="request_page">
-                        <span class="lettertitle"><i class="fas fa-user-circle fa-lg" id="peopleicon"></i> 신청자 : {{post.mentee}}</span>
-                        <br>
-                        <span class="letter">재학중인 학교 :{{post.mentee_highschool}}</span>
-                        <br>
-                        <span class="letter">{{post.grade}} 학년</span>
-                        <br>
-                        <span class="letter">{{post.mentee_entrancetype}} 전형</span>
-                        <br>
-                        <span class="letter">원하는 학과 : {{post.mentee_major}}</span>
-                        <br>
-                        <span class="letter"><small>{{post.created_at}}</small></span>
-                        <br>
-                        <span class="letterbutton"><a href = '{{post.id}}'><button class="btn btn-outline-secondary btn-sm">상세보기 및 확인</button></a></span>
-                        <hr class = "line">
-                    </div>
-                {% endif %}
-            {% endfor %}  
-        
+    <br><br>
+    <span class="title2">진행중인 멘팅</span>
+    {% for post in request_list %}
+    {% if post.finish_check == 0 %}
+    <div class="request_page">
+        <span class="lettertitle"><i class="fas fa-user-circle fa-lg" id="peopleicon"></i>신청자 : {{post.mentee}}</span>
+        <br>
+        <span class="letter">재학중인 학교 :{{post.mentee_highschool}}</span>
+        <br>
+        <span class="letter">{{post.grade}} 학년</span>
+        <br>
+        <span class="letter">{{post.mentee_entrancetype}} 전형</span>
+        <br>
+        <span class="letter">원하는 학과 : {{post.mentee_major}}</span>
+        <br>
+        <span class="letter"><small>{{post.created_at}}</small></span>
+        <br>
+        <span class="letterbutton"><a href='{{post.id}}'><button class="btn btn-outline-secondary btn-sm">상세보기 및
+                    확인</button></a></span>
+        <hr class="line">
+    </div>
+    {% endif %}
+    {% endfor %}
 
-            <hr class = "line2"><hr class = "line2">
 
-            <h2 class = "title2 ">완료된 멘팅</h2>
-                {% for post in request_list %}
-                    {% if post.finish_check == 1 %}
-                        <div class="request_page">
-                            <span class="lettertitle"><i class="fas fa-user-circle fa-lg" id="peopleicon"></i>신청자 : {{post.mentee}}</span>
-                            <br>
-                            <span class="letter">재학중인 학교 :{{post.mentee_highschool}}</span>
-                            <br>
-                            <span class="letter">{{post.grade}} 학년</span>
-                            <br>
-                            <span class="letter">{{post.mentee_entrancetype}} 전형</span>
-                            <br>
-                            <span class="letter">원하는 학과 : {{post.mentee_major}}</span>
-                            <br>
-                            <span class="letter"><small>{{post.created_at}}</small></span>
-                            <br>
-                            <span class="letterbutton"><a href = '{{post.id}}'><button class="btn btn-outline-secondary btn-sm">상세보기 및 확인</button></a></span>
-                            <hr class = "line">
-                        </div>
-                    {% endif %}
-                {% endfor %}
-    
+    <hr class="line2">
+
+    <span class="title2">완료된 멘팅</span>
+    {% for post in request_list %}
+    {% if post.finish_check == 1 %}
+    <div class="request_page">
+        <span class="lettertitle"><i class="fas fa-user-circle fa-lg" id="peopleicon"></i>신청자 : {{post.mentee}}</span>
+        <br>
+        <span class="letter">재학중인 학교 :{{post.mentee_highschool}}</span>
+        <br>
+        <span class="letter">{{post.grade}} 학년</span>
+        <br>
+        <span class="letter">{{post.mentee_entrancetype}} 전형</span>
+        <br>
+        <span class="letter">원하는 학과 : {{post.mentee_major}}</span>
+        <br>
+        <span class="letter"><small>{{post.created_at}}</small></span>
+        <br>
+        <span class="letterbutton"><a href='{{post.id}}'><button class="btn btn-outline-secondary btn-sm">상세보기 및
+                    확인</button></a></span>
+        <hr class="line">
+    </div>
+    {% endif %}
+    {% endfor %}
+
     {% else %}
-        <div class="request_page">
-            <center style="font-size: 2em;">진행중인 멘팅이 없습니다</center>
-        </div>
+    <div class="request_page">
+        <span class="nomenting" style="font-size: 1.5em;">진행중인 멘팅이 없습니다.</span>
+    </div>
     {% endif %}
 
-{% endif %}
+    {% endif %}
 
     <!-- 미인증 멘토인 경우 -->
     {% if user.mentor_check == False %}
-        <h1 class ="title">
-            {{user.name}}님은 아직 인증된 멘토가 아닙니다
+    <div class="request_page2">
+        <h1 class="title">
+            {{user.name}}님은 아직 인증된 멘토가 아닙니다.
         </h1>
+    </div>
     {% endif %}
     <center>
-        <a href="{% url 'main' %}"><button class="btn btn-outline-secondary btn-sm" >홈으로</button></a>
+        <a href="{% url 'main' %}"><button class="btn btn-outline-secondary btn-sm">홈으로</button></a>
     </center>
-    
+
 </body>
 
 <footer>
     <div class="inner">
-      <div class="info">
-        <span>멋쟁이사자처럼 at 충북대학교 2조팀.</span>
-      </div>
+        <div class="info">
+            <span>멋쟁이사자처럼 at 충북대학교 2조팀.</span>
+        </div>
 
-      <p class="copyright">
-        &copy; <span class="this-year"></span> 2021 Menting Project
-      </p>
+        <p class="copyright">
+            &copy; <span class="this-year"></span> 2021 Menting Project
+        </p>
     </div>
-  </footer>
+</footer>
 
 
 {% endblock content %}

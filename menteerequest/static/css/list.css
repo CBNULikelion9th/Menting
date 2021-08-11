@@ -1,10 +1,21 @@
+html, body {
+    height: 100%;
+}
+
+
 body {
     font-family: 'Nanum Gothic', sans-serif;
     line-height: 1.4;
     color: #333;
     font-size: 14px;
     font-weight: 600;
+    display: flex;
+    flex-direction: column;
   }
+
+ .contant {
+    flex: 1;
+ } 
 
 .title {
     font-size: 2em;
@@ -96,3 +107,5 @@ p, span {
 #peopleicon2{
     margin-right: 3px;
 }
+
+

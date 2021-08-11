@@ -13,7 +13,7 @@
 }
 
 .todo-h3 {
-  text-align: end;
+  
   cursor: pointer;
 }
 
@@ -42,7 +42,8 @@
   height: 50px;
   min-height: 50px;
   display: flex;
-  background: #4b8888;
+  background: #7ac9c9;
+  
   color:#fff
 }
 

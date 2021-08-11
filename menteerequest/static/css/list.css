@@ -2,7 +2,6 @@ html, body {
     height: 100%;
 }
 
-
 body {
     font-family: 'Nanum Gothic', sans-serif;
     line-height: 1.4;
@@ -81,7 +80,6 @@ p, span {
 .line2{
     margin-left: 5%;
     margin-right: 5%;
-
 }
 
 #contain{
@@ -107,5 +105,3 @@ p, span {
 #peopleicon2{
     margin-right: 3px;
 }
-
-

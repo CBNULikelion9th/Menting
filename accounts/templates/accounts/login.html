@@ -13,7 +13,9 @@
 </head>
 
 <body>
-  <div class="container">
+  <div class="container" style="
+  margin-top: 200px;
+">
     <img class="logo" src="{% static 'img/로그인.png' %}" alt="logo" width="145" height="72" >
     <form action="{% url 'login' %}" method="POST">
       <span class="error" style="margin: 0%; color: red;">
@@ -38,12 +40,11 @@
   <footer>
     <div class="inner">
       <div class="info">
-        <span>멋쟁이사자처럼 at 충북대학교 2조팀.</span>
+        <span>멋쟁이사자처럼 at 충북대학교 2조팀.</span> </br>
+        2021 Menting Project
+        
       </div>
 
-      <p class="copyright">
-        &copy; <span class="this-year"></span> 2021 Menting Project
-      </p>
     </div>
   </footer>
 </body>

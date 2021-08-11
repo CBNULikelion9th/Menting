@@ -9,6 +9,7 @@
     background-color: #fff;
     border: 1px solid #DBDBDB;
     border-radius: 5px 5px;
+    
 }
 
 img.logo {
@@ -86,4 +87,19 @@ a {
 p {
     font-weight: bold;
     margin:20px 0;
+}
+footer {
+    margin: 0;
+    position:absolute;
+    bottom:0;
+    width:100%;
+    height:80px;   
+    background:#333333;
+}
+
+.info {
+    text-align: center;
+    color: #999999;
+    padding-top: 2%;
+    font-size: 12px;
 }

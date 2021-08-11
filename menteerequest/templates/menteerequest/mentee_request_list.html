@@ -1,67 +1,111 @@
+{% extends 'accounts/base.html' %}
+<!DOCTYPE html>
+{% load static %}
+{% block content %}
+<html>
+<html lang="en">
 
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>리스트</title>
+    <link href="{% static 'css/common.css' %}" rel="stylesheet">
+    <link href="{% static 'css/list.css' %}" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
+</head>
 
-<h1> {{user.name}} 님(멘티) 안녕하세요</h1>
+<body>
+    <br><br><br>
+    <br><br><br>
+    <br><br><br>
+    <div class="contant">
+        {% if user.mentor_check == False and user.studenttype == False %}
 
+        <p class="title"> {{user.name}}님 안녕하세요</p>
+        <br>
+        {% if request_list %}
+        <span class="title2">진행중인 멘팅</span>
 
-<a href="{% url 'main' %}"><button>홈으로</button></a>
-<h2>진행중인 멘팅</h2>
-<p>
-
-    {% for post in request_list %}
-
-        
+        {% for post in request_list %}
         {% if post.finish_check == 0 %}
-        
-            멘토 : {{post.mentor}}
+        <div class="request_page">
+            <span class="lettertitle"><i class="fas fa-user-circle fa-lg" id="peopleicon"></i>멘토 :
+                {{post.mentor}}</span>
             <br>
-            {{post.mentee_highschool}}
+            <span class="letter">{{post.university}}</span>
             <br>
-            {{post.grade}} 학년
+            <span class="letter">{{post.mentee_entrancetype}} 전형</span>
             <br>
-            {{post.mentee_entrancetype}} 전형
+            <span class="letter">원하는 학과 : {{post.mentee_major}}</span>
             <br>
-            원하는 학과 : {{post.mentee_major}} 
+            <span class="letter"><small>{{post.created_at}}</small></span>
             <br>
-            <small>{{post.created_at}}</small>
-            <br>
-            <br>
-            <a href = '{{post.id}}'><button>상세보기 및 확인</button></a>
-            <br>
-            <hr>
-
+            <span class="letterbutton"><a href='{{post.id}}'><button class="btn btn-outline-secondary btn-sm">상세보기 및
+                        확인</button></a></span>
+            <hr class="line">
+        </div>
         {% endif %}
+        {% endfor %}
 
-    {% endfor %}
+        <hr class="line2">
 
-    
-</p>
-<hr>
-<hr>
-<h2>완료된 멘팅</h2>
-<p>
-    {% for post in request_list %}
-            
+        <span class=" title2">완료된 멘팅</span>
+        {% for post in request_list %}
         {% if post.finish_check == 1 %}
-            
-            멘토 : {{post.mentor}}
+        <div class="request_page">
+            <span class="lettertitle"><i class="fas fa-user-circle fa-lg" id="peopleicon"></i>멘토 :
+                {{post.mentor}}</span>
             <br>
-            {{post.mentee_highschool}}
+            <span class="letter">{{post.university}}</span>
             <br>
-            {{post.grade}} 학년
+            <span class="letter">{{post.mentee_entrancetype}} 전형</span>
             <br>
-            {{post.mentee_entrancetype}} 전형
+            <span class="letter">원하는 학과 : {{post.mentee_major}}</span>
             <br>
-            원하는 학과 : {{post.mentee_major}} 
+            <span class="letter"><small>{{post.created_at}}</small></span>
             <br>
-            <small>{{post.created_at}}</small>
-            <br>
-            <br>
-            <a href = '{{post.id}}'><button>상세보기 및 확인</button></a>
-            <br>
-            <hr>
+            <span class="letterbutton"><a href='{{post.id}}'><button class="btn btn-outline-secondary btn-sm">상세보기 및
+                        확인</button></a></span>
+            <hr class="line">
+        </div>
+        {% endif %}
+        {% endfor %}
+
+        {% else %}
+        <div class="request_page">
+            <span class="nomenting" style="font-size: 1.5em;">진행중인 멘팅이 없습니다.</span>
+        </div>
+        {% endif %}
 
         {% endif %}
 
-    {% endfor %}
+        <center>
+            <a href="{% url 'main' %}"><button class="btn btn-outline-secondary btn-sm">홈으로</button></a>
+        </center>
 
-</p>
+    </div>
+
+
+    <footer class="bottombanner">
+        <div class="inner">
+            <div class="info">
+                <span>멋쟁이사자처럼 at 충북대학교 2조팀.</span>
+            </div>
+
+            <p class="copyright">
+                &copy; <span class="this-year"></span> 2021 Menting Project
+            </p>
+        </div>
+    </footer>
+
+</body>
+
+</html>
+
+
+
+{% endblock content %}

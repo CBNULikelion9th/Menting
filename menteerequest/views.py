@@ -22,6 +22,7 @@ def request_view(request):
             post = form.save(commit = False) 
             post.mentor = Mentor.username   #폼에 추가적으로 저장할 멘토의 아이디와 이메일 이부분은 metor모델에 저장된 값을 가져와서 이 폼에 저장한다
             post.mentor_email = Mentor.email
+            post.university = Mentor.university
             post.mentee = request.user
             post.save()
             return redirect ('requestsuccess')

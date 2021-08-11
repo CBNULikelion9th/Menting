@@ -1,37 +1,44 @@
 body {
     text-align: center;
-    height: 900px;
+    background-color: #eceaea;
+    
+    
 }
 
 .profile {
     display: flex;
     position: absolute;
-    top: 150px;
-    width: 1000px;
-    height: 600px;
-    background-color: skyblue;
+    top: 180px;
+    width: 800px;
+    height: 500px;
+    background-color: #fff;;
     left: 50%;
     transform: translatex(-50%);
-    border: dashed 3px gray;
+    border: 1px solid #DBDBDB;
     border-radius: 5%;
+    flex: 1;
 }
 
 .name {
     position:relative;
-    font-size: 2em;
+    font-size: 1rem;
     right:240px;
+    bottom:-230px;
 }
 
 .profileimg {
     position:relative;
-    width:350px;
+    width:150px;
     display: inline-block;
     right:80px;
+    top:-80px;
 }
 
 .information {
     position:relative;
     display: inline-block;
+    height:130px;
+    bottom:-52px;
 }
 
 .information p {
@@ -45,14 +52,14 @@ body {
 }
 
 .buttons button {
+    width:150px;
     margin-left: 30px;
-    margin-right: 30px;
 }
 
 .button {
     display: inline-block;
     border-radius: 4px;
-    background-color: lightslategray;
+    background-color: #335858;
     border: none;
     color: #FFFFFF;
     text-align: center;
@@ -90,14 +97,16 @@ body {
 }
 
 .button1 {
-    background-color: lightslategrey;
+    background-color:  #335858;
     border: none;
-    border-radius: 4px;
     color: white;
+    border-radius: 4px;
     padding: 16px 32px;
     text-align: center;
     font-size: 16px;
-    margin: 4px 2px;
+    margin-left: 30px;
+    margin-right: 30px;
+    margin-top:20px;
     opacity: 0.6;
     transition: 0.3s;
     display: inline-block;
@@ -106,13 +115,12 @@ body {
 }
   
 .button1:hover {opacity: 1}
-
+  
 footer {
-    
     position:absolute;
-    top:100%;
+    bottom:0;
     width:100%;
-    height:100px;   
+    height:80px;   
     background:#333333;
 }
 

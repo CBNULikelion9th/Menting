@@ -127,9 +127,8 @@ body {
     margin: auto;
   }
   header img {
-    width:180px;
-    height:80px;
-    margin-top:7px;
+    height:70px;
+    margin-top:10px;
   }
   header .sub-menu {
     position: absolute;

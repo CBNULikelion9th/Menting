@@ -31,6 +31,7 @@ class Post2(models.Model):
 class Mentor(models.Model):    #선택한 멘토 정보를 요청창에 넘기기위한 새로운 모델
     username = models.CharField(max_length=20)
     email = models.CharField(max_length=20)
+    university = models.CharField(max_length=50)
 
 
     

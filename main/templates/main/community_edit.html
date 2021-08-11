@@ -15,27 +15,28 @@
 </head>
 
 <body>
-    <div class="community_edit_page">
-        <h1>게시글 수정하기</h1>
-        <br>
-        <form action="{% url 'community_edit' post.id %}" method="POST">
-            {% if user.is_authenticated %}
-            {% csrf_token %}
-            <h6>작성자 : {{ user.username }}</h6>
-            <h6>제목</h6>
-            <h6>{{ form.title }}</h6>
-            <h6>내용</h6>
-            <h6>{{ form.content }}</h6>
-
+    <div class="contant">
+        <div class="community_edit_page">
+            <h1>게시글 수정하기</h1>
             <br>
-            <div class="button_locate">
-                <input type="submit" value="작성" class="btn btn-outline-secondary btn-sm">
-                <a class="btn btn-outline-secondary btn-sm" href="{% url 'community_page' %}" role="button">취소</a>
-            </div>
-            {% endif %}
-        </form>
-    </div>
+            <form action="{% url 'community_edit' post.id %}" method="POST">
+                {% if user.is_authenticated %}
+                {% csrf_token %}
+                <h6>작성자 : {{ user.username }}</h6>
+                <h6>제목</h6>
+                <h6>{{ form.title }}</h6>
+                <h6>내용</h6>
+                <h6>{{ form.content }}</h6>
 
+                <br>
+                <div class="button_locate">
+                    <input type="submit" value="작성" class="btn btn-outline-secondary btn-sm">
+                    <a class="btn btn-outline-secondary btn-sm" href="{% url 'community_page' %}" role="button">취소</a>
+                </div>
+                {% endif %}
+            </form>
+        </div>
+    </div>
     <footer>
         <div class="inner">
             <div class="info">

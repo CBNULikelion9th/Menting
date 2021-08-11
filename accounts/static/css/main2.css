@@ -512,11 +512,12 @@ header .badges .badge {
 /*REWARDS*/
 .rewards {
   position: relative;
+  
 }
 .rewards .bg-left {
   width: 50%;
   height: 100%;
-  background-color: #ffffff;
+  background-color: #fafae9;
   position: absolute;
   top: 0;
   left: 0;
@@ -524,7 +525,7 @@ header .badges .badge {
 .rewards .bg-right {
   width: 50%;
   height: 100%;
-  background-color: #ffffff;
+  background-color: #fafae9;
   position: absolute;
   top: 0;
   right: 0;

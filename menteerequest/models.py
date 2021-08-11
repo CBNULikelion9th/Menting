@@ -22,6 +22,7 @@ class Mentee_request(models.Model):   #요청서
     grade = models.CharField(max_length=4, choices=GRADE_CHOICES)
     mentor_email = models.CharField(max_length=50)  #이메일 전송을 위해 멘토의 이메일을 저장
     finish_check = models.BooleanField(default=0)
+    university = models.CharField(max_length=50)
     
 
 class Response(models.Model):

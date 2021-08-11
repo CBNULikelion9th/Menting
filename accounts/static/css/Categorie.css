@@ -1,0 +1,10 @@
+.cat1{
+    display: block;
+    margin:120px auto;
+    margin-bottom: -30px;
+    background-color:#e5e5e5;
+    
+}
+.catcon{
+    background-image: url("/static/img/cat1배경2.jpg");
+}

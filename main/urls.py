@@ -20,4 +20,6 @@ urlpatterns = [
     path('search/',views.search_pages, name='search_pages'),
     path('',views.home, name='home'),
     path('search/choice_mentor/<int:customer_id>',views.choice_mentor, name='choice_mentor'),
+    path('cat1/',views.cat_1, name='cat_1'),
+    path('cat2/',views.cat_2, name='cat_2'),
 ]

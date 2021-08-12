@@ -47,9 +47,9 @@
 <body>
 
   <!--HEADER-->
-  
 
-  
+
+
   <!--VISUAL-->
   <!--PROMOTION-->
   <section class="notice">
@@ -92,11 +92,19 @@
     <div class="inner">
       <div class="btn-group">
         {% if user.is_authenticated %}
-            <a href="{% url 'mypage' %}"><div class="btn gift" style="width: 251px;" >마이 페이지</div></a>
-            <a href="{% url 'search_pages' %}"><div class="btn gift" style="width: 251px;" >멘토 리스트</div></a>
+        <a href="{% url 'mypage' %}">
+          <div class="btn gift" style="width: 251px;">마이 페이지</div>
+        </a>
+        <a href="{% url 'search_pages' %}">
+          <div class="btn gift" style="width: 251px;">멘토 리스트</div>
+        </a>
         {% else %}
-            <a href="{% url 'signup' %}" ><div class="btn sign-up">회원가입</div></a>
-            <a href="{% url 'login' %}" ><div class="btn sign-in">로그인</div></a>
+        <a href="{% url 'signup' %}">
+          <div class="btn sign-up">회원가입</div>
+        </a>
+        <a href="{% url 'login' %}">
+          <div class="btn sign-in">로그인</div>
+        </a>
         {% endif %}
       </div>
 
@@ -107,15 +115,15 @@
 
       <div class="text-group">
         <h1 class="title back-to-position to-right delay-0">Pick</h1>
-        
+
       </div>
       <div class="text-group">
-        
+
         <h2 class="description back-to-position to-right delay-1">Your</h2>
-       
+
       </div>
       <div class="text-group">
-       
+
         <h3 class="more back-to-position to-right delay-2">Mentor</h3>
       </div>
 
@@ -135,8 +143,7 @@
         </div>
         <div class="back">
           <img src="static/img/커뮤니티2.png" width="400px">
-          <a href="{% url 'cat_3' %}"
-            class="btn">
+          <a href="{% url 'cat_3' %}" class="btn">
             멘토 찾기
           </a>
         </div>
@@ -145,8 +152,8 @@
     </div>
   </section>
 
- 
-  
+
+
   <!--FOOTER-->
   <footer>
     <div class="inner">
@@ -166,6 +173,8 @@
     <div class="material-icons">arrow_upward</div>
   </div>
 </body>
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a54fecdc7a8b95b1d99956fac243954c&libraries=services"></script>
+<script type="text/javascript"
+  src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a54fecdc7a8b95b1d99956fac243954c&libraries=services"></script>
+
 </html>
 {% endblock content %}

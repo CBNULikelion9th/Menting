@@ -265,3 +265,12 @@ def choice_mentor(request,customer_id): # 멘토들중 선택
     Mentor.university = mentor.university
     return redirect("requestform") #요청서 페이지로 넘어간다
 
+def cat_1(request):
+    return render(request, 'main/멘팅소개.html')
+
+def cat_2(request):
+    return render(request, 'main/모의고사일정.html')
+
+def cat_3(request):
+    return render(request, 'main/멘토만나기.html')
+

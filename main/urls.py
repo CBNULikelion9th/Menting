@@ -16,8 +16,11 @@ urlpatterns = [
     path('notice/new/',views.notice_new, name='notice_new'),
     path('notice/<int:post_id>/',views.notice_detail, name="notice_detail"),
     path('notice/<int:post_id>/delete/',views.notice_delete, name="notice_delete"),
-    path('search/<str:univers>/',views.search_page, name='search_page'),
     path('search/',views.search_pages, name='search_pages'),
     path('',views.home, name='home'),
     path('search/choice_mentor/<int:customer_id>',views.choice_mentor, name='choice_mentor'),
+    path('cat1/',views.cat_1, name='cat_1'),
+    path('cat2/',views.cat_2, name='cat_2'),
+    path('cat3/',views.cat_3, name='cat_3'),
+    path('cat3/search/<str:univers>/',views.search_page, name='search_page'),
 ]

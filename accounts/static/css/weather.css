@@ -1,0 +1,19 @@
+.weather {
+  position: absolute;
+  font-style: italic;
+  position: absolute;
+  top: 40%;
+  right:1%;
+  font-weight: bolder;
+  color:#708090;
+}
+
+.weather-place {
+  font-size: 0.8rem;
+  margin-bottom: 2%;
+  margin-left:14%;
+}
+
+.weather-temperature {
+  font-size: 0.8rem;
+}

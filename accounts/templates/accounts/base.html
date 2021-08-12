@@ -8,6 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>멘팅 Menting</title>
   <link href="{% static 'css/menubar2.css' %}" rel="stylesheet">
+  <link href="{% static 'css/weather.css' %}" rel="stylesheet">
   <!--파비콘-->
   <!--<link rel="shortcut icon" href="favicon.ico" />-->
   <link rel="icon" href="/static/img/패비콘.png" />
@@ -18,6 +19,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet" />
   <!--Google Material Icons-->
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+  <script defer src="static/js/weather.js"></script>
 
 </head>
 
@@ -25,14 +27,15 @@
 <body>
   {% if user.is_authenticated %}
   <header>
+    <div class="js-weather weather"></div>
     <div class="inner">
 
       <a href="{% url 'main' %}" class="logo">
-        <img src="/static/img/menting removeback.png" style="width:180px; height:80px; margin-top:7px;" />
+        <img src="/static/img/menting removeback.png" style="width:180px; height:70px; margin-top:10px;" />
       </a>
 
       <div class="sub-menu">
-        <ul class="menu">
+        <ul class="menu" style="font-weight:550;">
           <li>
             <a href="{% url 'logout' %}">Logout</a>
           </li>
@@ -50,21 +53,21 @@
             <div class="contents__menu">
               <ul class="inner">
                 <li>
-                  <a href="">
+                  <a href="{% url 'cat_1' %}">
                     <h4>Menting 소개</h4>
                   </a>
                 </li>
-                <li>
-                  <a href="">
-                    <h4>홈페이지 사용법</h4>
-                  </a>
-
-                </li>
+                
                 <li>
                   <a href="{% url 'notice_page' %}">
                     <h4>새 소식</h4>
                   </a>
 
+                </li>
+                <li>
+                  <a href="{% url 'cat_3' %}">
+                    <h4>멘토 찾기</h4>
+                  </a>
                 </li>
               </ul>
             </div>
@@ -76,31 +79,31 @@
             <div class="contents__menu">
               <ul class="inner">
                 <li>
-                  <a href="">
+                  <a href="{% url 'notice_page' %}">
                     <h4>예비 고1</h4>
                   </a>
 
                 </li>
                 <li>
-                  <a href="">
+                  <a href="{% url 'notice_page' %}">
                     <h4>고1</h4>
                   </a>
 
                 </li>
                 <li>
-                  <a href="">
+                  <a href="{% url 'notice_page' %}">
                     <h4>고2</h4>
                   </a>
 
                 </li>
                 <li>
-                  <a href="">
+                  <a href="{% url 'notice_page' %}">
                     <h4>고3</h4>
                   </a>
 
                 </li>
                 <li>
-                  <a href="">
+                  <a href="{% url 'notice_page' %}">
                     <h4>N/수생</h4>
                   </a>
 
@@ -116,7 +119,7 @@
             <div class="contents__menu">
               <ul class="inner">
                 <li>
-                  <a href="">
+                  <a href="{% url 'cat_2' %}">
                     <h4>모의고사 일정</h4>
                   </a>
                 </li>
@@ -135,14 +138,14 @@
   </header>
   {%else%}
   <header>
+    <div class="js-weather weather"></div>
     <div class="inner">
-
       <a href="{% url 'main' %}" class="logo cursor">
         <img src="/static/img/menting removeback.png" />
       </a>
 
       <div class="sub-menu">
-        <ul class="menu">
+        <ul class="menu" style="font-weight:550;">
           <li>
             <a href="http://127.0.0.1:8000/login/">Login</a>
           </li>
@@ -160,22 +163,18 @@
             <div class="contents__menu">
               <ul class="inner">
                 <li>
-                  <a href="">
+                  <a href="{% url 'cat_1' %}">
                     <h4>Menting 소개</h4>
                   </a>
                 </li>
-                <li>
-                  <a href="">
-                    <h4>홈페이지 사용법</h4>
-                  </a>
-
-                </li>
+                
                 <li>
                   <a href="{% url 'notice_page' %}">
                     <h4>새 소식</h4>
                   </a>
 
                 </li>
+                
               </ul>
             </div>
           </div>
@@ -186,31 +185,31 @@
             <div class="contents__menu">
               <ul class="inner">
                 <li>
-                  <a href="">
+                  <a href="{% url 'notice_page' %}">
                     <h4>예비 고1</h4>
                   </a>
 
                 </li>
                 <li>
-                  <a href="">
+                  <a href="{% url 'notice_page' %}">
                     <h4>고1</h4>
                   </a>
 
                 </li>
                 <li>
-                  <a href="">
+                  <a href="{% url 'notice_page' %}">
                     <h4>고2</h4>
                   </a>
 
                 </li>
                 <li>
-                  <a href="">
+                  <a href="{% url 'notice_page' %}">
                     <h4>고3</h4>
                   </a>
 
                 </li>
                 <li>
-                  <a href="">
+                  <a href="{% url 'notice_page' %}">
                     <h4>N/수생</h4>
                   </a>
 
@@ -226,7 +225,7 @@
             <div class="contents__menu">
               <ul class="inner">
                 <li>
-                  <a href="">
+                  <a href="{% url 'cat_2' %}">
                     <h4>모의고사 일정</h4>
                   </a>
                 </li>

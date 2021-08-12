@@ -22,8 +22,7 @@ body {
 }
 
 .title2 {
-    font-size: 2em;
-    margin-left:10%;
+    margin-left:5%;
 }
 
 a:link{
@@ -35,13 +34,7 @@ p, span {
 }
 
 .request_page {
-    margin: 25px 5px 100px 5px;
-    padding-top: 20px;
-    height: 200px;
-}
-
-.request_page2 {
-    margin: 50px 5px 150px 5px;
+    margin: 50px 150px 150px 150px;
     padding-top: 20px;
     height: 200px;
 }
@@ -54,7 +47,7 @@ p, span {
 
 .letter{
     font-size: 20px;
-    margin-left: 13.5%;
+    margin-left: 12.2%;
 }
 
 .letterbutton {
@@ -86,8 +79,8 @@ p, span {
 }
 
 .line2{
-    margin-left: 10%;
-    margin-right: 10%;
+    margin-left: 5%;
+    margin-right: 5%;
 }
 
 #contain{
@@ -107,23 +100,10 @@ p, span {
 }
 
 #peopleicon{
-    margin-right: 20px;
+    margin-right: 5px;
 }
 
 #peopleicon2{
     margin-right: 3px;
 }
 
-.mentee_request{
-    margin-left: 10%;
-    font-size : 35px;
-}
-
-.nomenting{
-    margin-left: 10%;
-}
-
-.homebutton{
-    margin-top: 30px;
-    margin-left: 10%;
-}

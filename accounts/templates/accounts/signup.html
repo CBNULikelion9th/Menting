@@ -26,9 +26,7 @@
       </div>
       {% endif %}
    </span>
-    <form action="{% url 'signup' %}" method="POST" style="
-    margin-left: 130px;
-">
+    <form action="{% url 'signup' %}" method="POST" style="margin-left: 130px;">
       {% csrf_token %}
       <div class="signupform">
         <span>이&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp름&nbsp&nbsp</span>
@@ -79,15 +77,12 @@
       <br>
       <button type='submit', class="btnmid", onclick="return confirm('이 정보로 회원가입 하시겠습니까?');"> 회 원 가 입 </button>
     </form>
-    <span><a href="{% url 'main' %}"><button id="btn_pre" style="
-      margin-left: 130px;
-  ">Cancel</button></a></span>
+    <span><a href="{% url 'main' %}"><button id="btn_pre" style="margin-left: 130px;">Cancel</button></a></span>
     <span><a href="{% url 'login' %}"><button id="btn_next" style="margin-left:161px;">Login</button></a></span>
+    </div>
   </div>
-  
-  </div>
-</body>
-<footer>
+
+<footer class = "bottombannner">
     <div class="inner">
       <div class="info">
         <span>멋쟁이사자처럼 at 충북대학교 2조팀.</span>
@@ -98,6 +93,6 @@
       </p>
     </div>
   </footer>
-
+</body>
 </html>
 {% endblock content %}

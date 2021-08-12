@@ -27,6 +27,7 @@
 <body>
   {% if user.is_authenticated %}
   <header>
+    <div class="js-weather weather"></div>
     <div class="inner">
 
       <a href="{% url 'main' %}" class="logo">

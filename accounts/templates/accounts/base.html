@@ -8,6 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>멘팅 Menting</title>
   <link href="{% static 'css/menubar2.css' %}" rel="stylesheet">
+  <link href="{% static 'css/weather.css' %}" rel="stylesheet">
   <!--파비콘-->
   <!--<link rel="shortcut icon" href="favicon.ico" />-->
   <link rel="icon" href="/static/img/패비콘.png" />
@@ -18,6 +19,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet" />
   <!--Google Material Icons-->
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+  <script defer src="static/js/weather.js"></script>
 
 </head>
 
@@ -135,8 +137,8 @@
   </header>
   {%else%}
   <header>
+    <div class="js-weather weather"></div>
     <div class="inner">
-
       <a href="{% url 'main' %}" class="logo cursor">
         <img src="/static/img/menting removeback.png" />
       </a>
